@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AbstractClasses
+namespace HackerRank.Tutorials._30DaysOfCode.AbstractClasses
 {
     class Program
     {
-        static void Main(String[] args)
+        static void Main()
         {
             String title = Console.ReadLine();
             String author = Console.ReadLine();

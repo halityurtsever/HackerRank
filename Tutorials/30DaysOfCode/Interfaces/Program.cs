@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Interfaces
+namespace HackerRank.Tutorials._30DaysOfCode.Interfaces
 {
     class Program
     {

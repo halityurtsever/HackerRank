@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LetsReview
+namespace HackerRank.Tutorials._30DaysOfCode.LetsReview
 {
     class Program
     {

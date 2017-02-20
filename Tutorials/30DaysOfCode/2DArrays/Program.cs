@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace _2DArrays
+namespace HackerRank.Tutorials._30DaysOfCode._2DArrays
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             //var dataTempArray = new string[6];
             //dataTempArray[0] = "0 -4 -6 0 -7 -6";
@@ -24,13 +24,11 @@ namespace _2DArrays
                 }
             }
 
-            var startColumn = 0;
-            var startRow = 0;
             var maxTotal = 0;
             for (int i = 0; i < 16; i++)
             {
-                startRow = i / 4;
-                startColumn = i % 4;
+                var startRow = i / 4;
+                var startColumn = i % 4;
 
                 //top
                 var c1 = dataArray[startRow, startColumn];

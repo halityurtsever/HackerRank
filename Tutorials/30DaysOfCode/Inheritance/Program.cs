@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Inheritance
+namespace HackerRank.Tutorials._30DaysOfCode.Inheritance
 {
     class Program
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Loops
+namespace HackerRank.Tutorials._30DaysOfCode.Loops
 {
     class Program
     {

@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Scope
+namespace HackerRank.Tutorials._30DaysOfCode.Scope
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Convert.ToInt32(Console.ReadLine());
 
@@ -24,7 +21,7 @@ namespace Scope
 
     internal class Difference
     {
-        private int[] elements;
+        private readonly int[] elements;
         public int maximumDifference;
 
         public Difference(int[] ints)

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExceptionsStringToInteger
+namespace HackerRank.Tutorials._30DaysOfCode.ExceptionsStringToInteger
 {
     class Program
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sorting
+namespace HackerRank.Tutorials._30DaysOfCode.Sorting
 {
     class Program
     {

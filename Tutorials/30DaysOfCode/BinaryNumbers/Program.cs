@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BinaryNumbers
+namespace HackerRank.Tutorials._30DaysOfCode.BinaryNumbers
 {
     class Program
     {
