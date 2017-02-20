@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Generics
+namespace HackerRank.Tutorials._30DaysOfCode.Generics
 {
     class Program
     {
