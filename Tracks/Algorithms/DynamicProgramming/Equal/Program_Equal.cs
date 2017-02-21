@@ -140,8 +140,9 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
             if (difference > 2)
             {
-                additionCount = difference / 5;
+                additionCount = difference / 3;
                 if (additionCount == 0) additionCount++;
+
                 EqualizeArray_2(array, firstMaxIndex, additionCount, 5);
             }
 
@@ -149,6 +150,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             {
                 additionCount = difference / 2;
                 if (additionCount == 0) additionCount++;
+
                 EqualizeArray_2(array, firstMaxIndex, additionCount, 2);
             }
 
@@ -157,12 +159,13 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 EqualizeArray_2(array, firstMaxIndex, difference, 1);
             }
 
-            m_Result++;
             Equalization_2(array);
         }
 
         private static void EqualizeArray_2(int[] array, int maxIndex, int additionCount, int addition)
         {
+            m_Result += additionCount;
+
             //add addition value to whole elements in the array, except max one
             for (int i = 0; i < array.Length; i++)
             {
