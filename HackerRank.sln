@@ -85,6 +85,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equal", "Tracks\Algorithms\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equal_Tests", "_Tests\Equal_Tests\Equal_Tests.csproj", "{67D6063B-912B-4714-831A-369073D2B0D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinarySearchTrees", "Tutorials\30DaysOfCode\BinarySearchTrees\BinarySearchTrees.csproj", "{7E99C5B8-D7FE-4013-B9A7-8ACC7B9B2FFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -207,6 +209,10 @@ Global
 		{67D6063B-912B-4714-831A-369073D2B0D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67D6063B-912B-4714-831A-369073D2B0D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67D6063B-912B-4714-831A-369073D2B0D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E99C5B8-D7FE-4013-B9A7-8ACC7B9B2FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E99C5B8-D7FE-4013-B9A7-8ACC7B9B2FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E99C5B8-D7FE-4013-B9A7-8ACC7B9B2FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E99C5B8-D7FE-4013-B9A7-8ACC7B9B2FFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -248,5 +254,6 @@ Global
 		{4E10FE26-C3E8-4C2E-828E-94FD7746C9FE} = {8E08DD78-5789-449A-8BD3-FE9B830F1E37}
 		{E2CDCFAE-C9E9-4816-96F2-6FE98F0B2537} = {4E10FE26-C3E8-4C2E-828E-94FD7746C9FE}
 		{67D6063B-912B-4714-831A-369073D2B0D4} = {8F116FC8-44B8-43C3-821C-844AF7206AD2}
+		{7E99C5B8-D7FE-4013-B9A7-8ACC7B9B2FFC} = {03CDEBC9-84E4-45FF-8E63-A6B6EAF6CE2F}
 	EndGlobalSection
 EndGlobal
