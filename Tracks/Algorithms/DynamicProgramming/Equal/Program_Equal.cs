@@ -53,67 +53,82 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
             SortArray(array);
 
-            int additionCount = 0;
-            int firstMaxIndex = array.Length - 1;
-            int secondMaxIndex;
-            int thirdMaxIndex;
-            GetSecondMaxIndex(array, out secondMaxIndex, out thirdMaxIndex);
+            int max = array.Length - 1;
+            int min;
+            int maxCount = GetMaxCount(array, out min);
 
             //get difference between first and last element
-            int difference = array[firstMaxIndex] - array[secondMaxIndex];
+            int minMaxDifference = array[max] - array[min];
 
-            if (difference > 2)
+            if (minMaxDifference > 2)
             {
-                additionCount = 1;
-                if (additionCount == 0) additionCount = difference / 3;
-                if (additionCount != 0)
-                    EqualizeArray_2(array, firstMaxIndex, additionCount, 5);
+                
             }
 
-            if (difference == 2)
-            {
-                additionCount = difference / 2;
-                if (additionCount != 0)
-                    EqualizeArray_2(array, firstMaxIndex, additionCount, 2);
-            }
 
-            if (difference < 2)
-            {
-                EqualizeArray_2(array, firstMaxIndex, difference, 1);
-            }
+            //if (difference > 2)
+            //{
+            //    additionCount = 1;
+            //    if (additionCount == 0) additionCount = difference / 3;
+            //    if (additionCount != 0)
+            //        EqualizeArray_2(array, max, additionCount, 5);
+            //}
 
-            Equalization_2(array);
+            //if (difference == 2)
+            //{
+            //    additionCount = difference / 2;
+            //    if (additionCount != 0)
+            //        EqualizeArray_2(array, max, additionCount, 2);
+            //}
+
+            //if (difference < 2)
+            //{
+            //    EqualizeArray_2(array, max, difference, 1);
+            //}
+
+            //Equalization_2(array);
         }
 
-        private static void EqualizeArray_2(int[] array, int maxIndex, int additionCount, int addition)
+        private static void EqualizeArray_2(int[] array, int maxIndex, int maxCount, int addition)
         {
-            m_Result += additionCount;
-
             //add addition value to whole elements in the array, except max one
             for (int i = 0; i < array.Length; i++)
             {
                 if (i != maxIndex)
                 {
-                    array[i] += additionCount * addition;
+                    array[i] += addition;
                 }
             }
         }
 
-        private static void GetSecondMaxIndex(int[] array, out int second, out int third)
+        private static int GetMaxCount(int[] array, out int min)
         {
-            int max = array[array.Length - 1];
-            third = 0;
+            int max = array.Length - 1;
+            int maxCount = 1;
+            min = -1;
 
-            for (int i = array.Length - 1; i >= 0; i--)
+            for (int i = array.Length - 2; i >= 0; i--)
             {
-                if (array[i] < max)
+                //if min is set, break loop
+                if (min != -1)
+                    break;
+
+                //if next number is equal to max, increase max
+                if (array[i] == array[max])
                 {
-                    second = i;
-                    third = i - 1;
+                    maxCount++;
+                    continue;
+                }
+
+                //if next number is less than max and min is not set
+                //set min number
+                if (array[i] < array[max] && min == -1)
+                {
+                    min = i;
                 }
             }
 
-            throw new Exception("Second max index cannot be found.");
+            return maxCount;
         }
 
         #endregion
