@@ -55,7 +55,9 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
             int additionCount = 0;
             int firstMaxIndex = array.Length - 1;
-            int secondMaxIndex= GetSecondMaxIndex(array);
+            int secondMaxIndex;
+            int thirdMaxIndex;
+            GetSecondMaxIndex(array, out secondMaxIndex, out thirdMaxIndex);
 
             //get difference between first and last element
             int difference = array[firstMaxIndex] - array[secondMaxIndex];
@@ -97,15 +99,17 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             }
         }
 
-        private static int GetSecondMaxIndex(int[] array)
+        private static void GetSecondMaxIndex(int[] array, out int second, out int third)
         {
             int max = array[array.Length - 1];
+            third = 0;
 
             for (int i = array.Length - 1; i >= 0; i--)
             {
                 if (array[i] < max)
                 {
-                    return i;
+                    second = i;
+                    third = i - 1;
                 }
             }
 
