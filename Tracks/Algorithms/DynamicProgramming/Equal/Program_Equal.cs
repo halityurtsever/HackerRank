@@ -1,5 +1,5 @@
-﻿using System;
-using CodeHelpers;
+﻿using CodeHelpers;
+using System;
 
 namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 {
@@ -53,50 +53,61 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
             SortArray(array);
 
-            int max = array.Length - 1;
-            int min;
-            int maxCount = GetMaxCount(array, out min);
+            int multiplier;
+            int maxIndex = array.Length - 1;
+            int minIndex;
+            int maxCount = GetMaxCount(array, out minIndex);
 
             //get difference between first and last element
-            int minMaxDifference = array[max] - array[min];
+            int minMaxDifference = array[maxIndex] - array[minIndex];
 
             if (minMaxDifference > 2)
             {
-                
+                multiplier = minMaxDifference / 5;
+
+                if (minMaxDifference % 5 > 2)
+                {
+                    multiplier++;
+                }
+
+                if (multiplier == 0) multiplier = 1;
+                EqualizeArray_2(array, maxCount, multiplier, 5);
+                Equalization_2(array);
             }
 
+            if (minMaxDifference == 2)
+            {
+                EqualizeArray_2(array, maxCount, 1, 2);
+                Equalization_2(array);
+            }
 
-            //if (difference > 2)
-            //{
-            //    additionCount = 1;
-            //    if (additionCount == 0) additionCount = difference / 3;
-            //    if (additionCount != 0)
-            //        EqualizeArray_2(array, max, additionCount, 5);
-            //}
-
-            //if (difference == 2)
-            //{
-            //    additionCount = difference / 2;
-            //    if (additionCount != 0)
-            //        EqualizeArray_2(array, max, additionCount, 2);
-            //}
-
-            //if (difference < 2)
-            //{
-            //    EqualizeArray_2(array, max, difference, 1);
-            //}
-
-            //Equalization_2(array);
+            if (minMaxDifference < 2)
+            {
+                EqualizeArray_2(array, maxCount, 1, 1);
+                Equalization_2(array);
+            }
         }
 
-        private static void EqualizeArray_2(int[] array, int maxIndex, int maxCount, int addition)
+        private static void EqualizeArray_2(int[] array, int maxCount, int multiplier, int addition)
         {
-            //add addition value to whole elements in the array, except max one
-            for (int i = 0; i < array.Length; i++)
+            int increaseCount = maxCount * multiplier;
+            int increaseAmount = increaseCount * addition;
+
+            m_Result += increaseCount;
+
+            //add increase amount all array elements except max numbers
+            for (int i = 0; i < array.Length - maxCount; i++)
             {
-                if (i != maxIndex)
+                array[i] += increaseAmount;
+            }
+
+            if (maxCount > 1)
+            {
+                for (int i = 0; i < increaseCount; i++)
                 {
-                    array[i] += addition;
+                    int startIndex = array.Length - maxCount;
+                    startIndex += i % maxCount;
+                    array[startIndex] += addition;
                 }
             }
         }
