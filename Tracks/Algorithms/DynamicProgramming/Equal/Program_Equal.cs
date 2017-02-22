@@ -42,84 +42,6 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         #endregion
 
         //################################################################################
-        #region First Implementation
-
-        private static void Equalization_1(int[] array)
-        {
-            if (IsEqual(array))
-            {
-                return;
-            }
-
-            SortArray(array);
-
-            int nextIndex = GetNextIndex(array);
-            int difference = array[nextIndex] - array[0];
-
-            //calculate how many times 5 will be added
-            int addTimes_5 = difference / 5;
-            int remainsFrom_5 = difference % 5;
-            if (addTimes_5 > 0)
-            {
-                EqualizeArray_1(array, nextIndex, 5, addTimes_5);
-                m_Result += addTimes_5;
-            }
-
-            if (remainsFrom_5 == 0)
-            {
-                Equalization_1(array);
-                return;
-            }
-
-            //calculate how many times 2 will be added
-            int addTimes_2 = remainsFrom_5 / 2;
-            int remainsFrom_2 = remainsFrom_5 % 2;
-            if (addTimes_2 > 0)
-            {
-                EqualizeArray_1(array, nextIndex, 2, addTimes_2);
-                m_Result += addTimes_2;
-            }
-
-            if (remainsFrom_2 == 0)
-            {
-                Equalization_1(array);
-                return;
-            }
-
-            //calculate how many times 1 will be added
-            EqualizeArray_1(array, nextIndex, 1, remainsFrom_2);
-            m_Result += remainsFrom_2;
-            Equalization_1(array);
-        }
-
-        private static void EqualizeArray_1(int[] array, int nextIndex, int addUnit, int addTimes)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (i != nextIndex)
-                {
-                    array[i] += addUnit * addTimes;
-                }
-            }
-        }
-
-        private static int GetNextIndex(int[] array)
-        {
-            int min = array[0];
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] > min)
-                {
-                    return i;
-                }
-            }
-
-            throw new Exception("Next index cannot be found.");
-        }
-
-        #endregion
-
-        //################################################################################
         #region Second Implementation
 
         private static void Equalization_2(int[] array)
@@ -140,18 +62,17 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
             if (difference > 2)
             {
-                additionCount = difference / 3;
-                if (additionCount == 0) additionCount++;
-
-                EqualizeArray_2(array, firstMaxIndex, additionCount, 5);
+                additionCount = 1;
+                if (additionCount == 0) additionCount = difference / 3;
+                if (additionCount != 0)
+                    EqualizeArray_2(array, firstMaxIndex, additionCount, 5);
             }
 
             if (difference == 2)
             {
                 additionCount = difference / 2;
-                if (additionCount == 0) additionCount++;
-
-                EqualizeArray_2(array, firstMaxIndex, additionCount, 2);
+                if (additionCount != 0)
+                    EqualizeArray_2(array, firstMaxIndex, additionCount, 2);
             }
 
             if (difference < 2)
@@ -174,23 +95,6 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                     array[i] += additionCount * addition;
                 }
             }
-        }
-
-        private static int GetMinIndex(int[] array)
-        {
-            int min = array[0];
-            int index = 0;
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] < min)
-                {
-                    min = array[i];
-                    index = i;
-                }
-            }
-
-            return index;
         }
 
         private static int GetSecondMaxIndex(int[] array)

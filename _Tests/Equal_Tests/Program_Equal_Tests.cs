@@ -65,10 +65,17 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal.Tests
 
             Program_Equal.ExecuteTask(console);
 
-            string expectedMaxValue = ((IConsoleTest)console).ReadLineFromExpectedOutput();
-            string actualMaxValue = ((IConsoleTest)console).ReadLineFromActualOutput();
+            var consoleWrapper = (ConsoleWrapperTest) console;
 
-            Assert.AreEqual(expectedMaxValue, actualMaxValue);
+            Assert.AreEqual(consoleWrapper.ExpectedOutput.Count, consoleWrapper.ActualOutput.Count);
+
+            for (int i = 0; i < consoleWrapper.ActualOutput.Count; i++)
+            {
+                string expectedMaxValue = ((IConsoleTest)console).ReadLineFromExpectedOutput();
+                string actualMaxValue = ((IConsoleTest)console).ReadLineFromActualOutput();
+
+                Assert.AreEqual(expectedMaxValue, actualMaxValue); 
+            }
         }
 
         #endregion
