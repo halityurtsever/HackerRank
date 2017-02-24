@@ -79,6 +79,10 @@
     <Content Include="InputsOutputs\output_3.txt" />
     <Content Include="InputsOutputs\output_4.txt" />
     <Content Include="InputsOutputs\output_5.txt" />
+    <Content Include="TraceData\Fail - addunit.txt" />
+    <Content Include="TraceData\Fail - with if.txt" />
+    <Content Include="TraceData\Success - addunit.txt" />
+    <Content Include="TraceData\Success - without if.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

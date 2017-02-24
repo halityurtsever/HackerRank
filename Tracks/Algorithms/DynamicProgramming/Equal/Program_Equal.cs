@@ -1,5 +1,6 @@
 ﻿using CodeHelpers;
 using System;
+using System.Diagnostics;
 
 namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 {
@@ -48,68 +49,97 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         {
             if (IsEqual(array))
             {
+                //TraceArray(array);
                 return;
             }
 
             SortArray(array);
+            //TraceArray(array);
 
-            int multiplier;
             int maxIndex = array.Length - 1;
-            int minIndex;
-            int maxCount = GetMaxCount(array, out minIndex);
+            int nextIndex = GetNextIndex(array);
+            int minMaxDifference = array[maxIndex] - array[0];
+            int minNextDifference = array[nextIndex] - array[0];
 
-            //get difference between first and last element
-            int minMaxDifference = array[maxIndex] - array[minIndex];
+            //calculate how many times 5 will be added
+            int addTimes_5 = minMaxDifference / 5;
+            int remainsFrom_5 = minMaxDifference % 5;
 
-            if (minMaxDifference > 2)
+            //if (remainsFrom_5 > 2 && minNextDifference > 2)
+            //{
+            //    addTimes_5++;
+            //    remainsFrom_5 = 0;
+            //}
+
+            if (addTimes_5 > 0)
             {
-                multiplier = minMaxDifference / 5;
+                EqualizeArray_2(array, maxIndex, 5, addTimes_5);
+                m_Result += addTimes_5;
+                remainsFrom_5 = 0;
+            }
 
-                if (minMaxDifference % 5 > 2)
+            if (remainsFrom_5 == 0)
+            {
+                Equalization_2(array);
+                return;
+            }
+
+            //calculate how many times 2 will be added
+            int addTimes_2 = remainsFrom_5 / 2;
+            int remainsFrom_2 = remainsFrom_5 % 2;
+            if (addTimes_2 > 0)
+            {
+                EqualizeArray_2(array, maxIndex, 2, addTimes_2);
+                m_Result += addTimes_2;
+            }
+
+            if (remainsFrom_2 == 0)
+            {
+                Equalization_2(array);
+                return;
+            }
+
+            //calculate how many times 1 will be added
+            EqualizeArray_2(array, maxIndex, 1, remainsFrom_2);
+            m_Result += remainsFrom_2;
+            Equalization_2(array);
+        }
+
+        private static void EqualizeArray_2(int[] array, int nextIndex, int addUnit, int addTimes)
+        {
+            Debug.WriteLine($"AddUnit: {addUnit}, AddTimes: {addTimes}, Result: {m_Result}");
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (i != nextIndex)
                 {
-                    multiplier++;
+                    array[i] += addUnit * addTimes;
                 }
-
-                if (multiplier == 0) multiplier = 1;
-                EqualizeArray_2(array, maxCount, multiplier, 5);
-                Equalization_2(array);
-            }
-
-            if (minMaxDifference == 2)
-            {
-                EqualizeArray_2(array, maxCount, 1, 2);
-                Equalization_2(array);
-            }
-
-            if (minMaxDifference < 2)
-            {
-                EqualizeArray_2(array, maxCount, 1, 1);
-                Equalization_2(array);
             }
         }
 
-        private static void EqualizeArray_2(int[] array, int maxCount, int multiplier, int addition)
+        private static int GetNextIndex(int[] array)
         {
-            int increaseCount = maxCount * multiplier;
-            int increaseAmount = increaseCount * addition;
-
-            m_Result += increaseCount;
-
-            //add increase amount all array elements except max numbers
-            for (int i = 0; i < array.Length - maxCount; i++)
+            int min = array[0];
+            for (int i = 0; i < array.Length; i++)
             {
-                array[i] += increaseAmount;
-            }
-
-            if (maxCount > 1)
-            {
-                for (int i = 0; i < increaseCount; i++)
+                if (array[i] > min)
                 {
-                    int startIndex = array.Length - maxCount;
-                    startIndex += i % maxCount;
-                    array[startIndex] += addition;
+                    return i;
                 }
             }
+
+            throw new Exception("Next index cannot be found.");
+        }
+
+        private static void TraceArray(int[] array)
+        {
+            string list = string.Empty;
+            for (int i = 0; i < array.Length; i++)
+            {
+                list += $"{array[i]} - ";
+            }
+            Debug.Write($"({m_Result}): {list}");
+            Debug.WriteLine("");
         }
 
         private static int GetMaxCount(int[] array, out int min)
