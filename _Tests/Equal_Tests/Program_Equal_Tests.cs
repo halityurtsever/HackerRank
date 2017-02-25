@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CodeHelpers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
-using CodeHelpers;
 using TestHelper;
 
 namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal.Tests
@@ -42,6 +42,18 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal.Tests
             TestRunner("input_5.txt", "output_5.txt");
         }
 
+        [TestMethod()]
+        public void ExecuteTest_6()
+        {
+            TestRunner("input_6.txt", "output_6.txt");
+        }
+
+        [TestMethod()]
+        public void ExecuteTest_7()
+        {
+            TestRunner("input_7.txt", "output_7.txt");
+        }
+
         #endregion
 
         //################################################################################
@@ -65,7 +77,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal.Tests
 
             Program_Equal.ExecuteTask(console);
 
-            var consoleWrapper = (ConsoleWrapperTest) console;
+            var consoleWrapper = (ConsoleWrapperTest)console;
 
             Assert.AreEqual(consoleWrapper.ExpectedOutput.Count, consoleWrapper.ActualOutput.Count);
 
@@ -74,7 +86,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal.Tests
                 string expectedMaxValue = ((IConsoleTest)console).ReadLineFromExpectedOutput();
                 string actualMaxValue = ((IConsoleTest)console).ReadLineFromActualOutput();
 
-                Assert.AreEqual(expectedMaxValue, actualMaxValue); 
+                Assert.AreEqual(expectedMaxValue, actualMaxValue);
             }
         }
 

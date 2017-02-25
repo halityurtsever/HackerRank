@@ -74,11 +74,15 @@
     <Content Include="InputsOutputs\input_3.txt" />
     <Content Include="InputsOutputs\input_4.txt" />
     <Content Include="InputsOutputs\input_5.txt" />
+    <Content Include="InputsOutputs\input_6.txt" />
+    <Content Include="InputsOutputs\input_7.txt" />
     <Content Include="InputsOutputs\output_1.txt" />
     <Content Include="InputsOutputs\output_2.txt" />
     <Content Include="InputsOutputs\output_3.txt" />
     <Content Include="InputsOutputs\output_4.txt" />
     <Content Include="InputsOutputs\output_5.txt" />
+    <Content Include="InputsOutputs\output_6.txt" />
+    <Content Include="InputsOutputs\output_7.txt" />
     <Content Include="TraceData\Fail - addunit.txt" />
     <Content Include="TraceData\Fail - with if.txt" />
     <Content Include="TraceData\Success - addunit.txt" />

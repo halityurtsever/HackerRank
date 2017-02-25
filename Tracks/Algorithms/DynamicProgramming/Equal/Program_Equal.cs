@@ -53,22 +53,24 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 return;
             }
 
-            SortArray(array);
+            //SortArray(array);
             //TraceArray(array);
 
-            int maxIndex = array.Length - 1;
-            int nextIndex = GetNextIndex(array);
-            int minMaxDifference = array[maxIndex] - array[0];
-            int minNextDifference = array[nextIndex] - array[0];
+            //int minIndex = 0;
+            //int maxIndex = array.Length - 1;
+            int minIndex = GetMinIndex(array);
+            int maxIndex = GetMaxIndex(array);
+            //int nextIndex = GetNextIndex(array);
+            int minMaxDifference = array[maxIndex] - array[minIndex];
+            //int minNextDifference = array[nextIndex] - array[0];
 
             //calculate how many times 5 will be added
             int addTimes_5 = minMaxDifference / 5;
             int remainsFrom_5 = minMaxDifference % 5;
 
-            //if (remainsFrom_5 > 2 && minNextDifference > 2)
+            //if (remainsFrom_5 > 2 && minNextDifference > 1)
             //{
             //    addTimes_5++;
-            //    remainsFrom_5 = 0;
             //}
 
             if (addTimes_5 > 0)
@@ -87,6 +89,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             //calculate how many times 2 will be added
             int addTimes_2 = remainsFrom_5 / 2;
             int remainsFrom_2 = remainsFrom_5 % 2;
+
             if (addTimes_2 > 0)
             {
                 EqualizeArray_2(array, maxIndex, 2, addTimes_2);
@@ -107,7 +110,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
         private static void EqualizeArray_2(int[] array, int nextIndex, int addUnit, int addTimes)
         {
-            Debug.WriteLine($"AddUnit: {addUnit}, AddTimes: {addTimes}, Result: {m_Result}");
+            //Debug.WriteLine($"AddUnit: {addUnit}, AddTimes: {addTimes}, Result: {m_Result}");
             for (int i = 0; i < array.Length; i++)
             {
                 if (i != nextIndex)
@@ -115,6 +118,40 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                     array[i] += addUnit * addTimes;
                 }
             }
+        }
+
+        private static int GetMinIndex(int[] array)
+        {
+            int min = array[0];
+            int minIndex = 0;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < min)
+                {
+                    min = array[i];
+                    minIndex = i;
+                }
+            }
+
+            return minIndex;
+        }
+
+        private static int GetMaxIndex(int[] array)
+        {
+            int max = array[0];
+            int maxIndex = 0;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    maxIndex = i;
+                }
+            }
+
+            return maxIndex;
         }
 
         private static int GetNextIndex(int[] array)
@@ -129,47 +166,6 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             }
 
             throw new Exception("Next index cannot be found.");
-        }
-
-        private static void TraceArray(int[] array)
-        {
-            string list = string.Empty;
-            for (int i = 0; i < array.Length; i++)
-            {
-                list += $"{array[i]} - ";
-            }
-            Debug.Write($"({m_Result}): {list}");
-            Debug.WriteLine("");
-        }
-
-        private static int GetMaxCount(int[] array, out int min)
-        {
-            int max = array.Length - 1;
-            int maxCount = 1;
-            min = -1;
-
-            for (int i = array.Length - 2; i >= 0; i--)
-            {
-                //if min is set, break loop
-                if (min != -1)
-                    break;
-
-                //if next number is equal to max, increase max
-                if (array[i] == array[max])
-                {
-                    maxCount++;
-                    continue;
-                }
-
-                //if next number is less than max and min is not set
-                //set min number
-                if (array[i] < array[max] && min == -1)
-                {
-                    min = i;
-                }
-            }
-
-            return maxCount;
         }
 
         #endregion
@@ -192,23 +188,33 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
         private static void SortArray(int[] array)
         {
-            //Bubble sort array
-            bool isSwapped = true;
-            while (isSwapped)
+            //Insertion sort
+            for (int i = 1; i < array.Length; i++)
             {
-                isSwapped = false;
-
-                for (int i = 0; i < array.Length - 1; i++)
+                var index = i;
+                while (index > 0)
                 {
-                    if (array[i] > array[i + 1])
+                    if (array[index] < array[index - 1])
                     {
-                        int temp = array[i];
-                        array[i] = array[i + 1];
-                        array[i + 1] = temp;
-                        isSwapped = true;
+                        var temp = array[index - 1];
+                        array[index - 1] = array[index];
+                        array[index] = temp;
                     }
+                    index--;
+
                 }
             }
+        }
+
+        private static void TraceArray(int[] array)
+        {
+            string list = string.Empty;
+            for (int i = 0; i < array.Length; i++)
+            {
+                list += $"{array[i]} - ";
+            }
+            Debug.Write($"({m_Result}): {list}");
+            Debug.WriteLine("");
         }
 
         #endregion
