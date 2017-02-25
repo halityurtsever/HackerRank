@@ -10,6 +10,9 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         #region Fields
 
         private static int m_Result = 0;
+        private static int m_MinIndex;
+        private static int m_MaxIndex;
+        private static int m_NextIndex;
 
         #endregion
 
@@ -32,6 +35,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 string[] arrayData = console.ReadLine().Split(' ');
                 int[] array = Array.ConvertAll(arrayData, Int32.Parse);
 
+                SetIndexes(array);
                 Equalization(array);
 
                 console.WriteLine(m_Result);
@@ -57,11 +61,10 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
             //int minIndex = 0;
             //int maxIndex = array.Length - 1;
-            int minIndex = GetMinIndex(array);
-            int maxIndex = GetMaxIndex(array);
-            int nextIndex = GetNextIndex(array, minIndex);
-            int minMaxDifference = array[maxIndex] - array[minIndex];
-            int minNextDifference = array[nextIndex] - array[0];
+            CheckIndexes(array);
+            m_MaxIndex = GetMaxIndex(array);
+            int minMaxDifference = array[m_MaxIndex] - array[m_MinIndex];
+            int minNextDifference = array[m_NextIndex] - array[0];
 
             //calculate how many times 5 will be added
             int addTimes_5 = minMaxDifference / 5;
@@ -74,7 +77,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
             if (addTimes_5 > 0)
             {
-                EqualizeArray(array, maxIndex, 5, addTimes_5);
+                EqualizeArray(array, m_MaxIndex, 5, addTimes_5);
                 m_Result += addTimes_5;
                 remainsFrom_5 = 0;
             }
@@ -91,7 +94,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
             if (addTimes_2 > 0)
             {
-                EqualizeArray(array, maxIndex, 2, addTimes_2);
+                EqualizeArray(array, m_MaxIndex, 2, addTimes_2);
                 m_Result += addTimes_2;
             }
 
@@ -102,7 +105,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             }
 
             //calculate how many times 1 will be added
-            EqualizeArray(array, maxIndex, 1, remainsFrom_2);
+            EqualizeArray(array, m_MaxIndex, 1, remainsFrom_2);
             m_Result += remainsFrom_2;
             Equalization(array);
         }
@@ -116,6 +119,25 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 {
                     array[i] += addUnit * addTimes;
                 }
+            }
+        }
+
+        private static void SetIndexes(int[] array)
+        {
+            m_MinIndex = GetMinIndex(array);
+            m_MaxIndex = GetMaxIndex(array);
+            m_NextIndex = GetNextIndex(array, m_MinIndex);
+        }
+
+        private static void CheckIndexes(int[] array)
+        {
+            if (array[m_MaxIndex] < array[m_MinIndex])
+            {
+                m_MinIndex = m_MaxIndex;
+            }
+            else if (array[m_MaxIndex] < array[m_NextIndex])
+            {
+                m_NextIndex = m_MaxIndex;
             }
         }
 
