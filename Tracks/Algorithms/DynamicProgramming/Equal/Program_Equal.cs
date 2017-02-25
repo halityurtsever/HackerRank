@@ -32,8 +32,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 string[] arrayData = console.ReadLine().Split(' ');
                 int[] array = Array.ConvertAll(arrayData, Int32.Parse);
 
-                //Equalization_1(array);
-                Equalization_2(array);
+                Equalization(array);
 
                 console.WriteLine(m_Result);
                 m_Result = 0;
@@ -45,7 +44,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         //################################################################################
         #region Second Implementation
 
-        private static void Equalization_2(int[] array)
+        private static void Equalization(int[] array)
         {
             if (IsEqual(array))
             {
@@ -60,29 +59,29 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             //int maxIndex = array.Length - 1;
             int minIndex = GetMinIndex(array);
             int maxIndex = GetMaxIndex(array);
-            //int nextIndex = GetNextIndex(array);
+            int nextIndex = GetNextIndex(array, minIndex);
             int minMaxDifference = array[maxIndex] - array[minIndex];
-            //int minNextDifference = array[nextIndex] - array[0];
+            int minNextDifference = array[nextIndex] - array[0];
 
             //calculate how many times 5 will be added
             int addTimes_5 = minMaxDifference / 5;
             int remainsFrom_5 = minMaxDifference % 5;
 
-            //if (remainsFrom_5 > 2 && minNextDifference > 1)
-            //{
-            //    addTimes_5++;
-            //}
+            if (remainsFrom_5 > 2 && minNextDifference > 1)
+            {
+                addTimes_5++;
+            }
 
             if (addTimes_5 > 0)
             {
-                EqualizeArray_2(array, maxIndex, 5, addTimes_5);
+                EqualizeArray(array, maxIndex, 5, addTimes_5);
                 m_Result += addTimes_5;
                 remainsFrom_5 = 0;
             }
 
             if (remainsFrom_5 == 0)
             {
-                Equalization_2(array);
+                Equalization(array);
                 return;
             }
 
@@ -92,23 +91,23 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
             if (addTimes_2 > 0)
             {
-                EqualizeArray_2(array, maxIndex, 2, addTimes_2);
+                EqualizeArray(array, maxIndex, 2, addTimes_2);
                 m_Result += addTimes_2;
             }
 
             if (remainsFrom_2 == 0)
             {
-                Equalization_2(array);
+                Equalization(array);
                 return;
             }
 
             //calculate how many times 1 will be added
-            EqualizeArray_2(array, maxIndex, 1, remainsFrom_2);
+            EqualizeArray(array, maxIndex, 1, remainsFrom_2);
             m_Result += remainsFrom_2;
-            Equalization_2(array);
+            Equalization(array);
         }
 
-        private static void EqualizeArray_2(int[] array, int nextIndex, int addUnit, int addTimes)
+        private static void EqualizeArray(int[] array, int nextIndex, int addUnit, int addTimes)
         {
             //Debug.WriteLine($"AddUnit: {addUnit}, AddTimes: {addTimes}, Result: {m_Result}");
             for (int i = 0; i < array.Length; i++)
@@ -154,18 +153,22 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             return maxIndex;
         }
 
-        private static int GetNextIndex(int[] array)
+        private static int GetNextIndex(int[] array, int minIndex)
         {
-            int min = array[0];
+            int min = array[minIndex];
+            int nextIndex = minIndex == 0 ? 1 : 0;
+            int next = array[nextIndex];
+
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] > min)
+                if (array[i] > min && array[i] < next)
                 {
-                    return i;
+                    next = array[i];
+                    nextIndex = i;
                 }
             }
 
-            throw new Exception("Next index cannot be found.");
+            return nextIndex;
         }
 
         #endregion
