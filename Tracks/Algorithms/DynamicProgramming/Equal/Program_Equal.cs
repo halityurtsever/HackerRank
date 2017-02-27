@@ -12,7 +12,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         private static int m_Result = 0;
         private static int m_MinIndex;
         private static int m_MaxIndex;
-        private static int m_NextIndex;
+        private static int m_MaxCount;
 
         #endregion
 
@@ -35,7 +35,10 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 string[] arrayData = console.ReadLine().Split(' ');
                 int[] array = Array.ConvertAll(arrayData, Int32.Parse);
 
-                SetIndexes(array);
+                SortArray(array);
+                m_MinIndex = 0;
+                m_MaxIndex = array.Length - 1;
+
                 Equalization(array);
 
                 console.WriteLine(m_Result);
@@ -52,92 +55,125 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         {
             if (IsEqual(array))
             {
-                //TraceArray(array);
                 return;
             }
 
-            //SortArray(array);
-            //TraceArray(array);
+            bool isFinished = false;
 
-            //int minIndex = 0;
-            //int maxIndex = array.Length - 1;
-            CheckIndexes(array);
-            m_MaxIndex = GetMaxIndex(array);
+            GetMaxCount(array);
             int minMaxDifference = array[m_MaxIndex] - array[m_MinIndex];
-            int minNextDifference = array[m_NextIndex] - array[0];
 
             //calculate how many times 5 will be added
             int addTimes_5 = minMaxDifference / 5;
             int remainsFrom_5 = minMaxDifference % 5;
 
-            if (remainsFrom_5 > 2 && minNextDifference > 1)
+            if (remainsFrom_5 > 2)
             {
                 addTimes_5++;
+                remainsFrom_5 = 0;
             }
 
             if (addTimes_5 > 0)
             {
-                EqualizeArray(array, m_MaxIndex, 5, addTimes_5);
-                m_Result += addTimes_5;
-                remainsFrom_5 = 0;
+                EqualizeArray(array, 5, addTimes_5);
             }
 
             if (remainsFrom_5 == 0)
             {
-                Equalization(array);
-                return;
+                isFinished = true;
             }
 
-            //calculate how many times 2 will be added
-            int addTimes_2 = remainsFrom_5 / 2;
-            int remainsFrom_2 = remainsFrom_5 % 2;
-
-            if (addTimes_2 > 0)
+            //if nothing remains from 5 calculation
+            if (!isFinished)
             {
-                EqualizeArray(array, m_MaxIndex, 2, addTimes_2);
-                m_Result += addTimes_2;
+                //calculate how many times 2 will be added
+                int addTimes_2 = remainsFrom_5 / 2;
+                int remainsFrom_2 = remainsFrom_5 % 2;
+
+                if (addTimes_2 > 0)
+                {
+                    EqualizeArray(array, 2, addTimes_2);
+                }
+
+                if (remainsFrom_2 == 0)
+                {
+                    isFinished = true;
+                }
+
+                //if nothing remains from 2 calculation
+                if (!isFinished)
+                {
+                    //calculate how many times 1 will be added
+                    EqualizeArray(array, 1, remainsFrom_2);
+                }
             }
 
-            if (remainsFrom_2 == 0)
-            {
-                Equalization(array);
-                return;
-            }
-
-            //calculate how many times 1 will be added
-            EqualizeArray(array, m_MaxIndex, 1, remainsFrom_2);
-            m_Result += remainsFrom_2;
+            ShiftIndexes(array);
             Equalization(array);
         }
 
-        private static void EqualizeArray(int[] array, int nextIndex, int addUnit, int addTimes)
+        private static void EqualizeArray(int[] array, int addUnit, int addTimes)
         {
-            //Debug.WriteLine($"AddUnit: {addUnit}, AddTimes: {addTimes}, Result: {m_Result}");
-            for (int i = 0; i < array.Length; i++)
+            int firstMaxIndex = array.Length - m_MaxCount;
+
+            //add all numbers that less than max
+            for (int i = 0; i < array.Length - m_MaxCount; i++)
             {
-                if (i != nextIndex)
-                {
-                    array[i] += addUnit * addTimes;
-                }
+                array[i] += addUnit * addTimes * m_MaxCount;
             }
+
+            for (int i = 0; i < m_MaxCount; i++)
+            {
+                array[firstMaxIndex + i] += addUnit * addTimes * (m_MaxCount - 1);
+            }
+
+            m_Result += addTimes * m_MaxCount;
         }
 
         private static void SetIndexes(int[] array)
         {
-            m_MinIndex = GetMinIndex(array);
-            m_MaxIndex = GetMaxIndex(array);
-            m_NextIndex = GetNextIndex(array, m_MinIndex);
+            //minIndex = GetMinIndex(array);
+            //maxIndex = GetMaxIndex(array);
+            //nextIndex = GetNextIndex(array, minIndex);
         }
 
-        private static void CheckIndexes(int[] array)
+        private static void ShiftIndexes(int[] array)
         {
-            if (array[m_MaxIndex] < array[m_MinIndex])
+            int firstMaxIndex = array.Length - m_MaxCount;
+            int tempMaxCount = m_MaxCount;
+            int[] tempArray = new int[array.Length];
+
+            for (int i = 0; i < array.Length; i++)
             {
-                m_MinIndex = m_MaxIndex;
+                if (tempMaxCount > 0)
+                {
+                    if (array[i] >= array[firstMaxIndex])
+                    {
+                        tempArray[i] = array[firstMaxIndex];
+                        firstMaxIndex++;
+                        tempMaxCount--;
+                        continue;
+                    }
+                }
+                tempArray[i] = array[i - m_MaxCount];
             }
-            else if (array[m_MaxIndex] < array[m_NextIndex])
+
+            array = tempArray;
+        }
+
+        private static void GetMaxCount(int[] array)
+        {
+            m_MaxCount = 1;
+            for (int i = array.Length - 2; i >= 0; i--)
             {
-                m_NextIndex = m_MaxIndex;
+                if (array[i] == array[m_MaxIndex])
+                {
+                    m_MaxCount++;
+                }
+                else
+                {
+                    break;
+                }
             }
         }
 
