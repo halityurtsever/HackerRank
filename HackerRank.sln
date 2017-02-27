@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Helpers", "_Helpers", "{FF9E5F83-AFA9-4F4B-91F8-6DB72A8B0F22}"
 EndProject
@@ -94,6 +94,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunningTimeAndComplexity", "Tutorials\30DaysOfCode\RunningTimeAndComplexity\RunningTimeAndComplexity.csproj", "{DB020247-10ED-4634-8351-DB66946A59FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NestedLogic", "Tutorials\30DaysOfCode\NestedLogic\NestedLogic.csproj", "{68A85626-4924-4D37-9685-9B6A8C7A0311}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Tutorials\30DaysOfCode\Testing\Testing.csproj", "{DA2D4DAC-46F6-4F4C-ACFE-4BA4889A3733}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -237,6 +239,10 @@ Global
 		{68A85626-4924-4D37-9685-9B6A8C7A0311}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68A85626-4924-4D37-9685-9B6A8C7A0311}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68A85626-4924-4D37-9685-9B6A8C7A0311}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA2D4DAC-46F6-4F4C-ACFE-4BA4889A3733}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA2D4DAC-46F6-4F4C-ACFE-4BA4889A3733}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA2D4DAC-46F6-4F4C-ACFE-4BA4889A3733}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA2D4DAC-46F6-4F4C-ACFE-4BA4889A3733}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -283,5 +289,6 @@ Global
 		{CD6AA9CD-9B63-4EEE-B23A-3E3A254B1C85} = {03CDEBC9-84E4-45FF-8E63-A6B6EAF6CE2F}
 		{DB020247-10ED-4634-8351-DB66946A59FD} = {03CDEBC9-84E4-45FF-8E63-A6B6EAF6CE2F}
 		{68A85626-4924-4D37-9685-9B6A8C7A0311} = {03CDEBC9-84E4-45FF-8E63-A6B6EAF6CE2F}
+		{DA2D4DAC-46F6-4F4C-ACFE-4BA4889A3733} = {03CDEBC9-84E4-45FF-8E63-A6B6EAF6CE2F}
 	EndGlobalSection
 EndGlobal
