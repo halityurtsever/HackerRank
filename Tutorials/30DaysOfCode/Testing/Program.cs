@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Testing
+namespace HackerRank.Tutorials._30DaysOfCode.Testing
 {
     class Program
     {
