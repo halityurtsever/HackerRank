@@ -108,7 +108,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 }
             }
 
-            ShiftIndexes(array);
+            ShiftIndexes(ref array);
             Equalization(array);
         }
 
@@ -137,7 +137,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             //nextIndex = GetNextIndex(array, minIndex);
         }
 
-        private static void ShiftIndexes(int[] array)
+        private static void ShiftIndexes(ref int[] array)
         {
             int firstMaxIndex = array.Length - m_MaxCount;
             int tempMaxCount = m_MaxCount;
@@ -154,6 +154,8 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                         tempMaxCount--;
                         continue;
                     }
+                    tempArray[i] = array[i];
+                    continue;
                 }
                 tempArray[i] = array[i - m_MaxCount];
             }
