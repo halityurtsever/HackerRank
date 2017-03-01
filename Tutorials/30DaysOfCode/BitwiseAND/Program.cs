@@ -32,7 +32,7 @@ namespace HackerRank.Tutorials._30DaysOfCode.BitwiseAND
                             result = index & j;
                         }
                     }
-                    if (result > 0 || index == 1)
+                    if (index == 1)
                     {
                         break;
                     }
