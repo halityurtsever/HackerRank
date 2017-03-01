@@ -74,7 +74,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             int remainsFrom_5 = maxPreviousDifference % 5;
 
             //continue to add 5 till difference between min and max less than 5
-            if (remainsFrom_5 > 2 || (minMaxDifference > 4 && minMaxDifference > maxPreviousDifference))
+            if (minMaxDifference > 4 && (remainsFrom_5 > 2 || minMaxDifference > maxPreviousDifference))
             {
                 addTimes_5++;
                 isContinue = false;
@@ -97,7 +97,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 int addTimes_2 = remainsFrom_5 / 2;
                 int remainsFrom_2 = remainsFrom_5 % 2;
 
-                if (addTimes_2 == 0 && minMaxDifference > 1)
+                if (remainsFrom_2 > 0 && minMaxDifference > 1)
                 {
                     addTimes_2++;
                     isContinue = false;
