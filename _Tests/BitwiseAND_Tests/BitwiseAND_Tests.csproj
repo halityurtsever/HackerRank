@@ -51,21 +51,21 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Program_Tests.cs" />
+    <Compile Include="Program_BitwiseAND_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\_Helpers\CodeHelpers\CodeHelpers.csproj">
+    <ProjectReference Include="..\..\Tutorials\30DaysOfCode\BitwiseAND\BitwiseAND.csproj">
+      <Project>{c0e841c3-186a-4cc0-ab13-5319bb3c1c59}</Project>
+      <Name>BitwiseAND</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\_Helpers\CodeHelpers\CodeHelpers.csproj">
       <Project>{0f843f51-da68-473f-a1d0-aa5c1088feae}</Project>
       <Name>CodeHelpers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\_Helpers\TestHelper\TestHelper.csproj">
+    <ProjectReference Include="..\..\_Helpers\TestHelper\TestHelper.csproj">
       <Project>{64f9b481-33fc-4ed1-ae99-4047becced6c}</Project>
       <Name>TestHelper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BitwiseAND\BitwiseAND.csproj">
-      <Project>{C0E841C3-186A-4CC0-AB13-5319BB3C1C59}</Project>
-      <Name>BitwiseAND</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

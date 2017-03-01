@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Helpers", "_Helpers", "{FF9E5F83-AFA9-4F4B-91F8-6DB72A8B0F22}"
 EndProject
@@ -101,7 +101,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexPatternsAndIntroToData
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitwiseAND", "Tutorials\30DaysOfCode\BitwiseAND\BitwiseAND.csproj", "{C0E841C3-186A-4CC0-AB13-5319BB3C1C59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitwiseAND_Tests", "Tutorials\30DaysOfCode\BitwiseAND_Tests\BitwiseAND_Tests.csproj", "{EBD1F76F-70D8-4D16-B0E9-C9A013903C93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitwiseAND_Tests", "_Tests\BitwiseAND_Tests\BitwiseAND_Tests.csproj", "{EBD1F76F-70D8-4D16-B0E9-C9A013903C93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

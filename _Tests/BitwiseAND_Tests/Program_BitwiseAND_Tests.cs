@@ -39,7 +39,7 @@ namespace HackerRank.Tutorials._30DaysOfCode.BitwiseAND.Tests
             var directoryInfo = new DirectoryInfo(Environment.CurrentDirectory);
             var console = GetConsoleReader(directoryInfo, $"{s_InputOutputFolder}/{inputFile}", $"{s_InputOutputFolder}/{outputFile}");
 
-            Program.ExecuteTask(console);
+            Program_BitwiseAND.ExecuteTask(console);
 
             var consoleWrapper = (ConsoleWrapperTest)console;
 

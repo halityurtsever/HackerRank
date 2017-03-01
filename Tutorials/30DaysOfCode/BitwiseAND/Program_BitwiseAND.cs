@@ -3,9 +3,9 @@ using System;
 
 namespace HackerRank.Tutorials._30DaysOfCode.BitwiseAND
 {
-    public class Program
+    public class Program_BitwiseAND
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             IConsole console = new ConsoleWrapper();
             ExecuteTask(console);
