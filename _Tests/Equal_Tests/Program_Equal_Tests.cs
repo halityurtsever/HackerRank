@@ -54,6 +54,18 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal.Tests
             TestRunner("input_7.txt", "output_7.txt");
         }
 
+        [TestMethod()]
+        public void ExecuteTest_8()
+        {
+            TestRunner("input_8.txt", "output_8.txt");
+        }
+
+        [TestMethod()]
+        public void ExecuteTest_9()
+        {
+            TestRunner("input_9.txt", "output_9.txt");
+        }
+
         #endregion
 
         //################################################################################

@@ -35,7 +35,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 string[] arrayData = console.ReadLine().Split(' ');
                 int[] array = Array.ConvertAll(arrayData, Int32.Parse);
 
-                SortArray(array);
+                SortArray(array, 0, array.Length - 1);
                 m_MinIndex = 0;
                 m_MaxIndex = array.Length - 1;
 
@@ -49,7 +49,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         #endregion
 
         //################################################################################
-        #region Second Implementation
+        #region Private Implementation
 
         private static void Equalization(int[] array)
         {
@@ -58,19 +58,26 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 return;
             }
 
-            bool isFinished = false;
+            bool isContinue = true;
 
+            //count of max numbers in the array
             GetMaxCount(array);
+
+            //difference between min number and max number
             int minMaxDifference = array[m_MaxIndex] - array[m_MinIndex];
 
-            //calculate how many times 5 will be added
-            int addTimes_5 = minMaxDifference / 5;
-            int remainsFrom_5 = minMaxDifference % 5;
+            //difference between max number and previous max number
+            int maxPreviousDifference = array[m_MaxIndex] - array[m_MaxIndex - m_MaxCount];
 
-            if (remainsFrom_5 > 2)
+            //calculate how many times 5 will be added
+            int addTimes_5 = maxPreviousDifference / 5;
+            int remainsFrom_5 = maxPreviousDifference % 5;
+
+            //continue to add 5 till difference between min and max less than 5
+            if (remainsFrom_5 > 2 || (minMaxDifference > 4 && minMaxDifference > maxPreviousDifference))
             {
                 addTimes_5++;
-                remainsFrom_5 = 0;
+                isContinue = false;
             }
 
             if (addTimes_5 > 0)
@@ -80,35 +87,40 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
             if (remainsFrom_5 == 0)
             {
-                isFinished = true;
+                isContinue = false;
             }
 
             //if nothing remains from 5 calculation
-            if (!isFinished)
+            if (isContinue)
             {
                 //calculate how many times 2 will be added
                 int addTimes_2 = remainsFrom_5 / 2;
                 int remainsFrom_2 = remainsFrom_5 % 2;
+
+                if (addTimes_2 == 0 && minMaxDifference > 1)
+                {
+                    addTimes_2++;
+                    isContinue = false;
+                }
 
                 if (addTimes_2 > 0)
                 {
                     EqualizeArray(array, 2, addTimes_2);
                 }
 
-                if (remainsFrom_2 == 0)
-                {
-                    isFinished = true;
-                }
-
                 //if nothing remains from 2 calculation
-                if (!isFinished)
+                if (isContinue)
                 {
                     //calculate how many times 1 will be added
                     EqualizeArray(array, 1, remainsFrom_2);
                 }
             }
 
+            //Performance Improvement:
+            //after equalize array shift min indexes to start of the array to make array sorted
+            //so we do not need to call SortArray() method again.
             ShiftIndexes(ref array);
+
             Equalization(array);
         }
 
@@ -128,13 +140,6 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             }
 
             m_Result += addTimes * m_MaxCount;
-        }
-
-        private static void SetIndexes(int[] array)
-        {
-            //minIndex = GetMinIndex(array);
-            //maxIndex = GetMaxIndex(array);
-            //nextIndex = GetNextIndex(array, minIndex);
         }
 
         private static void ShiftIndexes(ref int[] array)
@@ -179,63 +184,6 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             }
         }
 
-        private static int GetMinIndex(int[] array)
-        {
-            int min = array[0];
-            int minIndex = 0;
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] < min)
-                {
-                    min = array[i];
-                    minIndex = i;
-                }
-            }
-
-            return minIndex;
-        }
-
-        private static int GetMaxIndex(int[] array)
-        {
-            int max = array[0];
-            int maxIndex = 0;
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] > max)
-                {
-                    max = array[i];
-                    maxIndex = i;
-                }
-            }
-
-            return maxIndex;
-        }
-
-        private static int GetNextIndex(int[] array, int minIndex)
-        {
-            int min = array[minIndex];
-            int nextIndex = minIndex == 0 ? 1 : 0;
-            int next = array[nextIndex];
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] > min && array[i] < next)
-                {
-                    next = array[i];
-                    nextIndex = i;
-                }
-            }
-
-            return nextIndex;
-        }
-
-        #endregion
-
-        //################################################################################
-        #region Private Implementation
-
         private static bool IsEqual(int[] array)
         {
             for (int i = 0; i < array.Length - 1; i++)
@@ -249,25 +197,44 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             return true;
         }
 
-        private static void SortArray(int[] array)
+        private static void SortArray(int[] array, int low, int hi)
         {
-            //Insertion sort
-            for (int i = 1; i < array.Length; i++)
+            //Quick Sort
+            if (low < hi)
             {
-                var index = i;
-                while (index > 0)
-                {
-                    if (array[index] < array[index - 1])
-                    {
-                        var temp = array[index - 1];
-                        array[index - 1] = array[index];
-                        array[index] = temp;
-                    }
-                    index--;
-
-                }
+                int p = Partition(array, low, hi);
+                SortArray(array, low, p - 1);
+                SortArray(array, p + 1, hi);
             }
         }
+
+        private static int Partition(int[] array, int low, int hi)
+        {
+            int pivot = array[hi];
+            int i = low - 1;
+            int temp;
+
+            for (int j = low; j <= hi - 1; j++)
+            {
+                if (array[j] <= pivot)
+                {
+                    i = i + 1;
+                    temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+            temp = array[i + 1];
+            array[i + 1] = array[hi];
+            array[hi] = temp;
+
+            return i + 1;
+        }
+
+        #endregion
+
+        //################################################################################
+        #region Helper Implementation
 
         private static void TraceArray(int[] array)
         {
