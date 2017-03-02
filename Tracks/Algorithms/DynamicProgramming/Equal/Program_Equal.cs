@@ -41,7 +41,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 try
                 {
                     Equalization(array);
-                }
+                } 
                 catch (Exception e)
                 {
 
@@ -73,7 +73,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             int maxPreviousDifference = array[m_MaxIndex] - array[m_MaxIndex - maxCount];
 
             //calculate addition count
-            int addUnit = 0, addCount = 0, remain = 0;
+            int addUnit, addCount, remain;
 
             if (minMaxDifference == maxPreviousDifference)
             {
@@ -94,11 +94,8 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             {
                 //add 5 till difference between min and max greater than 4
                 addUnit = 5;
-                addCount = maxPreviousDifference / addUnit;
-                remain = maxPreviousDifference % addUnit;
-
-                if (remain > 0)
-                    addCount++;
+                addCount = minMaxDifference / addUnit;
+                remain = minMaxDifference % addUnit;
             }
             else if (minMaxDifference > maxPreviousDifference)
             {
@@ -231,14 +228,19 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         //################################################################################
         #region Helper Implementation
 
-        private static void TraceArray(int[] array)
+        private static void TraceArray(int[] array, bool isReorder)
         {
             string list = string.Empty;
             for (int i = 0; i < array.Length; i++)
             {
                 list += $"{array[i]} - ";
             }
-            Debug.Write($"({m_Result}): {list}");
+            string header = $"(TOTAL: {m_Result.ToString().PadLeft(3, '0')}):\t";
+            if (isReorder)
+            {
+                header = "REORDERED:\t\t";
+            }
+            Debug.Write($"{header}{list.Substring(0, list.Length - 3)}");
             Debug.WriteLine("");
         }
 
