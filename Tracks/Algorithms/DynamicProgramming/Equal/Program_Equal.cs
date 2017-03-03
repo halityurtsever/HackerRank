@@ -34,7 +34,9 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 string[] arrayData = console.ReadLine().Split(' ');
                 int[] array = Array.ConvertAll(arrayData, Int32.Parse);
 
+                //TraceArray(array, "INIT");
                 SortArray(array, 0, array.Length - 1);
+                //TraceArray(array, "SORT");
                 m_MinIndex = 0;
                 m_MaxIndex = array.Length - 1;
 
@@ -92,10 +94,8 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             }
             else if (minMaxDifference > 4)
             {
-                //add 5 till difference between min and max greater than 4
                 addUnit = 5;
                 addCount = minMaxDifference / addUnit;
-                remain = minMaxDifference % addUnit;
             }
             else if (minMaxDifference > maxPreviousDifference)
             {
@@ -105,7 +105,6 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                     addUnit = 1;
 
                 addCount = minMaxDifference / addUnit;
-                remain = minMaxDifference % addUnit;
             }
             else
             {
@@ -113,11 +112,13 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             }
 
             EqualizeArray(array, addUnit, addCount, maxCount);
+            //TraceArray(array, "EQUAL");
 
             //Performance Improvement:
             //after equalize array shift min indexes to start of the array to make array sorted
             //so we do not need to call SortArray() method again.
             ShiftIndexes(ref array, maxCount);
+            //TraceArray(array, "SHIFT");
 
             Equalization(array);
         }
@@ -228,19 +229,14 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         //################################################################################
         #region Helper Implementation
 
-        private static void TraceArray(int[] array, bool isReorder)
+        private static void TraceArray(int[] array, string stage)
         {
             string list = string.Empty;
             for (int i = 0; i < array.Length; i++)
             {
                 list += $"{array[i]} - ";
             }
-            string header = $"(TOTAL: {m_Result.ToString().PadLeft(3, '0')}):\t";
-            if (isReorder)
-            {
-                header = "REORDERED:\t\t";
-            }
-            Debug.Write($"{header}{list.Substring(0, list.Length - 3)}");
+            Debug.Write($"{stage}: {list.Substring(0, list.Length - 3)}");
             Debug.WriteLine("");
         }
 
