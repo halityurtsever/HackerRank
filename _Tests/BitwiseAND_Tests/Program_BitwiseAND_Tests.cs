@@ -13,7 +13,7 @@ namespace HackerRank.Tutorials._30DaysOfCode.BitwiseAND.Tests
         #region Tests
 
         [TestMethod()]
-        public void ExecuteTest_1()
+        public void BitwiseAND_TestCase_01()
         {
             TestRunner("input_1.txt", "output_1.txt");
         }
