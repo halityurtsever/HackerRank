@@ -13,7 +13,7 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome.Tests
         #region Tests
 
         [TestMethod()]
-        public void ExecuteTest_1()
+        public void BuildPalindrome_TestCase_01()
         {
             //Get console reader
             var directoryInfo = new DirectoryInfo(Environment.CurrentDirectory);
@@ -23,7 +23,7 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome.Tests
         }
 
         [TestMethod()]
-        public void ExecuteTest_2()
+        public void BuildPalindrome_TestCase_02()
         {
             //Get console reader
             var directoryInfo = new DirectoryInfo(Environment.CurrentDirectory);
