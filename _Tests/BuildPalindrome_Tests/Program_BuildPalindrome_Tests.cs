@@ -22,15 +22,15 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome.Tests
             TestRunner(console);
         }
 
-        [TestMethod()]
-        public void BuildPalindrome_TestCase_02()
-        {
-            //Get console reader
-            var directoryInfo = new DirectoryInfo(Environment.CurrentDirectory);
-            var console = GetConsoleReader(directoryInfo, "input_2.txt", "output_2.txt");
+        //[TestMethod()]
+        //public void BuildPalindrome_TestCase_02()
+        //{
+        //    //Get console reader
+        //    var directoryInfo = new DirectoryInfo(Environment.CurrentDirectory);
+        //    var console = GetConsoleReader(directoryInfo, "input_2.txt", "output_2.txt");
 
-            TestRunner(console);
-        }
+        //    TestRunner(console);
+        //}
 
         #endregion
 
