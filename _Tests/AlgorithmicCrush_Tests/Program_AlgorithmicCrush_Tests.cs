@@ -13,19 +13,19 @@ namespace HackerRank.Tracks.DataStructures.Arrays.AlgorithmicCrush.Tests
         #region Tests
 
         [TestMethod()]
-        public void ExecuteTest_1()
+        public void AlgorithmicCrush_TestCase_01()
         {
             TestRunner("input_1.txt", "output_1.txt");
         }
 
         [TestMethod()]
-        public void ExecuteTest_2()
+        public void AlgorithmicCrush_TestCase_02()
         {
             TestRunner("input_2.txt", "output_2.txt");
         }
 
         [TestMethod()]
-        public void ExecuteTest_3()
+        public void AlgorithmicCrush_TestCase_03()
         {
             TestRunner("input_3.txt", "output_3.txt");
         }
