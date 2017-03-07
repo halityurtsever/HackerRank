@@ -109,6 +109,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implementation", "Implement
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixLayerRotation", "Tracks\Algorithms\Implementation\MatrixLayerRotation\MatrixLayerRotation.csproj", "{F8F07AF8-DA5C-49D0-B2EC-E0E963CF465A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixLayerRotation_Tests", "_Tests\MatrixLayerRotation_Tests\MatrixLayerRotation_Tests.csproj", "{4C9B6358-29B3-47C7-9B8A-D120425D0149}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -275,6 +277,10 @@ Global
 		{F8F07AF8-DA5C-49D0-B2EC-E0E963CF465A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8F07AF8-DA5C-49D0-B2EC-E0E963CF465A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8F07AF8-DA5C-49D0-B2EC-E0E963CF465A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C9B6358-29B3-47C7-9B8A-D120425D0149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C9B6358-29B3-47C7-9B8A-D120425D0149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C9B6358-29B3-47C7-9B8A-D120425D0149}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C9B6358-29B3-47C7-9B8A-D120425D0149}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -328,5 +334,6 @@ Global
 		{356710AE-FD13-4E48-9EC3-09BA072A7336} = {4E10FE26-C3E8-4C2E-828E-94FD7746C9FE}
 		{5DC9853B-6A0C-4AE5-BA58-050BDBE88E5E} = {8E08DD78-5789-449A-8BD3-FE9B830F1E37}
 		{F8F07AF8-DA5C-49D0-B2EC-E0E963CF465A} = {5DC9853B-6A0C-4AE5-BA58-050BDBE88E5E}
+		{4C9B6358-29B3-47C7-9B8A-D120425D0149} = {8F116FC8-44B8-43C3-821C-844AF7206AD2}
 	EndGlobalSection
 EndGlobal
