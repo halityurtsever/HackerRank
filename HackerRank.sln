@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Helpers", "_Helpers", "{FF9E5F83-AFA9-4F4B-91F8-6DB72A8B0F22}"
 EndProject
@@ -110,6 +110,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixLayerRotation", "Tracks\Algorithms\Implementation\MatrixLayerRotation\MatrixLayerRotation.csproj", "{F8F07AF8-DA5C-49D0-B2EC-E0E963CF465A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixLayerRotation_Tests", "_Tests\MatrixLayerRotation_Tests\MatrixLayerRotation_Tests.csproj", "{4C9B6358-29B3-47C7-9B8A-D120425D0149}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCoinChangeProblem_Tests", "_Tests\TheCoinChangeProblem_Tests\TheCoinChangeProblem_Tests.csproj", "{54654F32-E80E-4079-83C2-DDE622630B0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -281,6 +283,10 @@ Global
 		{4C9B6358-29B3-47C7-9B8A-D120425D0149}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C9B6358-29B3-47C7-9B8A-D120425D0149}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C9B6358-29B3-47C7-9B8A-D120425D0149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54654F32-E80E-4079-83C2-DDE622630B0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54654F32-E80E-4079-83C2-DDE622630B0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54654F32-E80E-4079-83C2-DDE622630B0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54654F32-E80E-4079-83C2-DDE622630B0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -335,5 +341,6 @@ Global
 		{5DC9853B-6A0C-4AE5-BA58-050BDBE88E5E} = {8E08DD78-5789-449A-8BD3-FE9B830F1E37}
 		{F8F07AF8-DA5C-49D0-B2EC-E0E963CF465A} = {5DC9853B-6A0C-4AE5-BA58-050BDBE88E5E}
 		{4C9B6358-29B3-47C7-9B8A-D120425D0149} = {8F116FC8-44B8-43C3-821C-844AF7206AD2}
+		{54654F32-E80E-4079-83C2-DDE622630B0D} = {8F116FC8-44B8-43C3-821C-844AF7206AD2}
 	EndGlobalSection
 EndGlobal

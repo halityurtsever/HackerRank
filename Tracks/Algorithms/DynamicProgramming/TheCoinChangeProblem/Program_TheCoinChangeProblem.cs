@@ -3,11 +3,16 @@ using System;
 
 namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem
 {
-    class Program_TheCoinChangeProblem
+    public class Program_TheCoinChangeProblem
     {
         //################################################################################
         #region Fields
 
+        private static int m_StartIndex = 0;
+        private static int m_CurrentIndex = 0;
+        private static int m_TargetChangeValue = 0;
+        private static int m_TotalResult = 0;
+        private static int[] m_CoinArray;
 
         #endregion
 
@@ -24,14 +29,14 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem
         {
             //read values from console
             var initialValues = console.ReadLine().Split(' ');
-            int targetChangeValue = Convert.ToInt32(initialValues[0]);
-            int coinArraySize = Convert.ToInt32(initialValues[1]);
-            int[] coinArray = Array.ConvertAll(console.ReadLine().Split(' '), Int32.Parse);
+            m_TargetChangeValue = Convert.ToInt32(initialValues[0]);
+            m_CoinArray = Array.ConvertAll(console.ReadLine().Split(' '), Int32.Parse);
 
-            SortArray(coinArray, 0, coinArray.Length - 1);
+            SortArray(m_CoinArray, 0, m_CoinArray.Length - 1);
 
-            BuildCoinTree(coinArray, targetChangeValue);
-            CalculateDistinctChanges(targetChangeValue);
+            m_StartIndex = m_CoinArray.Length - 1;
+            m_CurrentIndex = m_CoinArray.Length;
+            CalculateDistinctChanges(0);
         }
 
         #endregion
@@ -39,14 +44,20 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem
         //################################################################################
         #region Private Implementation
 
-        private static void BuildCoinTree(int[] array, int targetValue)
+        private static void CalculateDistinctChanges(int total)
         {
+            while (m_StartIndex >= 0)
+            {
+                int currentTotal = m_CoinArray[m_CurrentIndex] + total;
+                if (currentTotal > m_TargetChangeValue)
+                {
+                    m_CurrentIndex--;
+                    return;
+                }
 
-        }
 
-        private static void CalculateDistinctChanges(int targetValue)
-        {
-            
+                CalculateDistinctChanges(currentTotal);
+            }
         }
 
         private static void SortArray(int[] array, int low, int hi)
