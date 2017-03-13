@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Helpers", "_Helpers", "{FF9E5F83-AFA9-4F4B-91F8-6DB72A8B0F22}"
 EndProject
@@ -112,6 +112,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixLayerRotation_Tests", "_Tests\MatrixLayerRotation_Tests\MatrixLayerRotation_Tests.csproj", "{4C9B6358-29B3-47C7-9B8A-D120425D0149}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCoinChangeProblem_Tests", "_Tests\TheCoinChangeProblem_Tests\TheCoinChangeProblem_Tests.csproj", "{54654F32-E80E-4079-83C2-DDE622630B0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WeekOfCode30", "WeekOfCode30", "{0C89D3E4-990F-4526-A8CC-E94BF1FCC787}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandyReplenishingRobot", "Tutorials\WeekOfCode30\CandyReplenishingRobot\CandyReplenishingRobot.csproj", "{A24F3BC7-45C1-4353-A87B-650FD110E4DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -287,6 +291,10 @@ Global
 		{54654F32-E80E-4079-83C2-DDE622630B0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54654F32-E80E-4079-83C2-DDE622630B0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54654F32-E80E-4079-83C2-DDE622630B0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A24F3BC7-45C1-4353-A87B-650FD110E4DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A24F3BC7-45C1-4353-A87B-650FD110E4DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A24F3BC7-45C1-4353-A87B-650FD110E4DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A24F3BC7-45C1-4353-A87B-650FD110E4DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -342,5 +350,7 @@ Global
 		{F8F07AF8-DA5C-49D0-B2EC-E0E963CF465A} = {5DC9853B-6A0C-4AE5-BA58-050BDBE88E5E}
 		{4C9B6358-29B3-47C7-9B8A-D120425D0149} = {8F116FC8-44B8-43C3-821C-844AF7206AD2}
 		{54654F32-E80E-4079-83C2-DDE622630B0D} = {8F116FC8-44B8-43C3-821C-844AF7206AD2}
+		{0C89D3E4-990F-4526-A8CC-E94BF1FCC787} = {781A9483-4227-49C7-A5B6-03087E6E042C}
+		{A24F3BC7-45C1-4353-A87B-650FD110E4DC} = {0C89D3E4-990F-4526-A8CC-E94BF1FCC787}
 	EndGlobalSection
 EndGlobal
