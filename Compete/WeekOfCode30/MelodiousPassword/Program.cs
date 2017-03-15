@@ -1,8 +1,6 @@
-﻿
-using System;
-using System.Diagnostics;
+﻿using System;
 
-namespace MelodiousPassword
+namespace HackerRank.Competes.WeekOfCode30.MelodiousPassword
 {
     public class Program
     {

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HackerRank.Tutorials.WeekOfCode30.CandyReplenishingRobot
+namespace HackerRank.Competes.WeekOfCode30.CandyReplenishingRobot
 {
     public class Program
     {

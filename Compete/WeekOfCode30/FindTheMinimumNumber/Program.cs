@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FindTheMinimumNumber
+namespace HackerRank.Competes.WeekOfCode30.FindTheMinimumNumber
 {
     public class Program
     {
