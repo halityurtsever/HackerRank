@@ -125,6 +125,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poles", "Compete\WeekOfCode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RangeModularQueries", "Compete\WeekOfCode30\RangeModularQueries\RangeModularQueries.csproj", "{CAA15C7E-2DE0-4879-A0E3-6ECE83BF31A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGraphProblem", "Compete\WeekOfCode30\AGraphProblem\AGraphProblem.csproj", "{C0C92F69-7EB6-4DB1-B2E8-35B1F94F7292}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -319,6 +321,10 @@ Global
 		{CAA15C7E-2DE0-4879-A0E3-6ECE83BF31A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAA15C7E-2DE0-4879-A0E3-6ECE83BF31A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAA15C7E-2DE0-4879-A0E3-6ECE83BF31A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0C92F69-7EB6-4DB1-B2E8-35B1F94F7292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C92F69-7EB6-4DB1-B2E8-35B1F94F7292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C92F69-7EB6-4DB1-B2E8-35B1F94F7292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C92F69-7EB6-4DB1-B2E8-35B1F94F7292}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -380,5 +386,6 @@ Global
 		{E7B0B290-84D8-47C0-B148-2B2726596F5B} = {0C89D3E4-990F-4526-A8CC-E94BF1FCC787}
 		{D9D87B45-1DFD-4BE0-96DF-DDD73AFF6017} = {0C89D3E4-990F-4526-A8CC-E94BF1FCC787}
 		{CAA15C7E-2DE0-4879-A0E3-6ECE83BF31A1} = {0C89D3E4-990F-4526-A8CC-E94BF1FCC787}
+		{C0C92F69-7EB6-4DB1-B2E8-35B1F94F7292} = {0C89D3E4-990F-4526-A8CC-E94BF1FCC787}
 	EndGlobalSection
 EndGlobal
