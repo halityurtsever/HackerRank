@@ -51,7 +51,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Program_KingdomConnectivity_Tests.cs" />
+    <Compile Include="KingdomConnectivity_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,28 +70,28 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="InputsOutputs\input_1.txt" />
+    <Content Include="InputsOutputs\input_01.txt" />
     <Content Include="InputsOutputs\input_10.txt" />
     <Content Include="InputsOutputs\input_11.txt" />
-    <Content Include="InputsOutputs\input_2.txt" />
-    <Content Include="InputsOutputs\input_3.txt" />
-    <Content Include="InputsOutputs\input_4.txt" />
-    <Content Include="InputsOutputs\input_5.txt" />
-    <Content Include="InputsOutputs\input_6.txt" />
-    <Content Include="InputsOutputs\input_7.txt" />
-    <Content Include="InputsOutputs\input_8.txt" />
-    <Content Include="InputsOutputs\input_9.txt" />
-    <Content Include="InputsOutputs\output_1.txt" />
+    <Content Include="InputsOutputs\input_02.txt" />
+    <Content Include="InputsOutputs\input_03.txt" />
+    <Content Include="InputsOutputs\input_04.txt" />
+    <Content Include="InputsOutputs\input_05.txt" />
+    <Content Include="InputsOutputs\input_06.txt" />
+    <Content Include="InputsOutputs\input_07.txt" />
+    <Content Include="InputsOutputs\input_08.txt" />
+    <Content Include="InputsOutputs\input_09.txt" />
+    <Content Include="InputsOutputs\output_01.txt" />
     <Content Include="InputsOutputs\output_10.txt" />
     <Content Include="InputsOutputs\output_11.txt" />
-    <Content Include="InputsOutputs\output_2.txt" />
-    <Content Include="InputsOutputs\output_3.txt" />
-    <Content Include="InputsOutputs\output_4.txt" />
-    <Content Include="InputsOutputs\output_5.txt" />
-    <Content Include="InputsOutputs\output_6.txt" />
-    <Content Include="InputsOutputs\output_7.txt" />
-    <Content Include="InputsOutputs\output_8.txt" />
-    <Content Include="InputsOutputs\output_9.txt" />
+    <Content Include="InputsOutputs\output_02.txt" />
+    <Content Include="InputsOutputs\output_03.txt" />
+    <Content Include="InputsOutputs\output_04.txt" />
+    <Content Include="InputsOutputs\output_05.txt" />
+    <Content Include="InputsOutputs\output_06.txt" />
+    <Content Include="InputsOutputs\output_07.txt" />
+    <Content Include="InputsOutputs\output_08.txt" />
+    <Content Include="InputsOutputs\output_09.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

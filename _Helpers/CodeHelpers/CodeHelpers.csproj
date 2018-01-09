@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="ConsoleWrapper.cs" />
     <Compile Include="IConsole.cs" />
+    <Compile Include="IProblemSolver.cs" />
+    <Compile Include="ProblemBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

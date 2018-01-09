@@ -51,7 +51,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Program_BuildPalindrome_Tests.cs" />
+    <Compile Include="BuildPalindrome_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,8 +68,10 @@
       <Name>TestHelper</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="InputsOutputs\" />
+    <Content Include="InputsOutputs\input_01.txt" />
+    <Content Include="InputsOutputs\output_01.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -10,30 +10,30 @@ namespace TestHelper
         #region Fields
 
         //Folder path of test input/output files
-        private string m_FolderPath = string.Empty;
+        private readonly string m_FolderPath;
 
         //Test input file
-        private int m_CurrentInputIndex = 0;
-        private string m_InputFile = string.Empty;
-        private List<string> m_InputData = new List<string>();
+        private int m_CurrentInputIndex;
+        private readonly string m_InputFileName;
+        private readonly List<string> m_InputData = new List<string>();
 
         //Test output file
-        private int m_CurrentExpectedOutputIndex = 0;
-        private int m_CurrentActualOutputIndex = 0;
-        private string m_OutputFile = string.Empty;
-        private List<string> m_OutputDataExpected = new List<string>();
-        private List<string> m_OutputDataActual = new List<string>();
+        private int m_CurrentExpectedOutputIndex;
+        private int m_CurrentActualOutputIndex;
+        private readonly string m_OutputFileName;
+        private readonly List<string> m_OutputDataExpected = new List<string>();
+        private readonly List<string> m_OutputDataActual = new List<string>();
 
         #endregion
 
         //################################################################################
         #region Constructor
 
-        public ConsoleWrapperTest(string folderPath, string inputFile, string outputFile)
+        public ConsoleWrapperTest(string folderPath, string inputFileName, string outputFileName)
         {
             m_FolderPath = folderPath;
-            m_InputFile = inputFile;
-            m_OutputFile = outputFile;
+            m_InputFileName = inputFileName;
+            m_OutputFileName = outputFileName;
             Initialize();
         }
 
@@ -42,15 +42,9 @@ namespace TestHelper
         //################################################################################
         #region Properties
 
-        public List<string> ExpectedOutput
-        {
-            get { return m_OutputDataExpected; }
-        }
+        public List<string> ExpectedOutput => m_OutputDataExpected;
 
-        public List<string> ActualOutput
-        {
-            get { return m_OutputDataActual; }
-        }
+        public List<string> ActualOutput => m_OutputDataActual;
 
         #endregion
 
@@ -60,7 +54,7 @@ namespace TestHelper
         private void Initialize()
         {
             //Read input file to input data list
-            using (var stream = new StreamReader(Path.Combine(m_FolderPath, m_InputFile)))
+            using (var stream = new StreamReader(Path.Combine(m_FolderPath, m_InputFileName)))
             {
                 while (!stream.EndOfStream)
                 {
@@ -69,7 +63,7 @@ namespace TestHelper
             }
 
             //Read output file to output data list
-            using (var stream = new StreamReader(Path.Combine(m_FolderPath, m_OutputFile)))
+            using (var stream = new StreamReader(Path.Combine(m_FolderPath, m_OutputFileName)))
             {
                 while (!stream.EndOfStream)
                 {

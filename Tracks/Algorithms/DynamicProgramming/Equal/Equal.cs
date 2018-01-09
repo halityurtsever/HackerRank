@@ -4,41 +4,46 @@ using System.Diagnostics;
 
 namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 {
-    public class Program_Equal
+    public class Equal : ProblemBase, IProblemSolver
     {
         //################################################################################
         #region Fields
 
-        private static int m_Result = 0;
+        private static int m_Result;
         private static int m_MinIndex;
         private static int m_MaxIndex;
 
-        private static Stopwatch m_SwEqualize = new Stopwatch();
-        private static Stopwatch m_SwShift = new Stopwatch();
+        private static readonly Stopwatch m_SwEqualize = new Stopwatch();
+        private static readonly Stopwatch m_SwShift = new Stopwatch();
 
         #endregion
 
         //################################################################################
-        #region Public Implementation
+        #region IProblemSolver Implementation
 
-        public static void Main()
+        void IProblemSolver.Execute(IConsole console)
         {
-            var console = new ConsoleWrapper();
-            ExecuteTask(console);
+            Console = console;
+            SolveProblem();
         }
 
-        public static void ExecuteTask(IConsole console)
+        #endregion
+
+        //################################################################################
+        #region Private Implementation
+
+        private void SolveProblem()
         {
-            int testCases = Convert.ToInt32(console.ReadLine());
+            int testCases = Convert.ToInt32(Console.ReadLine());
 
             for (int i = 0; i < testCases; i++)
             {
-                int arraySize = Convert.ToInt32(console.ReadLine());
-                string[] arrayData = console.ReadLine().Split(' ');
+                int arraySize = Convert.ToInt32(Console.ReadLine());
+                string[] arrayData = Console.ReadLine().Split(' ');
                 int[] array = Array.ConvertAll(arrayData, Int32.Parse);
 
                 //TraceArray(array, "INIT");
-                SortArray(array, 0, array.Length - 1);
+                SortArray(array, 0, arraySize - 1);
                 //TraceArray(array, "SORT");
                 m_MinIndex = 0;
                 m_MaxIndex = array.Length - 1;
@@ -53,22 +58,18 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                     Console.WriteLine(e.Message);
                 }
 
-                console.WriteLine(m_Result);
+                Console.WriteLine(m_Result);
                 m_Result = 0;
             }
-            Debug.WriteLine("------------------------------------");
-            Debug.WriteLine($"Equalize Elapsed: {m_SwEqualize.ElapsedMilliseconds}");
-            Debug.WriteLine($"Shift Elapsed: {m_SwShift.ElapsedMilliseconds}");
-            m_SwShift.Reset();
-            m_SwEqualize.Reset();
+
+            //Debug.WriteLine("------------------------------------");
+            //Debug.WriteLine($"Equalize Elapsed: {m_SwEqualize.ElapsedMilliseconds}");
+            //Debug.WriteLine($"Shift Elapsed: {m_SwShift.ElapsedMilliseconds}");
+            //m_SwShift.Reset();
+            //m_SwEqualize.Reset();
         }
 
-        #endregion
-
-        //################################################################################
-        #region Private Implementation
-
-        private static void Equalization(int[] array)
+        private void Equalization(int[] array)
         {
             //finish, no more equalization
             if (IsEqual(array)) return;
@@ -134,7 +135,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             Equalization(array);
         }
 
-        private static void EqualizeArray(int[] array, int addUnit, int addCount, int maxCount)
+        private void EqualizeArray(int[] array, int addUnit, int addCount, int maxCount)
         {
             int firstMaxIndex = array.Length - maxCount;
 
@@ -152,7 +153,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             m_Result += addCount * maxCount;
         }
 
-        private static void ShiftIndexes(ref int[] array, int maxCount)
+        private void ShiftIndexes(ref int[] array, int maxCount)
         {
             int firstMaxIndex = array.Length - maxCount;
             int previousMaxIndex = firstMaxIndex - 1;
@@ -175,7 +176,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             }
         }
 
-        private static int GetMaxCount(int[] array)
+        private int GetMaxCount(int[] array)
         {
             int maxCount = 1;
             for (int i = array.Length - 2; i >= 0; i--)
@@ -193,12 +194,12 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             return maxCount;
         }
 
-        private static bool IsEqual(int[] array)
+        private bool IsEqual(int[] array)
         {
             return array[m_MinIndex] == array[m_MaxIndex];
         }
 
-        private static void SortArray(int[] array, int low, int hi)
+        private void SortArray(int[] array, int low, int hi)
         {
             //Quick Sort
             if (low < hi)
@@ -209,7 +210,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             }
         }
 
-        private static int Partition(int[] array, int low, int hi)
+        private int Partition(int[] array, int low, int hi)
         {
             int pivot = array[hi];
             int i = low - 1;
@@ -237,7 +238,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         //################################################################################
         #region Helper Implementation
 
-        private static void TraceArray(int[] array, string stage)
+        private void TraceArray(int[] array, string stage)
         {
             string list = string.Empty;
             for (int i = 0; i < array.Length; i++)
@@ -248,7 +249,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             Debug.WriteLine("");
         }
 
-        private static void IsArraySorted(int[] array)
+        private void IsArraySorted(int[] array)
         {
             for (int i = 0; i < array.Length - 1; i++)
             {

@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EBD1F76F-70D8-4D16-B0E9-C9A013903C93}</ProjectGuid>
+    <ProjectGuid>{12019A83-4305-4B3A-9FA2-FB6D2580096A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BitwiseAND_Tests</RootNamespace>
-    <AssemblyName>BitwiseAND_Tests</AssemblyName>
+    <RootNamespace>DirectConnections_Tests</RootNamespace>
+    <AssemblyName>DirectConnections_Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -16,7 +16,6 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,13 +50,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BitwiseAND_Tests.cs" />
+    <Compile Include="DirectConnections_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\Tutorials\30DaysOfCode\BitwiseAND\BitwiseAND.csproj">
-      <Project>{c0e841c3-186a-4cc0-ab13-5319bb3c1c59}</Project>
-      <Name>BitwiseAND</Name>
+    <ProjectReference Include="..\..\Tracks\DataStructures\Advanced\DirectConnections\DirectConnections.csproj">
+      <Project>{038743e4-5f08-4a70-a03a-f92f4e570710}</Project>
+      <Name>DirectConnections</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\_Helpers\CodeHelpers\CodeHelpers.csproj">
       <Project>{0f843f51-da68-473f-a1d0-aa5c1088feae}</Project>
@@ -70,7 +70,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="InputsOutputs\input_01.txt" />
+    <Content Include="InputsOutputs\input_02.txt" />
+    <Content Include="InputsOutputs\input_03.txt" />
+    <Content Include="InputsOutputs\input_04.txt" />
     <Content Include="InputsOutputs\output_01.txt" />
+    <Content Include="InputsOutputs\output_02.txt" />
+    <Content Include="InputsOutputs\output_03.txt" />
+    <Content Include="InputsOutputs\output_04.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

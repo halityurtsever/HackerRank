@@ -1,10 +1,25 @@
 ﻿using System;
+using CodeHelpers;
 
 namespace HackerRank.Tracks.DataStructures.Arrays.SparseArrays
 {
-    public class Program_SparseArrays
+    public class SparseArrays : ProblemBase, IProblemSolver
     {
-        static void Main()
+        //################################################################################
+        #region IProblemSolver Implementation
+
+        void IProblemSolver.Execute(IConsole console)
+        {
+            Console = console;
+            SolveProblem();
+        }
+
+        #endregion
+
+        //################################################################################
+        #region Private Implementation
+
+        private void SolveProblem()
         {
             //read input count and input values
             int inputCount = Convert.ToInt32(Console.ReadLine());
@@ -38,5 +53,7 @@ namespace HackerRank.Tracks.DataStructures.Arrays.SparseArrays
                 Console.WriteLine(matchCount);
             }
         }
+
+        #endregion
     }
 }

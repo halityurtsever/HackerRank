@@ -51,7 +51,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Program_AlgorithmicCrush_Tests.cs" />
+    <Compile Include="AlgorithmicCrush_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,12 +69,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="InputsOutputs\input_1.txt" />
-    <Content Include="InputsOutputs\input_2.txt" />
-    <Content Include="InputsOutputs\input_3.txt" />
-    <Content Include="InputsOutputs\output_1.txt" />
-    <Content Include="InputsOutputs\output_2.txt" />
-    <Content Include="InputsOutputs\output_3.txt" />
+    <Content Include="InputsOutputs\input_01.txt" />
+    <Content Include="InputsOutputs\input_02.txt" />
+    <Content Include="InputsOutputs\input_03.txt" />
+    <Content Include="InputsOutputs\output_01.txt" />
+    <Content Include="InputsOutputs\output_02.txt" />
+    <Content Include="InputsOutputs\output_03.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
