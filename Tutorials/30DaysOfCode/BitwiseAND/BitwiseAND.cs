@@ -11,23 +11,8 @@ namespace HackerRank.Tutorials._30DaysOfCode.BitwiseAND
         void IProblemSolver.Execute(IConsole console)
         {
             Console = console;
-            SolveProblem();
-        }
 
-        #endregion
-
-        //################################################################################
-        #region ProblemBase Overrides
-
-        protected override void ReadInputs()
-        {
-            Inputs.Add("testCases", Convert.ToInt32(Console.ReadLine()));
-        }
-
-        protected override void SolveProblem()
-        {
-            ReadInputs();
-            int testCases = (int) Inputs["testCases"];
+            int testCases = Convert.ToInt32(Console.ReadLine());
 
             for (int i = 0; i < testCases; i++)
             {
