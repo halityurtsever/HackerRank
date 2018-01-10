@@ -2,7 +2,7 @@
 
 namespace TestHelper
 {
-    public interface IConsoleTest : IConsole
+    public interface IConsoleOutputReader : IConsole
     {
         string ReadLineFromExpectedOutput();
 

@@ -32,7 +32,7 @@ namespace TestHelper
         //################################################################################
         #region Private Implementation
 
-        private IConsoleTest GetConsoleReader(string inputFile, string outputFile)
+        private IConsoleOutputReader GetConsoleReader(string inputFile, string outputFile)
         {
             var inputFileName = $"{InputOutputFolder}/{inputFile}";
             var outputFileName = $"{InputOutputFolder}/{outputFile}";
@@ -44,7 +44,7 @@ namespace TestHelper
             return new ConsoleWrapperTest(folderPath, inputFileName, outputFileName);
         }
 
-        private void AssertTestResults(IConsoleTest console)
+        private void AssertTestResults(IConsoleOutputReader console)
         {
             var consoleWrapper = console as ConsoleWrapperTest;
             if (consoleWrapper == null) throw new ArgumentNullException(nameof(consoleWrapper));

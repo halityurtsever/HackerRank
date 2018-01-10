@@ -4,7 +4,7 @@ using System.IO;
 
 namespace TestHelper
 {
-    public class ConsoleWrapperTest : IConsoleTest
+    public class ConsoleWrapperTest : IConsoleOutputReader
     {
         //################################################################################
         #region Fields
@@ -75,7 +75,7 @@ namespace TestHelper
         #endregion
 
         //################################################################################
-        #region IConsoleTest Implementation
+        #region IOutputReader Implementation
 
         public string ReadLineFromExpectedOutput()
         {
