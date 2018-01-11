@@ -10,7 +10,6 @@ namespace HackerRank.Tracks.DataStructures.Advanced.DirectConnections
         #region Fields
 
         private const long Modulo = 1000000007;
-        private readonly IList<Game> m_Games = new List<Game>();
 
         #endregion
 
@@ -20,8 +19,13 @@ namespace HackerRank.Tracks.DataStructures.Advanced.DirectConnections
         void IProblemSolver.Execute(IConsole console)
         {
             Console = console;
-            ReadInputs();
-            SolveProblem();
+
+            var gameCount = Convert.ToInt32(Console.ReadLine());
+
+            for (var i = 0; i < gameCount; i++)
+            {
+                CalculateCableLength();
+            }
         }
 
         #endregion
@@ -29,46 +33,30 @@ namespace HackerRank.Tracks.DataStructures.Advanced.DirectConnections
         //################################################################################
         #region Private Implementation
 
-        private void SolveProblem()
+        private void CalculateCableLength()
         {
-            foreach (var game in m_Games)
-            {
-                CalculateCableLength(game);
-            }
-        }
+            IDictionary<int, int> cities = new Dictionary<int, int>();
 
-        private void ReadInputs()
-        {
-            var gameCount = Convert.ToInt32(Console.ReadLine());
+            var cityCount = Convert.ToInt32(Console.ReadLine());
+            var cityLocations = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+            var cityPopulations = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
 
-            for (int i = 0; i < gameCount; i++)
-            {
-                var game = new Game
-                {
-                    CityCount = Convert.ToInt32(Console.ReadLine()),
-                    CityLocations = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse),
-                    CityPopulations = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse)
-                };
-
-                m_Games.Add(game);
-            }
-        }
-
-        private void CalculateCableLength(Game game)
-        {
             long totalLength = 0;
 
-            for (int i = 0; i < game.CityCount; i++)
+            for (var i = 0; i < cityCount; i++)
             {
-                for (int j = i + 1; j < game.CityCount; j++)
+                //traverse all dictionary and calculate total cable length
+                foreach (var city in cities)
                 {
-                    long distance = Math.Abs(game.CityLocations[j] - game.CityLocations[i]);
-                    long iPop = game.CityPopulations[i], jPop = game.CityPopulations[j];
-                    long population = iPop > jPop ? iPop : jPop;
+                    long distance = Math.Abs(city.Key - cityLocations[i]);
+                    long population = city.Value > cityPopulations[i] ? city.Value : cityPopulations[i];
                     long currentLength = distance * population % Modulo;
 
                     totalLength = (totalLength + currentLength) % Modulo;
                 }
+
+                //place city location and population to cities dictionary
+                cities.Add(cityLocations[i], cityPopulations[i]);
             }
 
             Console.WriteLine(totalLength);
