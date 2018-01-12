@@ -49,14 +49,15 @@ namespace TestHelper
             var consoleWrapper = console as ConsoleWrapperTest;
             if (consoleWrapper == null) throw new ArgumentNullException(nameof(consoleWrapper));
 
-            Assert.AreEqual(consoleWrapper.ExpectedOutput.Count, consoleWrapper.ActualOutput.Count);
+            var assertionMessage = "Output count mismatch: Actual output count is not equal to expected output count.";
+            Assert.AreEqual(consoleWrapper.ExpectedOutput.Count, consoleWrapper.ActualOutput.Count, assertionMessage);
 
             for (var i = 0; i < consoleWrapper.ActualOutput.Count; i++)
             {
-                string expectedMaxValue = console.ReadLineFromExpectedOutput();
-                string actualMaxValue = console.ReadLineFromActualOutput();
+                string expectedValue = console.ReadLineFromExpectedOutput();
+                string actualValue = console.ReadLineFromActualOutput();
 
-                Assert.AreEqual(expectedMaxValue, actualMaxValue);
+                Assert.AreEqual(expectedValue, actualValue);
             }
         }
 
