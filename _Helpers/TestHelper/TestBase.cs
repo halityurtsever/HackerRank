@@ -5,6 +5,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestHelper
 {
+    /// <summary>
+    /// Base class for all test types.
+    /// </summary>
+    /// <typeparam name="T">Implementation class type that will be tested</typeparam>
     public abstract class TestBase<T> where T : IProblemSolver, new()
     {
         //################################################################################
@@ -17,6 +21,11 @@ namespace TestHelper
         //################################################################################
         #region Protected Implementation
 
+        /// <summary>
+        /// Calls corresponding problem class execute method.
+        /// </summary>
+        /// <param name="inputFile"></param>
+        /// <param name="outputFile"></param>
         protected void TestRunner(string inputFile, string outputFile)
         {
             var console = GetConsoleReader(inputFile, outputFile);

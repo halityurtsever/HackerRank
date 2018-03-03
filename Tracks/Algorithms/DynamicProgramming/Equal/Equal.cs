@@ -9,12 +9,9 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         //################################################################################
         #region Fields
 
-        private static int m_Result;
-        private static int m_MinIndex;
-        private static int m_MaxIndex;
-
-        private static readonly Stopwatch m_SwEqualize = new Stopwatch();
-        private static readonly Stopwatch m_SwShift = new Stopwatch();
+        private int m_Result;
+        private int m_MinIndex;
+        private int m_MaxIndex;
 
         #endregion
 
@@ -42,9 +39,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 string[] arrayData = Console.ReadLine().Split(' ');
                 int[] array = Array.ConvertAll(arrayData, Int32.Parse);
 
-                //TraceArray(array, "INIT");
                 SortArray(array, 0, arraySize - 1);
-                //TraceArray(array, "SORT");
                 m_MinIndex = 0;
                 m_MaxIndex = array.Length - 1;
 
@@ -54,19 +49,12 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 }
                 catch (Exception e)
                 {
-
                     Console.WriteLine(e.Message);
                 }
 
                 Console.WriteLine(m_Result);
                 m_Result = 0;
             }
-
-            //Debug.WriteLine("------------------------------------");
-            //Debug.WriteLine($"Equalize Elapsed: {m_SwEqualize.ElapsedMilliseconds}");
-            //Debug.WriteLine($"Shift Elapsed: {m_SwShift.ElapsedMilliseconds}");
-            //m_SwShift.Reset();
-            //m_SwEqualize.Reset();
         }
 
         private void Equalization(int[] array)
@@ -84,7 +72,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             int maxPreviousDifference = array[m_MaxIndex] - array[m_MaxIndex - maxCount];
 
             //calculate addition count
-            int addUnit, addCount, remain;
+            int addUnit, addCount;
 
             if (minMaxDifference > 4)
             {
@@ -101,7 +89,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                     addUnit = 1;
 
                 addCount = minMaxDifference / addUnit;
-                remain = minMaxDifference % addUnit;
+                var remain = minMaxDifference % addUnit;
 
                 if (remain > 2)
                     addCount++;
@@ -117,21 +105,16 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             }
             else
             {
-                throw new Exception("Missing condition occured.");
+                throw new Exception("Missing condition occurred.");
             }
 
-            m_SwEqualize.Start();
             EqualizeArray(array, addUnit, addCount, maxCount);
-            //TraceArray(array, "EQUAL");
-            m_SwEqualize.Stop();
 
-            m_SwShift.Start();
             //Performance Improvement:
             //after equalize array shift min indexes to start of the array to make array sorted
             //so we do not need to call SortArray() method again.
-            ShiftIndexes(ref array, maxCount);
-            //TraceArray(array, "SHIFT");
-            m_SwShift.Stop();
+            ShiftIndexesWithArrayCopy(array, maxCount);
+
             Equalization(array);
         }
 
@@ -153,26 +136,26 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             m_Result += addCount * maxCount;
         }
 
-        private void ShiftIndexes(ref int[] array, int maxCount)
+        private void ShiftIndexesWithArrayCopy(int[] array, int maxCount)
         {
-            int firstMaxIndex = array.Length - maxCount;
-            int previousMaxIndex = firstMaxIndex - 1;
-            int oldMaxValue = array[firstMaxIndex];
-            int currentIndex = array.Length - 1;
-
+            var maxValue = array[array.Length - 1];
+            var currentIndex = 0;
             while (true)
             {
-                if (previousMaxIndex >= 0 && array[previousMaxIndex] > oldMaxValue)
+                if (maxValue > array[currentIndex])
                 {
-                    array[currentIndex] = array[previousMaxIndex];
-                    array[previousMaxIndex] = oldMaxValue;
-                    currentIndex--;
-                    previousMaxIndex--;
+                    currentIndex++;
+                    continue;
                 }
-                else
-                {
-                    break;
-                }
+                break;
+            }
+
+            var destinationIndex = currentIndex + maxCount;
+            Array.Copy(array, currentIndex, array, destinationIndex, array.Length - destinationIndex);
+
+            for (int i = 0; i < maxCount; i++)
+            {
+                array[currentIndex + i] = maxValue;
             }
         }
 

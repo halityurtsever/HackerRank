@@ -75,6 +75,12 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal.Tests
             TestRunner("input_11.txt", "output_11.txt");
         }
 
+        [TestMethod]
+        public void Equal_TestCase_12()
+        {
+            TestRunner("input_12.txt", "output_12.txt");
+        }
+
         #endregion
     }
 }

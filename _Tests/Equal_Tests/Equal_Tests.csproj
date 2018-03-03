@@ -80,6 +80,7 @@
     <Content Include="InputsOutputs\input_07.txt" />
     <Content Include="InputsOutputs\input_08.txt" />
     <Content Include="InputsOutputs\input_09.txt" />
+    <Content Include="InputsOutputs\input_12.txt" />
     <Content Include="InputsOutputs\output_01.txt" />
     <Content Include="InputsOutputs\output_10.txt" />
     <Content Include="InputsOutputs\output_11.txt" />
@@ -91,6 +92,7 @@
     <Content Include="InputsOutputs\output_07.txt" />
     <Content Include="InputsOutputs\output_08.txt" />
     <Content Include="InputsOutputs\output_09.txt" />
+    <Content Include="InputsOutputs\output_12.txt" />
     <Content Include="TraceData\Fail - addunit.txt" />
     <Content Include="TraceData\Fail - with if.txt" />
     <Content Include="TraceData\Success - addunit.txt" />
