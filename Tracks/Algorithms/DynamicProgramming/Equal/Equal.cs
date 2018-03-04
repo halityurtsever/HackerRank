@@ -1,6 +1,8 @@
 ﻿using CodeHelpers;
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
 
 namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 {
@@ -12,6 +14,8 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         private int m_Result;
         private int m_MinIndex;
         private int m_MaxIndex;
+
+        private readonly StringBuilder m_Builder = new StringBuilder();
 
         #endregion
 
@@ -32,7 +36,6 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         private void SolveProblem()
         {
             int testCases = Convert.ToInt32(Console.ReadLine());
-
             for (int i = 0; i < testCases; i++)
             {
                 int arraySize = Convert.ToInt32(Console.ReadLine());
@@ -45,13 +48,19 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
                 try
                 {
+                    m_Builder.Clear();
+                    m_Builder.AppendLine($"{"#",1}{"Unit",8}{"Count",8}{"Max",8}{"Result",8}");
+                    m_Builder.AppendLine("---------------------------------");
                     Equalization(array);
+                    m_Builder.AppendLine("---------------------------------");
+                    m_Builder.Append($"{m_Result,33}");
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                 }
-
+                File.WriteAllText("d:\\temp.txt", String.Empty);
+                File.WriteAllText("d:\\temp.txt", m_Builder.ToString());
                 Console.WriteLine(m_Result);
                 m_Result = 0;
             }
@@ -78,6 +87,15 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
             {
                 addUnit = 5;
                 addCount = minMaxDifference / addUnit;
+
+                m_Builder.AppendLine($"{"F",1}{addUnit,8}{addCount,8}{maxCount,8}{addCount * maxCount,8}");
+            }
+            else if (minMaxDifference > maxPreviousDifference)
+            {
+                addUnit = 2;
+                addCount = minMaxDifference / addUnit;
+
+                m_Builder.AppendLine($"{"S",1}{addUnit,8}{addCount,8}{maxCount,8}{addCount * maxCount,8}");
             }
             else if (minMaxDifference == maxPreviousDifference)
             {
@@ -93,15 +111,8 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
 
                 if (remain > 2)
                     addCount++;
-            }
-            else if (minMaxDifference > maxPreviousDifference)
-            {
-                if (minMaxDifference >= 2)
-                    addUnit = 2;
-                else
-                    addUnit = 1;
 
-                addCount = minMaxDifference / addUnit;
+                m_Builder.AppendLine($"{"T",1}{addUnit,8}{addCount,8}{maxCount,8}{addCount * maxCount,8}");
             }
             else
             {
@@ -128,9 +139,12 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
                 array[i] += addUnit * addCount * maxCount;
             }
 
-            for (int i = 0; i < maxCount; i++)
+            if (maxCount > 1) //performance improvement
             {
-                array[firstMaxIndex + i] += addUnit * addCount * (maxCount - 1);
+                for (int i = 0; i < maxCount; i++)
+                {
+                    array[firstMaxIndex + i] += addUnit * addCount * (maxCount - 1);
+                }
             }
 
             m_Result += addCount * maxCount;
