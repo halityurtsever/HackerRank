@@ -5,41 +5,36 @@ using System.Collections.Generic;
 
 namespace HackerRank.Tracks.Algorithms.Implementation.MatrixLayerRotation
 {
-    public class Program_MatrixLayerRotation
+    public class MatrixLayerRotation : ProblemBase, IProblemSolver
     {
         //################################################################################
         #region Fields
 
-        private static int m_RowCount;
-        private static int m_ColCount;
-        private static int m_RotationCount;
-        private static int[,] m_RotationMatrix;
-        private static List<Layer> m_LayerList = new List<Layer>();
+        private int m_RowCount;
+        private int m_ColCount;
+        private int m_RotationCount;
+        private int[,] m_RotationMatrix;
+        private readonly List<Layer> m_LayerList = new List<Layer>();
 
         #endregion
 
         //################################################################################
-        #region Public Implementation
+        #region IProblemSolver Implementation
 
-        public static void Main(string[] args)
+        void IProblemSolver.Execute(IConsole console)
         {
-            IConsole console = new ConsoleWrapper();
-            ExecuteTask(console);
-        }
+            Console = console;
 
-        public static void ExecuteTask(IConsole console)
-        {
             //read inputs from console
-            var initialValues = console.ReadLine().Split(' ');
+            var initialValues = Console.ReadLine().Split(' ');
             m_RowCount = Convert.ToInt32(initialValues[0]);
             m_ColCount = Convert.ToInt32(initialValues[1]);
             m_RotationCount = Convert.ToInt32(initialValues[2]);
 
-            CreateMatrix(console);
-
+            CreateMatrix();
             RotateMatrix();
             UpdateMatrix();
-            PrintMatrix(console);
+            PrintMatrix();
 
             //Clean up
             m_LayerList.Clear();
@@ -50,7 +45,22 @@ namespace HackerRank.Tracks.Algorithms.Implementation.MatrixLayerRotation
         //################################################################################
         #region Private Implementation
 
-        private static void RotateMatrix()
+        private void CreateMatrix()
+        {
+            m_RotationMatrix = new int[m_RowCount, m_ColCount];
+
+            for (int row = 0; row < m_RowCount; row++)
+            {
+                var rowData = Console.ReadLine().Split(' ');
+
+                for (int col = 0; col < m_ColCount; col++)
+                {
+                    m_RotationMatrix[row, col] = Convert.ToInt32(rowData[col]);
+                }
+            }
+        }
+
+        private void RotateMatrix()
         {
             //it's guaranteed that min edge will be even
             int layerCount = Math.Min(m_RowCount, m_ColCount) / 2;
@@ -89,7 +99,7 @@ namespace HackerRank.Tracks.Algorithms.Implementation.MatrixLayerRotation
             }
         }
 
-        private static void UpdateMatrix()
+        private void UpdateMatrix()
         {
             for (int i = 0; i < m_LayerList.Count; i++)
             {
@@ -119,7 +129,7 @@ namespace HackerRank.Tracks.Algorithms.Implementation.MatrixLayerRotation
             }
         }
 
-        private static void PrintMatrix(IConsole console)
+        private void PrintMatrix()
         {
             string row = string.Empty;
 
@@ -129,23 +139,8 @@ namespace HackerRank.Tracks.Algorithms.Implementation.MatrixLayerRotation
                 {
                     row += $"{m_RotationMatrix[i, j]} ";
                 }
-                console.WriteLine(row.TrimEnd());
+                Console.WriteLine(row.TrimEnd());
                 row = string.Empty;
-            }
-        }
-
-        private static void CreateMatrix(IConsole console)
-        {
-            m_RotationMatrix = new int[m_RowCount, m_ColCount];
-
-            for (int row = 0; row < m_RowCount; row++)
-            {
-                var rowData = console.ReadLine().Split(' ');
-
-                for (int col = 0; col < m_ColCount; col++)
-                {
-                    m_RotationMatrix[row, col] = Convert.ToInt32(rowData[col]);
-                }
             }
         }
 

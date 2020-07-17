@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{54654F32-E80E-4079-83C2-DDE622630B0D}</ProjectGuid>
+    <ProjectGuid>{12019A83-4305-4B3A-9FA2-FB6D2580096A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TheCoinChangeProblem_Tests</RootNamespace>
-    <AssemblyName>TheCoinChangeProblem_Tests</AssemblyName>
+    <RootNamespace>DirectConnections_Tests</RootNamespace>
+    <AssemblyName>DirectConnections_Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -16,7 +16,6 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,42 +50,33 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="TheCoinChangeProblem_Tests.cs" />
+    <Compile Include="DirectConnections_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\Tracks\Algorithms\DynamicProgramming\TheCoinChangeProblem\TheCoinChangeProblem.csproj">
-      <Project>{356710AE-FD13-4E48-9EC3-09BA072A7336}</Project>
-      <Name>TheCoinChangeProblem</Name>
+    <ProjectReference Include="..\..\Tracks\DataStructures\Advanced\DirectConnections\DirectConnections.csproj">
+      <Project>{038743e4-5f08-4a70-a03a-f92f4e570710}</Project>
+      <Name>DirectConnections</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\_Helpers\CodeHelpers\CodeHelpers.csproj">
-      <Project>{0F843F51-DA68-473F-A1D0-AA5C1088FEAE}</Project>
+      <Project>{0f843f51-da68-473f-a1d0-aa5c1088feae}</Project>
       <Name>CodeHelpers</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\_Helpers\TestHelper\TestHelper.csproj">
-      <Project>{64F9B481-33FC-4ED1-AE99-4047BECCED6C}</Project>
+      <Project>{64f9b481-33fc-4ed1-ae99-4047becced6c}</Project>
       <Name>TestHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="InputsOutputs\input_01.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="InputsOutputs\input_02.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="InputsOutputs\input_03.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="InputsOutputs\output_01.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="InputsOutputs\output_02.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="InputsOutputs\output_03.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="InputsOutputs\input_01.txt" />
+    <Content Include="InputsOutputs\input_02.txt" />
+    <Content Include="InputsOutputs\input_03.txt" />
+    <Content Include="InputsOutputs\input_04.txt" />
+    <Content Include="InputsOutputs\output_01.txt" />
+    <Content Include="InputsOutputs\output_02.txt" />
+    <Content Include="InputsOutputs\output_03.txt" />
+    <Content Include="InputsOutputs\output_04.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

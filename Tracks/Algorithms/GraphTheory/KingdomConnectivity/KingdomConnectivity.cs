@@ -5,59 +5,24 @@ using KingdomConnectivity;
 
 namespace HackerRank.Tracks.Algorithms.GraphTheory.KingdomConnectivity
 {
-    public static class Program_KingdomConnectivity
+    public class KingdomConnectivity : ProblemBase, IProblemSolver
     {
         //################################################################################
         #region Fields
 
-        private static IConsole s_Console;
-        private static int m_LastCity;
-        private static readonly HashSet<int> m_CurrentPathList = new HashSet<int>();
-        private static readonly Dictionary<int, City> m_ConnectionNetwork = new Dictionary<int, City>();
+        private int m_LastCity;
+        private readonly HashSet<int> m_CurrentPathList = new HashSet<int>();
+        private readonly Dictionary<int, City> m_ConnectionNetwork = new Dictionary<int, City>();
 
         #endregion
 
         //################################################################################
-        #region Main Method
+        #region IProblemSolver Implementation
 
-        static void Main()
+        void IProblemSolver.Execute(IConsole console)
         {
-            s_Console = new ConsoleWrapper();
-            var initials = s_Console.ReadLine().Split(' ');
-            var cityCount = Convert.ToInt32(initials[0]);
-            var connectionCount = Convert.ToInt32(initials[1]);
-
-            ExecuteTask(s_Console, cityCount, connectionCount);
-
-            CleanUp();
-        }
-
-        #endregion
-
-        //################################################################################
-        #region Public Implementation
-
-        public static void ExecuteTask(IConsole console, int cityCount, int connectionCount)
-        {
-            s_Console = console;
-            m_LastCity = cityCount;
-            CreateNetwork(console, cityCount, connectionCount);
-            try
-            {
-                var pathCount = FindPathCount(1);
-                console.WriteLine(pathCount);
-            }
-            catch (Exception ex)
-            {
-                console.WriteLine(ex.Message);
-            }
-        }
-
-        public static void CleanUp()
-        {
-            m_ConnectionNetwork.Clear();
-            m_CurrentPathList.Clear();
-            m_LastCity = 0;
+            Console = console;
+            SolveProblem();
         }
 
         #endregion
@@ -65,12 +30,33 @@ namespace HackerRank.Tracks.Algorithms.GraphTheory.KingdomConnectivity
         //################################################################################
         #region Private Implementation
 
-        private static void CreateNetwork(IConsole console, int cityCount, int connectionCount)
+        private void SolveProblem()
+        {
+            var initials = Console.ReadLine().Split(' ');
+
+            m_LastCity = Convert.ToInt32(initials[0]);
+            var connectionCount = Convert.ToInt32(initials[1]);
+
+            CreateNetwork(connectionCount);
+            try
+            {
+                var pathCount = FindPathCount(1);
+                Console.WriteLine(pathCount);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            CleanUp();
+        }
+
+        private void CreateNetwork(int connectionCount)
         {
             for (int i = 0; i < connectionCount; i++)
             {
                 //read connection data from console
-                var connectionData = console.ReadLine().Split(' ');
+                var connectionData = Console.ReadLine().Split(' ');
                 int fromCity = Convert.ToInt32(connectionData[0]);
                 int toCity = Convert.ToInt32(connectionData[1]);
 
@@ -83,7 +69,7 @@ namespace HackerRank.Tracks.Algorithms.GraphTheory.KingdomConnectivity
             }
         }
 
-        private static long FindPathCount(int cityId)
+        private long FindPathCount(int cityId)
         {
             //reached to end
             if (cityId == m_LastCity)
@@ -137,11 +123,11 @@ namespace HackerRank.Tracks.Algorithms.GraphTheory.KingdomConnectivity
                 {
                     int nextCityId = city.Key;
                     int pathToNextCity = city.Value;
-                    City nextCity;
 
                     if (nextCityId != m_LastCity)
                     {
                         //next city is death end
+                        City nextCity;
                         if (!m_ConnectionNetwork.TryGetValue(nextCityId, out nextCity)) continue;
 
                         //next city is looped city
@@ -162,7 +148,7 @@ namespace HackerRank.Tracks.Algorithms.GraphTheory.KingdomConnectivity
             return 0;
         }
 
-        private static void InfinitePathCheck()
+        private void InfinitePathCheck()
         {
             foreach (var cityId in m_CurrentPathList)
             {
@@ -173,6 +159,13 @@ namespace HackerRank.Tracks.Algorithms.GraphTheory.KingdomConnectivity
                     throw new Exception("INFINITE PATHS");
                 }
             }
+        }
+
+        private void CleanUp()
+        {
+            m_ConnectionNetwork.Clear();
+            m_CurrentPathList.Clear();
+            m_LastCity = 0;
         }
 
         #endregion
