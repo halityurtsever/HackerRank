@@ -3,21 +3,20 @@ using System;
 
 namespace HackerRank.Tutorials._30DaysOfCode.BitwiseAND
 {
-    public class Program_BitwiseAND
+    public class BitwiseAND : ProblemBase, IProblemSolver
     {
-        public static void Main(string[] args)
-        {
-            IConsole console = new ConsoleWrapper();
-            ExecuteTask(console);
-        }
+        //################################################################################
+        #region IProblemSolver Implementation
 
-        public static void ExecuteTask(IConsole console)
+        void IProblemSolver.Execute(IConsole console)
         {
-            int testCases = Convert.ToInt32(console.ReadLine());
+            Console = console;
+
+            int testCases = Convert.ToInt32(Console.ReadLine());
 
             for (int i = 0; i < testCases; i++)
             {
-                string[] tokens = console.ReadLine().Split(' ');
+                string[] tokens = Console.ReadLine().Split(' ');
                 int n = Convert.ToInt32(tokens[0]);
                 int k = Convert.ToInt32(tokens[1]);
 
@@ -39,8 +38,10 @@ namespace HackerRank.Tutorials._30DaysOfCode.BitwiseAND
                     index--;
                 }
 
-                console.WriteLine(result);
+                Console.WriteLine(result);
             }
         }
+
+        #endregion
     }
 }

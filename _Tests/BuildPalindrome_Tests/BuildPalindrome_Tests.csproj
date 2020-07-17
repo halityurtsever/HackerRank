@@ -68,8 +68,10 @@
       <Name>TestHelper</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="InputsOutputs\" />
+    <Content Include="InputsOutputs\input_01.txt" />
+    <Content Include="InputsOutputs\output_01.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

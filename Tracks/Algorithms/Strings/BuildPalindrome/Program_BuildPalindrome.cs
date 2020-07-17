@@ -4,50 +4,22 @@ using System.Collections.Generic;
 
 namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
 {
-    public class Program_BuildPalindrome
+    public class Program_BuildPalindrome : ProblemBase, IProblemSolver
     {
         //################################################################################
         #region Fields
 
-        static List<string> palindromes = new List<string>();
+        private readonly List<string> m_Palindromes = new List<string>();
 
         #endregion
 
         //################################################################################
-        #region Main Method
+        #region IProblemSolver Implementation
 
-        static void Main(string[] args)
+        void IProblemSolver.Execute(IConsole console)
         {
-            var console = new ConsoleWrapper();
-            var querySize = Convert.ToInt32(Console.ReadLine());
-
-            ExecuteTask(console, querySize);
-        }
-
-        #endregion
-
-        //################################################################################
-        #region Public Implementation
-
-        public static void ExecuteTask(IConsole console, int querySize)
-        {
-            for (int q = 0; q < querySize; q++)
-            {
-                var firstInput = console.ReadLine();
-                var secondInput = console.ReadLine();
-
-                PalindromeWord firstWord = new PalindromeWord(firstInput);
-                PalindromeWord secondWord = new PalindromeWord(secondInput);
-
-                FindLongestPalindromes(firstWord, secondWord);
-
-                if (palindromes.Count == 0)
-                    console.WriteLine("-1");
-                else
-                    console.WriteLine(GetTheLongestPalindrome());
-
-                palindromes.Clear();
-            }
+            Console = console;
+            SolveProblem();
         }
 
         #endregion
@@ -55,10 +27,33 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
         //################################################################################
         #region Private Implementation
 
-        private static string GetTheLongestPalindrome()
+        private void SolveProblem()
+        {
+            var querySize = Convert.ToInt32(Console.ReadLine());
+
+            for (int q = 0; q < querySize; q++)
+            {
+                var firstInput = Console.ReadLine();
+                var secondInput = Console.ReadLine();
+
+                PalindromeWord firstWord = new PalindromeWord(firstInput);
+                PalindromeWord secondWord = new PalindromeWord(secondInput);
+
+                FindLongestPalindromes(firstWord, secondWord);
+
+                if (m_Palindromes.Count == 0)
+                    Console.WriteLine("-1");
+                else
+                    Console.WriteLine(GetTheLongestPalindrome());
+
+                m_Palindromes.Clear();
+            }
+        }
+
+        private string GetTheLongestPalindrome()
         {
             var theLongest = string.Empty;
-            foreach (var palindrome in palindromes)
+            foreach (var palindrome in m_Palindromes)
             {
                 if (palindrome.Length < theLongest.Length)
                     continue;
@@ -76,7 +71,7 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
             return theLongest;
         }
 
-        private static void FindLongestPalindromes(PalindromeWord firstWord, PalindromeWord secondWord)
+        private void FindLongestPalindromes(PalindromeWord firstWord, PalindromeWord secondWord)
         {
             var firstLastIndex = 0;
             var secondLastIndex = 0;
@@ -88,7 +83,7 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
             {
                 if (firstLastIndex != 0 && innerPalindrome.StartIndex == firstLastIndex)
                 {
-                    palindromes.Add($"{firstWord.PalindromePart}{innerPalindrome.Palindrome}{secondWord.PalindromePart}");
+                    m_Palindromes.Add($"{firstWord.PalindromePart}{innerPalindrome.Palindrome}{secondWord.PalindromePart}");
                 }
 
                 /**
@@ -100,14 +95,14 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
             {
                 if (secondLastIndex >= innerPalindrome.Length && innerPalindrome.StartIndex + innerPalindrome.Length == secondLastIndex)
                 {
-                    palindromes.Add($"{firstWord.PalindromePart}{innerPalindrome.Palindrome}{secondWord.PalindromePart}");
+                    m_Palindromes.Add($"{firstWord.PalindromePart}{innerPalindrome.Palindrome}{secondWord.PalindromePart}");
                 }
             }
 
             ConcatPalindromeParts(firstWord, secondWord);
         }
 
-        private static void FindPalindromeParts(PalindromeWord firstWord, PalindromeWord secondWord, out int firstPalindromeLastIndex, out int secondPalindromeLastIndex)
+        private void FindPalindromeParts(PalindromeWord firstWord, PalindromeWord secondWord, out int firstPalindromeLastIndex, out int secondPalindromeLastIndex)
         {
             var temp = string.Empty;
             var first = firstWord.Input;
@@ -146,13 +141,13 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
             secondPalindromeLastIndex = secondWord.Input.IndexOf(secondWord.PalindromePart);
         }
 
-        private static void ConcatPalindromeParts(PalindromeWord firstWord, PalindromeWord secondWord)
+        private void ConcatPalindromeParts(PalindromeWord firstWord, PalindromeWord secondWord)
         {
             var firstPart = firstWord.PalindromePart;
             var secondPart = secondWord.PalindromePart;
 
-            var firstPartIndex = firstWord.Input.IndexOf(firstPart);
-            var secondPartIndex = secondWord.Input.IndexOf(secondPart);
+            var firstPartIndex = firstWord.Input.IndexOf(firstPart, StringComparison.Ordinal);
+            var secondPartIndex = secondWord.Input.IndexOf(secondPart, StringComparison.Ordinal);
 
             //firstpart sonda ve secondpart başta ise => firstpart + secondpart
             if ((firstPartIndex + firstPart.Length >= firstWord.Input.Length) && secondPartIndex == 0)
@@ -160,7 +155,7 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
                 var palindromeCandidate = $"{firstPart}{secondPart}";
                 if (PalindromeWord.IsPalindrome(palindromeCandidate))
                 {
-                    palindromes.Add(palindromeCandidate);
+                    m_Palindromes.Add(palindromeCandidate);
                 }
             }
 
@@ -170,7 +165,7 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
                 var palindromeCandidate = $"{firstPart}{secondWord.Input[secondPartIndex - 1]}{secondPart}";
                 if (PalindromeWord.IsPalindrome(palindromeCandidate))
                 {
-                    palindromes.Add(palindromeCandidate);
+                    m_Palindromes.Add(palindromeCandidate);
                 }
             }
 
@@ -180,7 +175,7 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
                 var palindromeCandidate = $"{firstPart}{firstWord.Input[firstPartIndex + firstPart.Length]}{secondPart}";
                 if (PalindromeWord.IsPalindrome(palindromeCandidate))
                 {
-                    palindromes.Add(palindromeCandidate);
+                    m_Palindromes.Add(palindromeCandidate);
                 }
             }
 
@@ -190,13 +185,13 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
                 var palindromeCandidate = $"{firstPart}{firstWord.Input[firstPartIndex + firstPart.Length]}{secondPart}";
                 if (PalindromeWord.IsPalindrome(palindromeCandidate))
                 {
-                    palindromes.Add(palindromeCandidate);
+                    m_Palindromes.Add(palindromeCandidate);
                 }
 
                 palindromeCandidate = $"{firstPart}{secondWord.Input[secondPartIndex - 1]}{secondPart}";
                 if (PalindromeWord.IsPalindrome(palindromeCandidate))
                 {
-                    palindromes.Add(palindromeCandidate);
+                    m_Palindromes.Add(palindromeCandidate);
                 }
             }
         }

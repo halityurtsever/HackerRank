@@ -3,34 +3,37 @@ using System;
 
 namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem
 {
-    public class Program_TheCoinChangeProblem
+    public class TheCoinChangeProblem : ProblemBase, IProblemSolver
     {
         //################################################################################
         #region Fields
 
-        private static int m_StartIndex = 0;
-        private static int m_CurrentIndex = 0;
-        private static int m_TargetChangeValue = 0;
-        private static int m_TotalResult = 0;
-        private static int[] m_CoinArray;
+        private int m_StartIndex;
+        private int m_CurrentIndex;
+        private int m_TargetChangeValue;
+        private int[] m_CoinArray;
 
         #endregion
 
         //################################################################################
-        #region Public Implementation
+        #region IProblemSolver Implementation
 
-        public static void Main(string[] args)
+        void IProblemSolver.Execute(IConsole console)
         {
-            IConsole console = new ConsoleWrapper();
-            ExecuteTask(console);
+            Console = console;
+            SolveProblem();
         }
 
-        public static void ExecuteTask(IConsole console)
+        #endregion
+
+        //################################################################################
+        #region Private Implementation
+
+        private void SolveProblem()
         {
-            //read values from console
-            var initialValues = console.ReadLine().Split(' ');
+            var initialValues = Console.ReadLine().Split(' ');
             m_TargetChangeValue = Convert.ToInt32(initialValues[0]);
-            m_CoinArray = Array.ConvertAll(console.ReadLine().Split(' '), Int32.Parse);
+            m_CoinArray = Array.ConvertAll(Console.ReadLine().Split(' '), Int32.Parse);
 
             SortArray(m_CoinArray, 0, m_CoinArray.Length - 1);
 
@@ -39,12 +42,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem
             CalculateDistinctChanges(0);
         }
 
-        #endregion
-
-        //################################################################################
-        #region Private Implementation
-
-        private static void CalculateDistinctChanges(int total)
+        private void CalculateDistinctChanges(int total)
         {
             while (m_StartIndex >= 0)
             {
@@ -60,7 +58,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem
             }
         }
 
-        private static void SortArray(int[] array, int low, int hi)
+        private void SortArray(int[] array, int low, int hi)
         {
             //Quick Sort
             if (low < hi)
@@ -71,7 +69,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem
             }
         }
 
-        private static int Partition(int[] array, int low, int hi)
+        private int Partition(int[] array, int low, int hi)
         {
             int pivot = array[hi];
             int i = low - 1;
