@@ -33,7 +33,12 @@ namespace SudokuSolver
             }
         }
 
-        private  static string SolvePuzzle(int[,] sudokuPad)
+        #endregion
+
+        //################################################################################
+        #region Private Members
+
+        private static string SolvePuzzle(int[,] sudokuPad)
         {
             while (!IsSolved(sudokuPad))
             {
@@ -43,11 +48,6 @@ namespace SudokuSolver
 
             return PrintSudokuPad(sudokuPad);
         }
-
-        #endregion
-
-        //################################################################################
-        #region Private Members
 
         private static void SolveWithElaminateStrategy(int[,] pad)
         {
