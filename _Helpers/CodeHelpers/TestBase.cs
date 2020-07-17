@@ -1,11 +1,12 @@
-﻿using CodeHelpers;
-using System;
+﻿using NUnit.Framework;
+
 using System.IO;
 using System.Reflection;
 
-namespace TestHelper
+namespace CodeHelpers
 {
-    public abstract class TestBase<T> where T : IProblemSolver
+    [TestFixture]
+    public abstract class TestBase
     {
         //################################################################################
         #region Fields
@@ -14,21 +15,12 @@ namespace TestHelper
 
         #endregion
 
-        protected IProblemSolver ProblemSolver { get; set; }
+        //################################################################################
+        #region Protected Members
 
         protected string ActualValue { get; private set; }
 
         protected string ExpectedValue { get; private set; }
-
-        //################################################################################
-        #region Abstract Members
-
-        //protected abstract void TestRunner(string inputFile, string outputFile);
-
-        #endregion
-
-        //################################################################################
-        #region Protected Members
 
         protected IConsole GetConsoleReader(string inputFileName, string outputFileName)
         {
@@ -36,15 +28,18 @@ namespace TestHelper
             return new ConsoleWrapper(folderPath, $"{s_InputOutputFolder}/{inputFileName}", $"{s_InputOutputFolder}/{outputFileName}");
         }
 
-        #endregion
-
-        protected void TestRunner(string inputFile, string outputFile)
+        protected void TestRunner<T>(string inputFile, string outputFile) where T : IProblemSolver, new()
         {
             IConsole console = GetConsoleReader(inputFile, outputFile);
-            ProblemSolver.Solve(console);
+            IProblemSolver solver = new T();
+            solver.Solve(console);
 
             ActualValue = console.ReadLineFromActualOutput();
             ExpectedValue = console.ReadLineFromExpectedOutput();
+
+            Assert.That(ExpectedValue, Is.EqualTo(ActualValue));
         }
+
+        #endregion
     }
 }

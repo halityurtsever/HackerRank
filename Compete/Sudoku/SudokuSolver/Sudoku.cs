@@ -1,34 +1,44 @@
 ﻿using CodeHelpers;
-using System;
+
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace SudokuSolver
+namespace SudokuSolver.Library
 {
-    public class Program_SudokuSolver
+    public class Sudoku : ProblemSolverBase, IProblemSolver
     {
-        static void Main(string[] args)
-        {
-            IConsole console = new ConsoleWrapper();
+        //################################################################################
+        #region Private Struct
 
-            var caseCount = int.Parse(console.ReadLine());
-            ExecuteTask(console, caseCount);
+        private struct Point
+        {
+            public Point(int x, int y)
+            {
+                X = x;
+                Y = y;
+            }
+
+            public int X { get; set; }
+
+            public int Y { get; set; }
         }
 
-        //################################################################################
-        #region Public Members
+        #endregion
 
-        public static void ExecuteTask(IConsole console, int caseCount)
+        //################################################################################
+        #region IProblemSolver Members
+
+        public void Solve(IConsole console)
         {
+            Console = console;
+            var caseCount = int.Parse(Console.ReadLine());
+
             int[,] sudokuPad = new int[9, 9];
 
             for (int i = 0; i < caseCount; i++)
             {
-                CreateSudokuPad(console, sudokuPad);
-                console.WriteLine(SolvePuzzle(sudokuPad));
+                CreateSudokuPad(sudokuPad);
+                SolvePuzzle(sudokuPad);
                 sudokuPad = new int[9, 9];
             }
         }
@@ -38,7 +48,7 @@ namespace SudokuSolver
         //################################################################################
         #region Private Members
 
-        private static string SolvePuzzle(int[,] sudokuPad)
+        private void SolvePuzzle(int[,] sudokuPad)
         {
             while (!IsSolved(sudokuPad))
             {
@@ -46,10 +56,10 @@ namespace SudokuSolver
                 SolveWithSectionComparisonStrategy(sudokuPad);
             }
 
-            return PrintSudokuPad(sudokuPad);
+            PrintSudokuPad(sudokuPad);
         }
 
-        private static void SolveWithElaminateStrategy(int[,] pad)
+        private void SolveWithElaminateStrategy(int[,] pad)
         {
             IList<int> sudokuNumbers = null;
             RefillSudokuNumbers(ref sudokuNumbers);
@@ -75,7 +85,7 @@ namespace SudokuSolver
             }
         }
 
-        private static void SolveWithSectionComparisonStrategy(int[,] pad)
+        private void SolveWithSectionComparisonStrategy(int[,] pad)
         {
             int x = 0, y = 0;
             var possibleNumbers = new Dictionary<int, IList<Point>>();
@@ -127,7 +137,7 @@ namespace SudokuSolver
             }
         }
 
-        private static bool IsPossible(int[,] pad, int number, Point point)
+        private bool IsPossible(int[,] pad, int number, Point point)
         {
             for (int i = 0; i < 9; i++)
             {
@@ -140,7 +150,7 @@ namespace SudokuSolver
             return true;
         }
 
-        private static bool IsSolved(int[,] pad)
+        private bool IsSolved(int[,] pad)
         {
             var isSolved = true;
 
@@ -161,7 +171,7 @@ namespace SudokuSolver
             return isSolved;
         }
 
-        private static void CheckRow(int[,] pad, int rowIndex, IList<int> numbers)
+        private void CheckRow(int[,] pad, int rowIndex, IList<int> numbers)
         {
             for (int i = 0; i < 9; i++)
             {
@@ -172,7 +182,7 @@ namespace SudokuSolver
             }
         }
 
-        private static void CheckColumn(int[,] pad, int columnIndex, IList<int> numbers)
+        private void CheckColumn(int[,] pad, int columnIndex, IList<int> numbers)
         {
             for (int i = 0; i < 9; i++)
             {
@@ -183,7 +193,7 @@ namespace SudokuSolver
             }
         }
 
-        private static void CheckSection(int[,] pad, Point sectionIndex, IList<int> numbers)
+        private void CheckSection(int[,] pad, Point sectionIndex, IList<int> numbers)
         {
             var x = sectionIndex.X;
             var y = sectionIndex.Y;
@@ -204,7 +214,7 @@ namespace SudokuSolver
             }
         }
 
-        private static Point GetSectionIndex(int i, int j)
+        private Point GetSectionIndex(int i, int j)
         {
             var x = i - (i % 3);
             var y = j - (j % 3);
@@ -212,16 +222,16 @@ namespace SudokuSolver
             return new Point(x, y);
         }
 
-        private static void RefillSudokuNumbers(ref IList<int> numbers)
+        private void RefillSudokuNumbers(ref IList<int> numbers)
         {
             numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         }
 
-        private static void CreateSudokuPad(IConsole console, int[,] sudokuPad)
+        private void CreateSudokuPad(int[,] sudokuPad)
         {
             for (int i = 0; i < 9; i++)
             {
-                var numbers = console.ReadLine().Split(' ');
+                var numbers = Console.ReadLine().Split(' ');
 
                 for (int j = 0; j < 9; j++)
                 {
@@ -230,20 +240,22 @@ namespace SudokuSolver
             }
         }
 
-        private static string PrintSudokuPad(int[,] pad)
+        private void PrintSudokuPad(int[,] pad)
         {
             var stringBuilder = new StringBuilder();
 
             for (int i = 0; i < 9; i++)
             {
+                stringBuilder.Clear();
+
                 for (int j = 0; j < 9; j++)
                 {
                     stringBuilder.Append($"{pad[i, j]} ");
-                }
-                stringBuilder.AppendLine();
-            }
 
-            return stringBuilder.ToString();
+                }
+
+                Console.WriteLine(stringBuilder.ToString());
+            }
         }
 
         #endregion

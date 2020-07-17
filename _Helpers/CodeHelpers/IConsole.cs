@@ -38,5 +38,9 @@
         void WriteLine(float value);
 
         #endregion
+
+        string ReadLineFromExpectedOutput();
+
+        string ReadLineFromActualOutput();
     }
 }
