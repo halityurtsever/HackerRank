@@ -12,7 +12,7 @@ namespace SudokuSolver_Tests
         //################################################################################
         #region Tests
 
-        [TestCase]
+        [Test]
         public void TestCase_01()
         {
             TestRunner<Sudoku>("input_01.txt", "output_01.txt");

@@ -4,7 +4,7 @@ using AlgorithmicCrush.Library;
 
 using NUnit.Framework;
 
-namespace AlgorithmicCrush.Tests
+namespace AlgorithmicCrush_Tests
 {
     [TestFixture]
     public class AlgorithmicCrush_Tests : TestBase

@@ -12,7 +12,7 @@ namespace QueueTwoStacks_Tests
         //################################################################################
         #region Tests
 
-        [TestCase]
+        [Test]
         public void TestCase_01()
         {
             TestRunner<TwoStacksQueuer>("input_01.txt", "output_01.txt");
