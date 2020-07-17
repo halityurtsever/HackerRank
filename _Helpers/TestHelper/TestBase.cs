@@ -1,4 +1,5 @@
 ﻿using CodeHelpers;
+using System;
 using System.IO;
 
 namespace TestHelper
@@ -13,9 +14,20 @@ namespace TestHelper
         #endregion
 
         //################################################################################
-        #region Abstract Methods
+        #region Abstract Members
 
-        public abstract IConsole GetConsoleReader(DirectoryInfo directory, string inputFileName, string outputFileName);
+        protected abstract void TestRunner(string inputFile, string outputFile);
+
+        #endregion
+
+        //################################################################################
+        #region Protected Members
+
+        protected IConsole GetConsoleReader(string inputFileName, string outputFileName)
+        {
+            var folderPath = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+            return new ConsoleWrapperTest(folderPath, $"{s_InputOutputFolder}/{inputFileName}", $"{s_InputOutputFolder}/{outputFileName}");
+        }
 
         #endregion
     }

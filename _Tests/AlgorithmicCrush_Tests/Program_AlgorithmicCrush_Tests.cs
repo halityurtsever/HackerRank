@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.IO;
-using CodeHelpers;
 using TestHelper;
 
 namespace HackerRank.Tracks.DataStructures.Arrays.AlgorithmicCrush.Tests
@@ -33,28 +31,17 @@ namespace HackerRank.Tracks.DataStructures.Arrays.AlgorithmicCrush.Tests
         #endregion
 
         //################################################################################
-        #region Override Implementation
-
-        public override IConsole GetConsoleReader(DirectoryInfo directory, string inputFileName, string outputFileName)
-        {
-            var folderPath = directory.Parent.Parent.FullName;
-            return new ConsoleWrapperTest(folderPath, $"{s_InputOutputFolder}/{inputFileName}", $"{s_InputOutputFolder}/{outputFileName}");
-        }
-
-        #endregion
-
-        //################################################################################
         #region Private Implementation
 
-        private void TestRunner(string inputFile, string outputFile)
+        protected override void TestRunner(string inputFile, string outputFile)
         {
-            var directoryInfo = new DirectoryInfo(Environment.CurrentDirectory);
-            var console = GetConsoleReader(directoryInfo, inputFile, outputFile);
+            var console = GetConsoleReader(inputFile, outputFile);
+
             var initialValues = console.ReadLine().Split(' ');
             var arraySize = Convert.ToInt32(initialValues[0]);
             var querySize = Convert.ToInt32(initialValues[1]);
 
-            Program_AlgorithmicCrush.Execute(console, querySize, arraySize);
+            Program_AlgorithmicCrush.ExecuteTask(console, arraySize, querySize);
 
             long expectedMaxValue = Convert.ToInt64(((IConsoleTest)console).ReadLineFromExpectedOutput());
             long actualMaxValue = Convert.ToInt64(((IConsoleTest)console).ReadLineFromActualOutput());

@@ -5,9 +5,6 @@ namespace HackerRank.Tracks.DataStructures.Arrays.AlgorithmicCrush
 {
     public class Program_AlgorithmicCrush
     {
-        //################################################################################
-        #region Fields
-
         static void Main()
         {
             IConsole console = new ConsoleWrapper();
@@ -17,15 +14,13 @@ namespace HackerRank.Tracks.DataStructures.Arrays.AlgorithmicCrush
             var arraySize = Convert.ToInt32(initialsArray[0]);
             var querySize = Convert.ToInt32(initialsArray[1]);
 
-            Execute(console, querySize, arraySize);
+            ExecuteTask(console, arraySize, querySize);
         }
-
-        #endregion
 
         //################################################################################
         #region Public Implementation
 
-        public static void Execute(IConsole console, int querySize, int arraySize)
+        public static void ExecuteTask(IConsole console, int arraySize, int querySize)
         {
             string[] queryArray;
             long aux = 0;
@@ -55,46 +50,6 @@ namespace HackerRank.Tracks.DataStructures.Arrays.AlgorithmicCrush
 
             console.WriteLine(maxValue);
         }
-
-        #endregion
-
-        //################################################################################
-        #region Temp Implementation
-
-        //public static long Execute(IConsole console, int querySize, int arraySize)
-        //{
-        //    var queryArray = new string[3];
-        //    var startIndex = 0;
-        //    var endIndex = 0;
-        //    var incrementValue = 0;
-
-        //    //initiate array
-        //    long[] array = new long[arraySize];
-
-        //    for (int i = 0; i < querySize; i++)
-        //    {
-        //        queryArray = console.Readline().Split(' ');
-
-        //        startIndex = Convert.ToInt32(queryArray[0]) - 1;
-        //        endIndex = Convert.ToInt32(queryArray[1]) - 1;
-        //        incrementValue = Convert.ToInt32(queryArray[2]);
-
-        //        for (int j = startIndex; j <= endIndex; j++)
-        //        {
-        //            array[j] += incrementValue;
-        //        }
-        //    }
-
-        //    //print the highest value
-        //    long maxValue = 0;
-        //    for (int i = 0; i < arraySize; i++)
-        //    {
-        //        if (array[i] > maxValue)
-        //            maxValue = array[i];
-        //    }
-
-        //    return maxValue;
-        //}
 
         #endregion
     }

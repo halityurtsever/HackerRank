@@ -1,7 +1,4 @@
-﻿using CodeHelpers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.IO;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestHelper;
 
 namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem.Tests
@@ -33,23 +30,11 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem.T
         #endregion
 
         //################################################################################
-        #region Override Implementation
-
-        public override IConsole GetConsoleReader(DirectoryInfo directory, string inputFileName, string outputFileName)
-        {
-            var folderPath = directory.Parent.Parent.FullName;
-            return new ConsoleWrapperTest(folderPath, inputFileName, outputFileName);
-        }
-
-        #endregion
-
-        //################################################################################
         #region Private Implementation
 
-        private void TestRunner(string inputFile, string outputFile)
+        protected override void TestRunner(string inputFile, string outputFile)
         {
-            var directoryInfo = new DirectoryInfo(Environment.CurrentDirectory);
-            var console = GetConsoleReader(directoryInfo, $"{s_InputOutputFolder}/{inputFile}", $"{s_InputOutputFolder}/{outputFile}");
+            var console = GetConsoleReader(inputFile, outputFile);
 
             Program_TheCoinChangeProblem.ExecuteTask(console);
 

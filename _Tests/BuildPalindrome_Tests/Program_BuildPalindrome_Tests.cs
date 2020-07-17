@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
-using CodeHelpers;
 using TestHelper;
 
 namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome.Tests
@@ -12,14 +11,14 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome.Tests
         //################################################################################
         #region Tests
 
-        [TestMethod()]
+        //[TestMethod()]
         public void BuildPalindrome_TestCase_01()
         {
             //Get console reader
             var directoryInfo = new DirectoryInfo(Environment.CurrentDirectory);
-            var console = GetConsoleReader(directoryInfo, "input_1.txt", "output_1.txt");
+            
 
-            TestRunner(console);
+            TestRunner("input_1.txt", "output_1.txt");
         }
 
         //[TestMethod()]
@@ -35,21 +34,11 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome.Tests
         #endregion
 
         //################################################################################
-        #region Override Implementation
-
-        public override IConsole GetConsoleReader(DirectoryInfo directory, string inputFileName, string outputFileName)
-        {
-            var folderPath = directory.Parent.Parent.FullName;
-            return new ConsoleWrapperTest(folderPath, $"{s_InputOutputFolder}/{inputFileName}", $"{s_InputOutputFolder}/{outputFileName}");
-        }
-
-        #endregion
-
-        //################################################################################
         #region Private Implementation
 
-        private void TestRunner(IConsole console)
+        protected override void TestRunner(string inputFile, string outputFile)
         {
+            var console = GetConsoleReader(inputFile, outputFile);
             var querySize = Convert.ToInt32(console.ReadLine());
 
             Program_BuildPalindrome.ExecuteTask(console, querySize);

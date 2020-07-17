@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.IO;
-using CodeHelpers;
 using TestHelper;
 
 namespace HackerRank.Tracks.Algorithms.GraphTheory.KingdomConnectivity.Tests
@@ -81,26 +79,14 @@ namespace HackerRank.Tracks.Algorithms.GraphTheory.KingdomConnectivity.Tests
         #endregion
 
         //################################################################################
-        #region Override Implementation
-
-        public override IConsole GetConsoleReader(DirectoryInfo directory, string inputFileName, string outputFileName)
-        {
-            var folderPath = directory.Parent.Parent.FullName;
-            return new ConsoleWrapperTest(folderPath, inputFileName, outputFileName);
-        }
-
-        #endregion
-
-        //################################################################################
         #region Private Implementation
 
-        private void TestRunner(string inputFile, string outputFile)
+        protected override void TestRunner(string inputFile, string outputFile)
         {
             //initiate dictionary for new execution
             Program_KingdomConnectivity.CleanUp();
 
-            var directoryInfo = new DirectoryInfo(Environment.CurrentDirectory);
-            var console = GetConsoleReader(directoryInfo, $"{s_InputOutputFolder}/{inputFile}", $"{s_InputOutputFolder}/{outputFile}");
+            var console = GetConsoleReader(inputFile, outputFile);
 
             var initials = console.ReadLine().Split(' ');
             var cityCount = Convert.ToInt32(initials[0]);
