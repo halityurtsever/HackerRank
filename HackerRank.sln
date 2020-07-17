@@ -69,7 +69,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataStructures", "DataStruc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arrays", "Arrays", "{94C466BB-F0A3-4FCC-BAC1-50157D2CFFAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmicCrush", "Tracks\DataStructures\Arrays\AlgorithmicCrush\AlgorithmicCrush.csproj", "{F71DE7EE-206C-4B1F-95C4-812F90D14225}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmicCrush.Library", "Tracks\DataStructures\Arrays\AlgorithmicCrush\AlgorithmicCrush.Library.csproj", "{F71DE7EE-206C-4B1F-95C4-812F90D14225}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmicCrush_Tests", "_Tests\AlgorithmicCrush_Tests\AlgorithmicCrush_Tests.csproj", "{305928A1-B773-413F-9948-B13013BDE9DD}"
 EndProject

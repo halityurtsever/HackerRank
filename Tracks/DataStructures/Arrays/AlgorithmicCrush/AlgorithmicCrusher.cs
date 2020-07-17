@@ -1,26 +1,32 @@
 ﻿using CodeHelpers;
+
 using System;
 
-namespace HackerRank.Tracks.DataStructures.Arrays.AlgorithmicCrush
+namespace AlgorithmicCrush.Library
 {
-    public class Program_AlgorithmicCrush
+    public class AlgorithmicCrusher : ProblemSolverBase, IProblemSolver
     {
-        static void Main()
+        //################################################################################
+        #region IProblemSolver Members
+
+        void IProblemSolver.Solve(IConsole console)
         {
-            IConsole console = new ConsoleWrapper();
+            Console = console;
 
             var initialsString = console.ReadLine();
             var initialsArray = initialsString.Split(' ');
             var arraySize = Convert.ToInt32(initialsArray[0]);
             var querySize = Convert.ToInt32(initialsArray[1]);
 
-            ExecuteTask(console, arraySize, querySize);
+            Execute(arraySize, querySize);
         }
 
-        //################################################################################
-        #region Public Implementation
+        #endregion
 
-        public static void ExecuteTask(IConsole console, int arraySize, int querySize)
+        //################################################################################
+        #region Private Members
+
+        private void Execute(int arraySize, int querySize)
         {
             string[] queryArray;
             long aux = 0;
@@ -31,7 +37,7 @@ namespace HackerRank.Tracks.DataStructures.Arrays.AlgorithmicCrush
 
             for (int i = 0; i < querySize; i++)
             {
-                queryArray = console.ReadLine().Split(' ');
+                queryArray = Console.ReadLine().Split(' ');
                 int startElement = Convert.ToInt32(queryArray[0]);
                 int endElement = Convert.ToInt32(queryArray[1]);
                 long increment = Convert.ToInt32(queryArray[2]);
@@ -48,7 +54,7 @@ namespace HackerRank.Tracks.DataStructures.Arrays.AlgorithmicCrush
                 maxValue = Math.Max(a2[j], maxValue);
             }
 
-            console.WriteLine(maxValue);
+            Console.WriteLine(maxValue);
         }
 
         #endregion

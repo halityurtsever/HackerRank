@@ -1,30 +1,33 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestHelper;
+﻿using CodeHelpers;
 
-namespace HackerRank.Tracks.DataStructures.Arrays.AlgorithmicCrush.Tests
+using AlgorithmicCrush.Library;
+
+using NUnit.Framework;
+
+namespace AlgorithmicCrush.Tests
 {
-    [TestClass]
-    public class AlgorithmicCrush_Tests : TestBase<AlgorithmicCrush>
+    [TestFixture]
+    public class AlgorithmicCrush_Tests : TestBase
     {
         //################################################################################
         #region Tests
 
-        [TestMethod]
-        public void AlgorithmicCrush_TestCase_01()
+        [Test]
+        public void TestCase_01()
         {
-            TestRunner("input_01.txt", "output_01.txt");
+            TestRunner<AlgorithmicCrusher>("input_01.txt", "output_01.txt");
         }
 
-        [TestMethod]
-        public void AlgorithmicCrush_TestCase_02()
+        [Test]
+        public void TestCase_02()
         {
-            TestRunner("input_02.txt", "output_02.txt");
+            TestRunner<AlgorithmicCrusher>("input_02.txt", "output_02.txt");
         }
 
-        [TestMethod]
-        public void AlgorithmicCrush_TestCase_03()
+        [Test]
+        public void TestCase_03()
         {
-            TestRunner("input_03.txt", "output_03.txt");
+            TestRunner<AlgorithmicCrusher>("input_03.txt", "output_03.txt");
         }
 
         #endregion
