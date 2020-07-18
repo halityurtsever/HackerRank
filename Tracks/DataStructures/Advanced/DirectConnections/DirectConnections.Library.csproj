@@ -7,8 +7,8 @@
     <ProjectGuid>{038743E4-5F08-4A70-A03A-F92F4E570710}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DirectConnections</RootNamespace>
-    <AssemblyName>DirectConnections</AssemblyName>
+    <RootNamespace>DirectConnections.Library</RootNamespace>
+    <AssemblyName>DirectConnections.Library</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DirectConnections.cs" />
+    <Compile Include="DirectConnectionsCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

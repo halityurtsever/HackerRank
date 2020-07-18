@@ -1,37 +1,39 @@
-﻿using HackerRank.Tracks.DataStructures.Advanced.DirectConnections;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestHelper;
+﻿using CodeHelpers;
+
+using DirectConnections.Library;
+
+using NUnit.Framework;
 
 namespace DirectConnections_Tests
 {
-    [TestClass]
+    [TestFixture]
     public class DirectConnections_Tests : TestBase
     {
         //################################################################################
         #region Tests
 
-        [TestMethod]
-        public void DirectConnections_TestCase_01()
+        [Test]
+        public void TestCase_01()
         {
-            TestRunner("input_01.txt", "output_01.txt");
+            TestRunner<DirectConnectionsCalculator>("input_01.txt", "output_01.txt");
         }
 
-        [TestMethod]
-        public void DirectConnections_TestCase_02()
+        [Test]
+        public void TestCase_02()
         {
-            TestRunner("input_02.txt", "output_02.txt");
+            TestRunner<DirectConnectionsCalculator>("input_02.txt", "output_02.txt");
         }
 
-        [TestMethod]
-        public void DirectConnections_TestCase_03()
+        [Test]
+        public void TestCase_03()
         {
-            TestRunner("input_03.txt", "output_03.txt");
+            TestRunner<DirectConnectionsCalculator>("input_03.txt", "output_03.txt");
         }
 
-        [TestMethod]
-        public void DirectConnections_TestCase_04()
+        [Test]
+        public void TestCase_04()
         {
-            TestRunner("input_04.txt", "output_04.txt");
+            TestRunner<DirectConnectionsCalculator>("input_04.txt", "output_04.txt");
         }
 
         #endregion

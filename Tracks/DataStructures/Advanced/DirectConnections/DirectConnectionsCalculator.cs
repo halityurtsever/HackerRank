@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using CodeHelpers;
 
-namespace HackerRank.Tracks.DataStructures.Advanced.DirectConnections
+namespace DirectConnections.Library
 {
-    public class DirectConnections : ProblemBase, IProblemSolver
+    public class DirectConnectionsCalculator : ProblemSolverBase, IProblemSolver
     {
         //################################################################################
         #region Fields
@@ -14,9 +15,9 @@ namespace HackerRank.Tracks.DataStructures.Advanced.DirectConnections
         #endregion
 
         //################################################################################
-        #region IProblemSolver Implementation
+        #region IProblemSolver Members
 
-        void IProblemSolver.Execute(IConsole console)
+        void IProblemSolver.Solve(IConsole console)
         {
             Console = console;
 
@@ -31,7 +32,7 @@ namespace HackerRank.Tracks.DataStructures.Advanced.DirectConnections
         #endregion
 
         //################################################################################
-        #region Private Implementation
+        #region Private Members
 
         private void CalculateCableLength()
         {

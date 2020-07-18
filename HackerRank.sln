@@ -127,7 +127,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGraphProblem", "Compete\We
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Advanced", "Advanced", "{59BEC466-891B-4F29-8761-261D41FAA422}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectConnections", "Tracks\DataStructures\Advanced\DirectConnections\DirectConnections.csproj", "{038743E4-5F08-4A70-A03A-F92F4E570710}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectConnections.Library", "Tracks\DataStructures\Advanced\DirectConnections\DirectConnections.Library.csproj", "{038743E4-5F08-4A70-A03A-F92F4E570710}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectConnections_Tests", "_Tests\DirectConnections_Tests\DirectConnections_Tests.csproj", "{12019A83-4305-4B3A-9FA2-FB6D2580096A}"
 EndProject
