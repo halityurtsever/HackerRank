@@ -1,18 +1,31 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestHelper;
+﻿using CodeHelpers;
 
-namespace HackerRank.Tutorials._30DaysOfCode.BitwiseAND.Tests
+using HackerRank.Tutorials._30DaysOfCode.BitwiseAND;
+
+using NUnit.Framework;
+
+namespace BitwiseAND_Tests
 {
-    [TestClass()]
-    public class BitwiseAND_Tests : TestBase<BitwiseAND>
+    [TestFixture]
+    public class BitwiseAND_Tests : TestBase
     {
         //################################################################################
         #region Tests
 
-        [TestMethod]
-        public void BitwiseAND_TestCase_01()
+        [Test]
+        public void TestCase_01()
         {
-            TestRunner("input_01.txt", "output_01.txt");
+            TestRunner<BitwiseAND>(Assertion, "input_01.txt", "output_01.txt");
+        }
+
+        #endregion
+
+        //################################################################################
+        #region Private Members
+
+        private void Assertion(string expected, string actual)
+        {
+            Assert.That(expected, Is.EqualTo(actual));
         }
 
         #endregion

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 
 namespace CodeHelpers
@@ -25,7 +26,7 @@ namespace CodeHelpers
             return new ConsoleWrapper(folderPath, $"{s_InputOutputFolder}/{inputFileName}", $"{s_InputOutputFolder}/{outputFileName}");
         }
 
-        protected void TestRunner<T>(string inputFile, string outputFile) where T : IProblemSolver, new()
+        protected void TestRunner<T>(Action<string, string> assertion, string inputFile, string outputFile) where T : IProblemSolver, new()
         {
             IConsole console = GetConsoleReader(inputFile, outputFile);
             IProblemSolver solver = new T();
@@ -34,7 +35,7 @@ namespace CodeHelpers
             ActualValue = console.ReadLineFromActualOutput();
             ExpectedValue = console.ReadLineFromExpectedOutput();
 
-            //Assert.That(ExpectedValue, Is.EqualTo(ActualValue));
+            assertion(ExpectedValue, ActualValue);
         }
 
         #endregion

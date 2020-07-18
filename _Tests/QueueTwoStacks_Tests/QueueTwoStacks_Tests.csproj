@@ -69,6 +69,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Tracks\DataStructures\Queues\QueueTwoStacks\QueueTwoStacks.csproj">
+      <Project>{DE5D38FD-E16F-4561-8489-55F73D25390F}</Project>
+      <Name>QueueTwoStacks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\_Helpers\CodeHelpers\CodeHelpers.csproj">
       <Project>{0F843F51-DA68-473F-A1D0-AA5C1088FEAE}</Project>
       <Name>CodeHelpers</Name>
