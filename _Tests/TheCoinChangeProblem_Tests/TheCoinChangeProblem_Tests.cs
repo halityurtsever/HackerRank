@@ -1,31 +1,34 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestHelper;
+﻿using CodeHelpers;
 
-namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem.Tests
+using NUnit.Framework;
+
+using TheCoinChangeProblem.Library;
+
+namespace TheCoinChangeProblem_Tests
 {
-    [TestClass]
-    public class TheCoinChangeProblem_Tests : TestBase<TheCoinChangeProblem>
+    [TestFixture]
+    public class TheCoinChangeProblem_Tests : TestBase
     {
         //################################################################################
         #region Tests
 
-        //[TestMethod]
-        //public void TheCoinChangeProblem_TestCase_01()
-        //{
-        //    TestRunner("input_01.txt", "output_01.txt");
-        //}
+        [Test, Explicit]
+        public void TestCase_01()
+        {
+            TestRunner<TheCoinChange>("input_01.txt", "output_01.txt");
+        }
 
-        //[TestMethod]
-        //public void TheCoinChangeProblem_TestCase_02()
-        //{
-        //    TestRunner("input_02.txt", "output_02.txt");
-        //}
+        [Test, Explicit]
+        public void TestCase_02()
+        {
+            TestRunner<TheCoinChange>("input_02.txt", "output_02.txt");
+        }
 
-        //[TestMethod]
-        //public void TheCoinChangeProblem_TestCase_03()
-        //{
-        //    TestRunner("input_03.txt", "output_03.txt");
-        //}
+        [Test, Explicit]
+        public void TestCase_03()
+        {
+            TestRunner<TheCoinChange>("input_03.txt", "output_03.txt");
+        }
 
         #endregion
     }

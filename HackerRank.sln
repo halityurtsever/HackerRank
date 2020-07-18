@@ -101,7 +101,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitwiseAND", "Tutorials\30D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitwiseAND_Tests", "_Tests\BitwiseAND_Tests\BitwiseAND_Tests.csproj", "{EBD1F76F-70D8-4D16-B0E9-C9A013903C93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCoinChangeProblem", "Tracks\Algorithms\DynamicProgramming\TheCoinChangeProblem\TheCoinChangeProblem.csproj", "{356710AE-FD13-4E48-9EC3-09BA072A7336}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCoinChangeProblem.Library", "Tracks\Algorithms\DynamicProgramming\TheCoinChangeProblem\TheCoinChangeProblem.Library.csproj", "{356710AE-FD13-4E48-9EC3-09BA072A7336}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implementation", "Implementation", "{5DC9853B-6A0C-4AE5-BA58-050BDBE88E5E}"
 EndProject

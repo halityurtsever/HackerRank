@@ -1,9 +1,10 @@
 ﻿using CodeHelpers;
+
 using System;
 
-namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem
+namespace TheCoinChangeProblem.Library
 {
-    public class TheCoinChangeProblem : ProblemBase, IProblemSolver
+    public class TheCoinChange : ProblemSolverBase, IProblemSolver
     {
         //################################################################################
         #region Fields
@@ -16,9 +17,9 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem
         #endregion
 
         //################################################################################
-        #region IProblemSolver Implementation
+        #region IProblemSolver Members
 
-        void IProblemSolver.Execute(IConsole console)
+        void IProblemSolver.Solve(IConsole console)
         {
             Console = console;
             SolveProblem();
@@ -27,7 +28,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem
         #endregion
 
         //################################################################################
-        #region Private Implementation
+        #region Private Members
 
         private void SolveProblem()
         {
@@ -52,7 +53,6 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.TheCoinChangeProblem
                     m_CurrentIndex--;
                     return;
                 }
-
 
                 CalculateDistinctChanges(currentTotal);
             }
