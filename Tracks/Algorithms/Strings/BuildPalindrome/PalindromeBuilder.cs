@@ -1,10 +1,11 @@
 ﻿using CodeHelpers;
+
 using System;
 using System.Collections.Generic;
 
-namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
+namespace BuildPalindrome.Library
 {
-    public class Program_BuildPalindrome : ProblemBase, IProblemSolver
+    public class PalindromeBuilder : ProblemSolverBase, IProblemSolver
     {
         //################################################################################
         #region Fields
@@ -14,9 +15,9 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
         #endregion
 
         //################################################################################
-        #region IProblemSolver Implementation
+        #region IProblemSolver Members
 
-        void IProblemSolver.Execute(IConsole console)
+        void IProblemSolver.Solve(IConsole console)
         {
             Console = console;
             SolveProblem();
@@ -25,7 +26,7 @@ namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
         #endregion
 
         //################################################################################
-        #region Private Implementation
+        #region Private Members
 
         private void SolveProblem()
         {

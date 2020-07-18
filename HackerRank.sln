@@ -59,7 +59,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingdomConnectivity.Library
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Strings", "Strings", "{41FF87BC-CCD2-4CB1-BE8F-DA6B9E729329}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildPalindrome", "Tracks\Algorithms\Strings\BuildPalindrome\BuildPalindrome.csproj", "{C33DEA95-14A0-4E5A-A2E6-EDBD71AC2F87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildPalindrome.Library", "Tracks\Algorithms\Strings\BuildPalindrome\BuildPalindrome.Library.csproj", "{C33DEA95-14A0-4E5A-A2E6-EDBD71AC2F87}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildPalindrome_Tests", "_Tests\BuildPalindrome_Tests\BuildPalindrome_Tests.csproj", "{6A33C752-1317-4C6F-8E20-30085D653113}"
 EndProject

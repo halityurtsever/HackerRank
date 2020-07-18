@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HackerRank.Tracks.Algorithms.Strings.BuildPalindrome
+namespace BuildPalindrome.Library
 {
     public class PalindromeWord
     {
