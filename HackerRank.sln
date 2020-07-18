@@ -73,7 +73,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmicCrush.Library", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmicCrush_Tests", "_Tests\AlgorithmicCrush_Tests\AlgorithmicCrush_Tests.csproj", "{305928A1-B773-413F-9948-B13013BDE9DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparseArrays", "Tracks\DataStructures\Arrays\SparseArrays\SparseArrays.csproj", "{F7708149-250E-4E28-A3FA-0E7BF14A514D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparseArrays.Library", "Tracks\DataStructures\Arrays\SparseArrays\SparseArrays.Library.csproj", "{F7708149-250E-4E28-A3FA-0E7BF14A514D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics", "Tutorials\30DaysOfCode\Generics\Generics.csproj", "{749D1EF5-5AB1-4FA3-A4E6-DF779588BC97}"
 EndProject
@@ -142,6 +142,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueTwoStacks", "Tracks\DataStructures\Queues\QueueTwoStacks\QueueTwoStacks.csproj", "{DE5D38FD-E16F-4561-8489-55F73D25390F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueTwoStacks_Tests", "_Tests\QueueTwoStacks_Tests\QueueTwoStacks_Tests.csproj", "{428C692F-1A05-406A-AD5F-6670158E987D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparseArrays_Tests", "_Tests\SparseArrays_Tests\SparseArrays_Tests.csproj", "{E3D2DE5A-B99A-47E0-BFC1-65CEC0FB6C40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -361,6 +363,10 @@ Global
 		{428C692F-1A05-406A-AD5F-6670158E987D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{428C692F-1A05-406A-AD5F-6670158E987D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{428C692F-1A05-406A-AD5F-6670158E987D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D2DE5A-B99A-47E0-BFC1-65CEC0FB6C40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D2DE5A-B99A-47E0-BFC1-65CEC0FB6C40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D2DE5A-B99A-47E0-BFC1-65CEC0FB6C40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D2DE5A-B99A-47E0-BFC1-65CEC0FB6C40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -431,6 +437,7 @@ Global
 		{063B189A-AD5C-4E82-8CAC-7CC9B3C88E87} = {0D8744E1-7554-4F1C-A1A6-A4FF0EA8D405}
 		{DE5D38FD-E16F-4561-8489-55F73D25390F} = {063B189A-AD5C-4E82-8CAC-7CC9B3C88E87}
 		{428C692F-1A05-406A-AD5F-6670158E987D} = {8F116FC8-44B8-43C3-821C-844AF7206AD2}
+		{E3D2DE5A-B99A-47E0-BFC1-65CEC0FB6C40} = {8F116FC8-44B8-43C3-821C-844AF7206AD2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C047F27-1BA8-4008-9685-C3E55BD858C0}

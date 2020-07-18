@@ -1,14 +1,15 @@
 ﻿using System;
+
 using CodeHelpers;
 
-namespace HackerRank.Tracks.DataStructures.Arrays.SparseArrays
+namespace SparseArrays.Library
 {
-    public class SparseArrays : ProblemBase, IProblemSolver
+    public class ArraySparser : ProblemSolverBase, IProblemSolver
     {
         //################################################################################
-        #region IProblemSolver Implementation
+        #region IProblemSolver Members
 
-        void IProblemSolver.Execute(IConsole console)
+        void IProblemSolver.Solve(IConsole console)
         {
             Console = console;
             SolveProblem();
@@ -17,7 +18,7 @@ namespace HackerRank.Tracks.DataStructures.Arrays.SparseArrays
         #endregion
 
         //################################################################################
-        #region Private Implementation
+        #region Private Members
 
         private void SolveProblem()
         {
