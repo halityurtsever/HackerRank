@@ -60,10 +60,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Tracks\DataStructures\Advanced\DirectConnections\DirectConnections.Library.csproj">
-      <Project>{038743e4-5f08-4a70-a03a-f92f4e570710}</Project>
-      <Name>DirectConnections.Library</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\_Helpers\CodeHelpers\CodeHelpers.csproj">
       <Project>{0f843f51-da68-473f-a1d0-aa5c1088feae}</Project>
       <Name>CodeHelpers</Name>

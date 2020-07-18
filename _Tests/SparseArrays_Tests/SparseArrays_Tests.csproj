@@ -55,10 +55,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Tracks\DataStructures\Arrays\SparseArrays\SparseArrays.Library.csproj">
-      <Project>{f7708149-250e-4e28-a3fa-0e7bf14a514d}</Project>
-      <Name>SparseArrays.Library</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\_Helpers\CodeHelpers\CodeHelpers.csproj">
       <Project>{0f843f51-da68-473f-a1d0-aa5c1088feae}</Project>
       <Name>CodeHelpers</Name>

@@ -58,10 +58,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Tracks\Algorithms\GraphTheory\KingdomConnectivity\KingdomConnectivity.Library.csproj">
-      <Project>{e0f2351e-7508-49ca-9701-af5adc925cf4}</Project>
-      <Name>KingdomConnectivity.Library</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\_Helpers\CodeHelpers\CodeHelpers.csproj">
       <Project>{0f843f51-da68-473f-a1d0-aa5c1088feae}</Project>
       <Name>CodeHelpers</Name>

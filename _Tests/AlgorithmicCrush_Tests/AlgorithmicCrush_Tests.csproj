@@ -58,10 +58,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Tracks\DataStructures\Arrays\AlgorithmicCrush\AlgorithmicCrush.Library.csproj">
-      <Project>{F71DE7EE-206C-4B1F-95C4-812F90D14225}</Project>
-      <Name>AlgorithmicCrush.Library</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\_Helpers\CodeHelpers\CodeHelpers.csproj">
       <Project>{0f843f51-da68-473f-a1d0-aa5c1088feae}</Project>
       <Name>CodeHelpers</Name>
