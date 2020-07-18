@@ -1,11 +1,11 @@
 ﻿using CodeHelpers;
-using MatrixLayerRotation;
+
 using System;
 using System.Collections.Generic;
 
-namespace HackerRank.Tracks.Algorithms.Implementation.MatrixLayerRotation
+namespace MatrixLayerRotation.Library
 {
-    public class MatrixLayerRotation : ProblemBase, IProblemSolver
+    public class MatrixRotater : ProblemSolverBase, IProblemSolver
     {
         //################################################################################
         #region Fields
@@ -19,9 +19,9 @@ namespace HackerRank.Tracks.Algorithms.Implementation.MatrixLayerRotation
         #endregion
 
         //################################################################################
-        #region IProblemSolver Implementation
+        #region IProblemSolver Members
 
-        void IProblemSolver.Execute(IConsole console)
+        void IProblemSolver.Solve(IConsole console)
         {
             Console = console;
 
@@ -43,7 +43,7 @@ namespace HackerRank.Tracks.Algorithms.Implementation.MatrixLayerRotation
         #endregion
 
         //################################################################################
-        #region Private Implementation
+        #region Private Members
 
         private void CreateMatrix()
         {

@@ -7,11 +7,12 @@
     <ProjectGuid>{F8F07AF8-DA5C-49D0-B2EC-E0E963CF465A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MatrixLayerRotation</RootNamespace>
-    <AssemblyName>MatrixLayerRotation</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>MatrixLayerRotation.Library</RootNamespace>
+    <AssemblyName>MatrixLayerRotation.Library</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Layer.cs" />
     <Compile Include="Node.cs" />
-    <Compile Include="MatrixLayerRotation.cs" />
+    <Compile Include="MatrixRotater.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -105,7 +105,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCoinChangeProblem.Librar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implementation", "Implementation", "{5DC9853B-6A0C-4AE5-BA58-050BDBE88E5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixLayerRotation", "Tracks\Algorithms\Implementation\MatrixLayerRotation\MatrixLayerRotation.csproj", "{F8F07AF8-DA5C-49D0-B2EC-E0E963CF465A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixLayerRotation.Library", "Tracks\Algorithms\Implementation\MatrixLayerRotation\MatrixLayerRotation.Library.csproj", "{F8F07AF8-DA5C-49D0-B2EC-E0E963CF465A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixLayerRotation_Tests", "_Tests\MatrixLayerRotation_Tests\MatrixLayerRotation_Tests.csproj", "{4C9B6358-29B3-47C7-9B8A-D120425D0149}"
 EndProject
