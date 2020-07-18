@@ -60,7 +60,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Tracks\Algorithms\DynamicProgramming\TheCoinChangeProblem\TheCoinChangeProblem.Library.csproj">
       <Project>{356710AE-FD13-4E48-9EC3-09BA072A7336}</Project>
-      <Name>TheCoinChangeProblem</Name>
+      <Name>TheCoinChangeProblem.Library</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\_Helpers\CodeHelpers\CodeHelpers.csproj">
       <Project>{0F843F51-DA68-473F-A1D0-AA5C1088FEAE}</Project>
