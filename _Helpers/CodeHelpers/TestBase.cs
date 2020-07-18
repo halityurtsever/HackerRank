@@ -5,7 +5,6 @@ using System.Reflection;
 
 namespace CodeHelpers
 {
-    [TestFixture]
     public abstract class TestBase
     {
         //################################################################################
