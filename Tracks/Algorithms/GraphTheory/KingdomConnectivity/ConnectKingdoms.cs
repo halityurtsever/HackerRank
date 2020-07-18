@@ -1,11 +1,11 @@
 ﻿using CodeHelpers;
+
 using System;
 using System.Collections.Generic;
-using KingdomConnectivity;
 
-namespace HackerRank.Tracks.Algorithms.GraphTheory.KingdomConnectivity
+namespace KingdomConnectivity.Library
 {
-    public class Program_KingdomConnectivity : ProblemBase, IProblemSolver
+    public class ConnectKingdoms : ProblemSolverBase, IProblemSolver
     {
         //################################################################################
         #region Fields
@@ -17,9 +17,9 @@ namespace HackerRank.Tracks.Algorithms.GraphTheory.KingdomConnectivity
         #endregion
 
         //################################################################################
-        #region IProblemSolver Implementation
+        #region IProblemSolver Members
 
-        void IProblemSolver.Execute(IConsole console)
+        void IProblemSolver.Solve(IConsole console)
         {
             Console = console;
             SolveProblem();
@@ -28,7 +28,7 @@ namespace HackerRank.Tracks.Algorithms.GraphTheory.KingdomConnectivity
         #endregion
 
         //################################################################################
-        #region Private Implementation
+        #region Private Members
 
         private void SolveProblem()
         {

@@ -55,7 +55,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Algorithms", "Algorithms", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GraphTheory", "GraphTheory", "{BA3F41CC-0D38-48E5-A5BE-08A019E70678}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingdomConnectivity", "Tracks\Algorithms\GraphTheory\KingdomConnectivity\KingdomConnectivity.csproj", "{E0F2351E-7508-49CA-9701-AF5ADC925CF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingdomConnectivity.Library", "Tracks\Algorithms\GraphTheory\KingdomConnectivity\KingdomConnectivity.Library.csproj", "{E0F2351E-7508-49CA-9701-AF5ADC925CF4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Strings", "Strings", "{41FF87BC-CCD2-4CB1-BE8F-DA6B9E729329}"
 EndProject
