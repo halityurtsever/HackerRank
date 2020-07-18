@@ -16,7 +16,7 @@ namespace Equal.Library
         private int m_MinIndex;
         private int m_MaxIndex;
 
-        private readonly StringBuilder m_Builder = new StringBuilder();
+        //private readonly StringBuilder m_Builder = new StringBuilder();
 
         #endregion
 
@@ -49,19 +49,19 @@ namespace Equal.Library
 
                 try
                 {
-                    m_Builder.Clear();
-                    m_Builder.AppendLine($"{"#",1}{"Unit",8}{"Count",8}{"Max",8}{"Result",8}");
-                    m_Builder.AppendLine("---------------------------------");
+                    //m_Builder.Clear();
+                    //m_Builder.AppendLine($"{"#",1}{"Unit",8}{"Count",8}{"Max",8}{"Result",8}");
+                    //m_Builder.AppendLine("---------------------------------");
                     Equalization(array);
-                    m_Builder.AppendLine("---------------------------------");
-                    m_Builder.Append($"{m_Result,33}");
+                    //m_Builder.AppendLine("---------------------------------");
+                    //m_Builder.Append($"{m_Result,33}");
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                 }
-                File.WriteAllText("d:\\temp.txt", String.Empty);
-                File.WriteAllText("d:\\temp.txt", m_Builder.ToString());
+                //File.WriteAllText("d:\\temp.txt", String.Empty);
+                //File.WriteAllText("d:\\temp.txt", m_Builder.ToString());
                 Console.WriteLine(m_Result);
                 m_Result = 0;
             }
@@ -89,14 +89,14 @@ namespace Equal.Library
                 addUnit = 5;
                 addCount = minMaxDifference / addUnit;
 
-                m_Builder.AppendLine($"{"F",1}{addUnit,8}{addCount,8}{maxCount,8}{addCount * maxCount,8}");
+                //m_Builder.AppendLine($"{"F",1}{addUnit,8}{addCount,8}{maxCount,8}{addCount * maxCount,8}");
             }
             else if (minMaxDifference > maxPreviousDifference)
             {
                 addUnit = 2;
                 addCount = minMaxDifference / addUnit;
 
-                m_Builder.AppendLine($"{"S",1}{addUnit,8}{addCount,8}{maxCount,8}{addCount * maxCount,8}");
+                //m_Builder.AppendLine($"{"S",1}{addUnit,8}{addCount,8}{maxCount,8}{addCount * maxCount,8}");
             }
             else if (minMaxDifference == maxPreviousDifference)
             {
@@ -113,7 +113,7 @@ namespace Equal.Library
                 if (remain > 2)
                     addCount++;
 
-                m_Builder.AppendLine($"{"T",1}{addUnit,8}{addCount,8}{maxCount,8}{addCount * maxCount,8}");
+                //m_Builder.AppendLine($"{"T",1}{addUnit,8}{addCount,8}{maxCount,8}{addCount * maxCount,8}");
             }
             else
             {
