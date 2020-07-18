@@ -79,7 +79,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics", "Tutorials\30Day
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DynamicProgramming", "DynamicProgramming", "{4E10FE26-C3E8-4C2E-828E-94FD7746C9FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equal", "Tracks\Algorithms\DynamicProgramming\Equal\Equal.csproj", "{E2CDCFAE-C9E9-4816-96F2-6FE98F0B2537}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equal.Library", "Tracks\Algorithms\DynamicProgramming\Equal\Equal.Library.csproj", "{E2CDCFAE-C9E9-4816-96F2-6FE98F0B2537}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equal_Tests", "_Tests\Equal_Tests\Equal_Tests.csproj", "{67D6063B-912B-4714-831A-369073D2B0D4}"
 EndProject

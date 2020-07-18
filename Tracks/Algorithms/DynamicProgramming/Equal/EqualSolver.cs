@@ -1,12 +1,13 @@
 ﻿using CodeHelpers;
+
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
+namespace Equal.Library
 {
-    public class Equal : ProblemBase, IProblemSolver
+    public class EqualSolver : ProblemSolverBase, IProblemSolver
     {
         //################################################################################
         #region Fields
@@ -20,9 +21,9 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         #endregion
 
         //################################################################################
-        #region IProblemSolver Implementation
+        #region IProblemSolver Members
 
-        void IProblemSolver.Execute(IConsole console)
+        void IProblemSolver.Solve(IConsole console)
         {
             Console = console;
             SolveProblem();
@@ -31,7 +32,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         #endregion
 
         //################################################################################
-        #region Private Implementation
+        #region Private Members
 
         private void SolveProblem()
         {
@@ -233,7 +234,7 @@ namespace HackerRank.Tracks.Algorithms.DynamicProgramming.Equal
         #endregion
 
         //################################################################################
-        #region Helper Implementation
+        #region Helper Members
 
         private void TraceArray(int[] array, string stage)
         {
