@@ -1,14 +1,15 @@
 ﻿using CodeHelpers;
+
 using System;
 
 namespace HackerRank.Tutorials._30DaysOfCode.BitwiseAND
 {
-    public class BitwiseAND : ProblemBase, IProblemSolver
+    public class BitwiseAND : ProblemSolverBase, IProblemSolver
     {
         //################################################################################
         #region IProblemSolver Implementation
 
-        void IProblemSolver.Execute(IConsole console)
+        void IProblemSolver.Solve(IConsole console)
         {
             Console = console;
 
