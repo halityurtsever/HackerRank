@@ -60,7 +60,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Tracks\Algorithms\Implementation\MatrixLayerRotation\MatrixLayerRotation.Library.csproj">
       <Project>{F8F07AF8-DA5C-49D0-B2EC-E0E963CF465A}</Project>
-      <Name>MatrixLayerRotation</Name>
+      <Name>MatrixLayerRotation.Library</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\_Helpers\CodeHelpers\CodeHelpers.csproj">
       <Project>{0f843f51-da68-473f-a1d0-aa5c1088feae}</Project>
