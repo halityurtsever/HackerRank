@@ -109,15 +109,21 @@ namespace CrosswordPuzzle.Library
             {
                 isDown = null;
 
-                if ((point.Y - 1 < 0 || _puzzleMatrix[point.X, point.Y - 1] == BlockCell) &&
-                    _puzzleMatrix[point.X, point.Y + 1] == EmptyCell)
+
+                if (point.X - 1 == -1 || _puzzleMatrix[point.X - 1, point.Y] == BlockCell)
                 {
-                    isDown = true;
+                    if (point.X + 1 < 10 && _puzzleMatrix[point.X + 1, point.Y] == EmptyCell)
+                    {
+                        isDown = true;
+                    }
                 }
-                else if ((point.X - 1 < 0 || _puzzleMatrix[point.X - 1, point.Y] == BlockCell) &&
-                    _puzzleMatrix[point.X + 1, point.Y] == EmptyCell)
+                
+                if (point.Y - 1 == -1 || _puzzleMatrix[point.X, point.Y - 1] == BlockCell)
                 {
-                    isDown = false;
+                    if (point.Y + 1 < 10 && _puzzleMatrix[point.X, point.Y + 1] == EmptyCell)
+                    {
+                        isDown = false;
+                    }
                 }
 
                 if (isDown != null)
@@ -137,17 +143,14 @@ namespace CrosswordPuzzle.Library
 
                 if (isDown == true)
                 {
-                    startPoint.Y++;
+                    startPoint.X++;
                 }
                 else
                 {
-                    startPoint.X++;
+                    startPoint.Y++;
                 }
 
                 if (startPoint.X > 9 || startPoint.Y > 9) break;
-                {
-
-                }
             }
 
             return wordCellList;
@@ -157,42 +160,46 @@ namespace CrosswordPuzzle.Library
         {
             MatchUniqueLenghtWords();
 
-            var wordListsToRemove = new List<IEnumerable<Point>>();
-            foreach (var wordCellList in _wordCellLists)
+            while (_wordCellLists.Count > 0)
             {
-                var index = 0;
-                var word = string.Empty;
-
-                foreach (var cell in wordCellList)
+                var wordListsToRemove = new List<IEnumerable<Point>>();
+                foreach (var wordCellList in _wordCellLists)
                 {
-                    var currentChar = _puzzleMatrix[cell.X, cell.Y];
-                    if (currentChar != EmptyCell)
+                    var index = 0;
+                    var word = string.Empty;
+
+                    foreach (var cell in wordCellList)
                     {
-                        word = GetPossibleWordIfAny(currentChar, index);
-                        if (!string.IsNullOrEmpty(word)) break;
+                        var currentChar = _puzzleMatrix[cell.X, cell.Y];
+                        if (currentChar != EmptyCell)
+                        {
+                            word = GetPossibleWordIfAny(currentChar, index, wordCellList.Count());
+                            if (!string.IsNullOrEmpty(word)) break;
+                        }
+
+                        index++;
                     }
 
-                    index++;
+                    if (!string.IsNullOrEmpty(word))
+                    {
+                        PlaceWordToEmptyCells(word, wordCellList, false);
+                        wordListsToRemove.Add(wordCellList);
+                    }
                 }
 
-                if (!string.IsNullOrEmpty(word))
+                foreach (var wordList in wordListsToRemove)
                 {
-                    PlaceWordToEmptyCells(word, wordCellList, false);
-                    wordListsToRemove.Add(wordCellList);
+                    _wordCellLists.Remove(wordList);
                 }
-            }
-
-            foreach (var wordList in wordListsToRemove)
-            {
-                _wordCellLists.Remove(wordList);
             }
         }
 
-        private string GetPossibleWordIfAny(char c, int index)
+        private string GetPossibleWordIfAny(char c, int index, int wordLength)
         {
             foreach (var word in _wordList)
             {
                 if (index >= word.Length) continue;
+                if (word.Length != wordLength) continue;
 
                 if (word[index] == c)
                 {

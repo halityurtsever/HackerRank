@@ -42,7 +42,7 @@ namespace CrosswordPuzzle_Tests
             TestRunner<CrosswordSolver>(Assertion, "input_05.txt", "output_05.txt");
         }
 
-        [Test, Explicit]
+        [Test]
         public void TestCase_06()
         {
             TestRunner<CrosswordSolver>(Assertion, "input_06.txt", "output_06.txt");
