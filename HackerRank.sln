@@ -151,6 +151,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrosswordPuzzle.Library", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrosswordPuzzle_Tests", "_Tests\CrosswordPuzzle_Tests\CrosswordPuzzle_Tests.csproj", "{003A351D-CE60-48C7-94C3-E242AB158567}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiggerIsGreater.Library", "Tracks\Algorithms\Implementation\BiggerIsGreater.Library\BiggerIsGreater.Library.csproj", "{CC73C2FD-BE01-4DB5-BE3A-E8271BBBB22A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiggerIsGreater_Tests", "_Tests\BiggerIsGreater_Tests\BiggerIsGreater_Tests.csproj", "{F6D5AAB5-A370-49A6-8924-D87043C138BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -381,6 +385,14 @@ Global
 		{003A351D-CE60-48C7-94C3-E242AB158567}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{003A351D-CE60-48C7-94C3-E242AB158567}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{003A351D-CE60-48C7-94C3-E242AB158567}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC73C2FD-BE01-4DB5-BE3A-E8271BBBB22A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC73C2FD-BE01-4DB5-BE3A-E8271BBBB22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC73C2FD-BE01-4DB5-BE3A-E8271BBBB22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC73C2FD-BE01-4DB5-BE3A-E8271BBBB22A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6D5AAB5-A370-49A6-8924-D87043C138BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6D5AAB5-A370-49A6-8924-D87043C138BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6D5AAB5-A370-49A6-8924-D87043C138BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6D5AAB5-A370-49A6-8924-D87043C138BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -455,6 +467,8 @@ Global
 		{47297650-44E4-4610-A803-2B3CEFFF6CF8} = {8E08DD78-5789-449A-8BD3-FE9B830F1E37}
 		{23AFA2DC-D19A-41F5-8ECA-D7273502F949} = {47297650-44E4-4610-A803-2B3CEFFF6CF8}
 		{003A351D-CE60-48C7-94C3-E242AB158567} = {8F116FC8-44B8-43C3-821C-844AF7206AD2}
+		{CC73C2FD-BE01-4DB5-BE3A-E8271BBBB22A} = {5DC9853B-6A0C-4AE5-BA58-050BDBE88E5E}
+		{F6D5AAB5-A370-49A6-8924-D87043C138BD} = {8F116FC8-44B8-43C3-821C-844AF7206AD2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C047F27-1BA8-4008-9685-C3E55BD858C0}
