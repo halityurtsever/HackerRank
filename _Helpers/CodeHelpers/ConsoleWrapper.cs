@@ -46,7 +46,6 @@ namespace CodeHelpers
 
         #endregion
 
-
         //################################################################################
         #region IConsole Members
 
