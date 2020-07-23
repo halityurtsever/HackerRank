@@ -39,8 +39,18 @@
 
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expectedValue"></param>
+        /// <returns></returns>
         bool ReadLineFromExpectedOutput(out string expectedValue);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="actualValue"></param>
+        /// <returns></returns>
         bool ReadLineFromActualOutput(out string actualValue);
     }
 }
