@@ -66,7 +66,7 @@ namespace Equal_Tests
             TestRunner<EqualSolver>("input_09.txt", "output_09.txt");
         }
 
-        [Test]
+        [Test, Explicit]
         public void TestCase_10()
         {
             TestRunner<EqualSolver>("input_10.txt", "output_10.txt");
