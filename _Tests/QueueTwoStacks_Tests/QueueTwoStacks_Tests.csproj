@@ -77,10 +77,6 @@
       <Project>{0F843F51-DA68-473F-A1D0-AA5C1088FEAE}</Project>
       <Name>CodeHelpers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\_Helpers\TestHelper\TestHelper.csproj">
-      <Project>{64F9B481-33FC-4ED1-AE99-4047BECCED6C}</Project>
-      <Name>TestHelper</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
