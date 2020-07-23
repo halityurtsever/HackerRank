@@ -41,6 +41,6 @@
 
         bool ReadLineFromExpectedOutput(out string expectedValue);
 
-        bool ReadLineFromActualOutput(out string actulValue);
+        bool ReadLineFromActualOutput(out string actualValue);
     }
 }
