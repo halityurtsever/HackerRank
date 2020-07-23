@@ -6,7 +6,7 @@ using System.Reflection;
 namespace CodeHelpers
 {
     [TestFixture]
-    public class TestBase
+    public abstract class TestBase
     {
         //################################################################################
         #region Fields
@@ -39,10 +39,10 @@ namespace CodeHelpers
 
             while (hasActual && hasExpected)
             {
-                hasActual = console.ReadLineFromActualOutput(out string actual);
-                hasExpected = console.ReadLineFromExpectedOutput(out string expected);
+                hasActual = console.ReadLineFromActualOutput(out string actualValue);
+                hasExpected = console.ReadLineFromExpectedOutput(out string expectedValue);
 
-                Assert.That(expected, Is.EqualTo(actual));
+                Assert.That(expectedValue, Is.EqualTo(actualValue));
             }
         }
 
