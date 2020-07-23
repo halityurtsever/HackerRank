@@ -15,7 +15,7 @@ namespace BuildPalindrome_Tests
         [Test]
         public void TestCase_01()
         {
-            TestRunner<PalindromeBuilder>(Assertion, "input_01.txt", "output_01.txt");
+            TestRunner<PalindromeBuilder>("input_01.txt", "output_01.txt");
         }
 
         #endregion

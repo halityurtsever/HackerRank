@@ -15,7 +15,7 @@ namespace BitwiseAND_Tests
         [Test]
         public void TestCase_01()
         {
-            TestRunner<BitwiseAND>(Assertion, "input_01.txt", "output_01.txt");
+            TestRunner<BitwiseAND>("input_01.txt", "output_01.txt");
         }
 
         #endregion

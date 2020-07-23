@@ -15,19 +15,19 @@ namespace TheCoinChangeProblem_Tests
         [Test, Explicit]
         public void TestCase_01()
         {
-            TestRunner<TheCoinChange>(Assertion, "input_01.txt", "output_01.txt");
+            TestRunner<TheCoinChange>("input_01.txt", "output_01.txt");
         }
 
         [Test, Explicit]
         public void TestCase_02()
         {
-            TestRunner<TheCoinChange>(Assertion, "input_02.txt", "output_02.txt");
+            TestRunner<TheCoinChange>("input_02.txt", "output_02.txt");
         }
 
         [Test, Explicit]
         public void TestCase_03()
         {
-            TestRunner<TheCoinChange>(Assertion, "input_03.txt", "output_03.txt");
+            TestRunner<TheCoinChange>("input_03.txt", "output_03.txt");
         }
 
         #endregion

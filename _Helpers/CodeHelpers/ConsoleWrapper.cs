@@ -50,14 +50,14 @@ namespace CodeHelpers
         //################################################################################
         #region IConsole Members
 
-        string IConsole.ReadLineFromExpectedOutput()
+        bool IConsole.ReadLineFromExpectedOutput(out string expectedValue)
         {
             try
             {
-                var outputData = $"{ExpectedOutput[m_CurrentExpectedOutputIndex]}";
+                expectedValue = $"{ExpectedOutput[m_CurrentExpectedOutputIndex]}";
                 m_CurrentExpectedOutputIndex++;
 
-                return outputData;
+                return ExpectedOutput.Count > m_CurrentExpectedOutputIndex;
             }
             catch (Exception ex)
             {
@@ -66,14 +66,14 @@ namespace CodeHelpers
             }
         }
 
-        string IConsole.ReadLineFromActualOutput()
+        bool IConsole.ReadLineFromActualOutput(out string actualValue)
         {
             try
             {
-                var outputData = $"{ActualOutput[m_CurrentActualOutputIndex]}";
+                actualValue = $"{ActualOutput[m_CurrentActualOutputIndex]}";
                 m_CurrentActualOutputIndex++;
 
-                return outputData;
+                return ActualOutput.Count > m_CurrentActualOutputIndex;
             }
             catch (Exception ex)
             {

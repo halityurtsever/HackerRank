@@ -1,9 +1,11 @@
-﻿using System;
+﻿using NUnit.Framework;
+
 using System.IO;
 using System.Reflection;
 
 namespace CodeHelpers
 {
+    [TestFixture]
     public abstract class TestBase
     {
         //################################################################################
@@ -26,16 +28,22 @@ namespace CodeHelpers
             return new ConsoleWrapper(folderPath, $"{s_InputOutputFolder}/{inputFileName}", $"{s_InputOutputFolder}/{outputFileName}");
         }
 
-        protected void TestRunner<T>(Action<string, string> assertion, string inputFile, string outputFile) where T : IProblemSolver, new()
+        protected void TestRunner<T>(string inputFile, string outputFile) where T : IProblemSolver, new()
         {
             IConsole console = GetConsoleReader(inputFile, outputFile);
             IProblemSolver solver = new T();
             solver.Solve(console);
 
-            ActualValue = console.ReadLineFromActualOutput();
-            ExpectedValue = console.ReadLineFromExpectedOutput();
+            var hasExpected = true;
+            var hasActual = true;
 
-            assertion(ExpectedValue, ActualValue);
+            while (hasActual && hasExpected)
+            {
+                hasActual = console.ReadLineFromActualOutput(out string actual);
+                hasExpected = console.ReadLineFromExpectedOutput(out string expected);
+
+                Assert.That(expected, Is.EqualTo(actual));
+            }
         }
 
         #endregion

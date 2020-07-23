@@ -15,7 +15,7 @@ namespace QueueTwoStacks_Tests
         [Test]
         public void TestCase_01()
         {
-            TestRunner<TwoStacksQueuer>(Assertion, "input_01.txt", "output_01.txt");
+            TestRunner<TwoStacksQueuer>("input_01.txt", "output_01.txt");
         }
 
         #endregion

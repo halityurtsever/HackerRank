@@ -15,7 +15,7 @@ namespace SudokuSolver_Tests
         [Test]
         public void TestCase_01()
         {
-            TestRunner<Sudoku>(Assertion, "input_01.txt", "output_01.txt");
+            TestRunner<Sudoku>("input_01.txt", "output_01.txt");
         }
 
         #endregion

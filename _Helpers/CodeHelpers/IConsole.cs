@@ -39,8 +39,8 @@
 
         #endregion
 
-        string ReadLineFromExpectedOutput();
+        bool ReadLineFromExpectedOutput(out string expectedValue);
 
-        string ReadLineFromActualOutput();
+        bool ReadLineFromActualOutput(out string actulValue);
     }
 }
