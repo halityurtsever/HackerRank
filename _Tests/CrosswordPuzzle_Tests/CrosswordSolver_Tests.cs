@@ -49,15 +49,5 @@ namespace CrosswordPuzzle_Tests
         }
 
         #endregion
-
-        //################################################################################
-        #region Private Members
-
-        private void Assertion(string expected, string actual)
-        {
-            Assert.That(expected, Is.EqualTo(actual));
-        }
-
-        #endregion
     }
 }

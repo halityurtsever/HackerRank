@@ -36,13 +36,11 @@ namespace CodeHelpers
 
             var hasExpected = true;
             var hasActual = true;
-            var actualValue = string.Empty;
-            var expectedValue = string.Empty;
 
             while (hasActual && hasExpected)
             {
-                hasActual = console.ReadLineFromActualOutput(out actualValue);
-                hasExpected = console.ReadLineFromExpectedOutput(out expectedValue);
+                hasActual = console.ReadLineFromActualOutput(out string actualValue);
+                hasExpected = console.ReadLineFromExpectedOutput(out string expectedValue);
 
                 Assert.That(expectedValue, Is.EqualTo(actualValue));
             }
