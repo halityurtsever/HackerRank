@@ -18,10 +18,6 @@ namespace CodeHelpers
         //################################################################################
         #region Protected Members
 
-        protected string ActualValue { get; private set; }
-
-        protected string ExpectedValue { get; private set; }
-
         protected IConsole GetConsoleReader(string inputFileName, string outputFileName)
         {
             var folderPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -42,7 +38,7 @@ namespace CodeHelpers
                 hasActual = console.ReadLineFromActualOutput(out string actualValue);
                 hasExpected = console.ReadLineFromExpectedOutput(out string expectedValue);
 
-                Assert.That(expectedValue, Is.EqualTo(actualValue));
+                Assert.That(actualValue, Is.EqualTo(expectedValue));
             }
         }
 
