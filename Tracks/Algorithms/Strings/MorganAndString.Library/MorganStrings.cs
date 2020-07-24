@@ -1,4 +1,5 @@
 ﻿using CodeHelpers;
+using System.Text;
 
 namespace MorganAndString.Library
 {
@@ -32,24 +33,24 @@ namespace MorganAndString.Library
 
         private void CreateMorganString(string jackString, string danielString)
         {
-            var morganString = string.Empty;
+            var morganString = new StringBuilder();
             var charCount = jackString.Length + danielString.Length;
             int jackIndex = 0, danielIndex = 0;
 
             for (int i = 0; i < charCount; i++)
             {
-                if ((jackIndex >= jackString.Length && danielIndex < danielString.Length) ||
-                    jackString[jackIndex] > danielString[danielIndex])
+                if (jackIndex >= jackString.Length ||
+                    (danielIndex < danielString.Length && jackString[jackIndex] > danielString[danielIndex]))
                 {
-                    morganString += danielString[danielIndex];
+                    morganString.Append(danielString[danielIndex]);
                     danielIndex++;
                     continue;
                 }
 
-                if ((danielIndex >= danielString.Length && jackIndex < jackString.Length) ||
-                    jackString[jackIndex] < danielString[danielIndex])
+                if (danielIndex >= danielString.Length ||
+                    (jackIndex < jackString.Length && jackString[jackIndex] < danielString[danielIndex]))
                 {
-                    morganString += jackString[jackIndex];
+                    morganString.Append(jackString[jackIndex]);
                     jackIndex++;
                     continue;
                 }
@@ -63,46 +64,46 @@ namespace MorganAndString.Library
 
                     while (true)
                     {
-                        tempJackIndex++;
-                        tempDanielIndex++;
-
                         if (tempJackIndex < jackString.Length &&
                             tempDanielIndex < danielString.Length)
                         {
                             if (jackString[tempJackIndex] > danielString[tempDanielIndex])
                             {
-                                morganString += danielString[danielIndex];
+                                morganString.Append(danielString[danielIndex]);
                                 danielIndex++;
                                 break;
                             }
                             else if (jackString[tempJackIndex] < danielString[tempDanielIndex])
                             {
-                                morganString += jackString[jackIndex];
+                                morganString.Append(jackString[jackIndex]);
                                 jackIndex++;
                                 break;
                             }
                             else
                             {
+                                tempJackIndex++;
+                                tempDanielIndex++;
+
                                 continue;
                             }
                         }
                         else if (tempJackIndex >= jackString.Length &&
                             tempDanielIndex < danielString.Length)
                         {
-                            morganString += danielString[danielIndex];
+                            morganString.Append(danielString[danielIndex]);
                             danielIndex++;
                             break;
                         }
                         else if (tempJackIndex < jackString.Length &&
                             tempDanielIndex >= danielString.Length)
                         {
-                            morganString += jackString[jackIndex];
+                            morganString.Append(jackString[jackIndex]);
                             jackIndex++;
                             break;
                         }
                         else
                         {
-                            morganString += jackString[jackIndex];
+                            morganString.Append(jackString[jackIndex]);
                             jackIndex++;
                             break;
                         }
@@ -110,7 +111,7 @@ namespace MorganAndString.Library
                 }
             }
 
-            Console.WriteLine(morganString);
+            Console.WriteLine(morganString.ToString());
         }
 
         #endregion

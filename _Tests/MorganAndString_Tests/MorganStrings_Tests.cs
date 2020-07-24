@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace MorganAndString_Tests
 {
-    [TestFixture, Explicit]
+    [TestFixture]
     public class MorganStrings_Tests : TestBase
     {
         //################################################################################
@@ -18,7 +18,7 @@ namespace MorganAndString_Tests
             TestRunner<MorganStrings>("input_01.txt", "output_01.txt");
         }
 
-        [Test]
+        [Test, Explicit]
         public void TestCase_02()
         {
             TestRunner<MorganStrings>("input_02.txt", "output_02.txt");
