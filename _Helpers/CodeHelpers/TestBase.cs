@@ -30,15 +30,18 @@ namespace CodeHelpers
             IProblemSolver solver = new T();
             solver.Solve(console);
 
-            var hasExpected = true;
+            var outputCount = 0;
             var hasActual = true;
+            var hasExpected = true;
 
             while (hasActual && hasExpected)
             {
+                outputCount++;
+
                 hasActual = console.ReadLineFromActualOutput(out string actualValue);
                 hasExpected = console.ReadLineFromExpectedOutput(out string expectedValue);
 
-                Assert.That(actualValue, Is.EqualTo(expectedValue));
+                Assert.That(actualValue, Is.EqualTo(expectedValue), $"Test fail on {outputCount}. output.");
             }
         }
 
