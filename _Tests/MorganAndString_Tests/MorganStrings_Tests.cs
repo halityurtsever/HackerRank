@@ -30,6 +30,24 @@ namespace MorganAndString_Tests
             TestRunner<MorganStrings>("input_03.txt", "output_03.txt");
         }
 
+        [Test]
+        public void TestCase_04()
+        {
+            TestRunner<MorganStrings>("input_04.txt", "output_04.txt");
+        }
+
+        [Test]
+        public void TestCase_05()
+        {
+            TestRunner<MorganStrings>("input_05.txt", "output_05.txt");
+        }
+
+        [Test, Explicit]
+        public void TestCase_06()
+        {
+            TestRunner<MorganStrings>("input_06.txt", "output_06.txt");
+        }
+
         #endregion
     }
 }
