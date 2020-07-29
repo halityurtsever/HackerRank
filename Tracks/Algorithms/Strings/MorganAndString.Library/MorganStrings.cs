@@ -1,5 +1,5 @@
 ﻿using CodeHelpers;
-using System.Diagnostics;
+using System.IO;
 using System.Text;
 
 namespace MorganAndString.Library
@@ -9,7 +9,7 @@ namespace MorganAndString.Library
         //################################################################################
         #region Fields
 
-        private int _sameCharsCount = 1;
+        private int _identicalCharCount = 1;
 
         #endregion
 
@@ -35,6 +35,7 @@ namespace MorganAndString.Library
                 var jackString = Console.ReadLine();
                 var danielString = Console.ReadLine();
 
+                WriteInputsToFile(jackString, danielString, false);
                 CreateMorganString(jackString, danielString);
             }
         }
@@ -48,7 +49,7 @@ namespace MorganAndString.Library
             var jackLen = jack.Length;
             var danielLen = daniel.Length;
 
-            for (int i = 0; i < jackLen + danielLen; i++)
+            for (; ; )
             {
                 // both indexes are in bound of limits
                 if (jackIndex < jackLen && danielIndex < danielLen)
@@ -70,7 +71,7 @@ namespace MorganAndString.Library
                     {
                         if (EqualityState(jack, daniel, jackIndex, danielIndex))
                         {
-                            for (int j = 0; j < _sameCharsCount; j++)
+                            for (int j = 0; j < _identicalCharCount; j++)
                             {
                                 morganString.Append(jack[jackIndex]);
                                 jackIndex++;
@@ -78,14 +79,14 @@ namespace MorganAndString.Library
                         }
                         else
                         {
-                            for (int d = 0; d < _sameCharsCount; d++)
+                            for (int d = 0; d < _identicalCharCount; d++)
                             {
                                 morganString.Append(daniel[danielIndex]);
                                 danielIndex++;
                             }
                         }
 
-                        _sameCharsCount = 1;
+                        _identicalCharCount = 1;
                     }
                 }
                 // jack index is out of limit, append all remainings of daniel
@@ -109,23 +110,15 @@ namespace MorganAndString.Library
             Console.WriteLine(morganString.ToString());
         }
 
-        //8194
-        //Expected: "...MNMMNNMMNMNNMNMMNMNNMMNNMNMMNN M MNMNNMMNNMNMMNMNNMNMMNNMMNM..."
-        //But was:  "...MNMMNNMMNMNNMNMMNMNNMMNNMNMMNN N MNMMNNMMNMNNMNMMNMNNMMNNMNM..."
-
-        //4097
-        //Expected: "...ZYZZYYZZYZYYZ YZZYZYYZZYYZYZZYZ Y YZYZZYYZZYZYYZYZZYZYYZZYYZY..."
-        //But was:  "...ZYZZYYZZYZYYZ YZZYZYYZZYYZYZZYZ Z YZYYZZYYZYZZYZYYZYZZYYZZYZY..."
-
         private bool EqualityState(string jack, string daniel, int jackIndex, int danielIndex)
         {
             if (jackIndex + 1 == jack.Length) return false;
             if (danielIndex + 1 == daniel.Length) return true;
 
             while (IsCurrentEqualsToNext(jack, daniel, jackIndex, danielIndex) ||
-                IsCurrentBiggerThanNext(jack, daniel, jackIndex, danielIndex))
+                   IsCurrentBiggerThanNext(jack, daniel, jackIndex, danielIndex))
             {
-                _sameCharsCount++;
+                _identicalCharCount++;
                 jackIndex++;
                 danielIndex++;
 
@@ -133,7 +126,7 @@ namespace MorganAndString.Library
                 if (danielIndex + 1 == daniel.Length) return true;
             }
 
-            return jack[jackIndex + 1] <= daniel[danielIndex + 1];
+            return jack[jackIndex + 1] < daniel[danielIndex + 1];
         }
 
         private bool IsCurrentEqualsToNext(string jack, string daniel, int jackIndex, int danielIndex)
@@ -155,6 +148,39 @@ namespace MorganAndString.Library
             {
                 stringBuilder.Append(source[i]);
             }
+        }
+
+        private void WriteInputsToFile(string jackString, string danielString, bool isWrite)
+        {
+            if (!isWrite) return;
+
+            var strB = new StringBuilder();
+
+            for (int js = 0; js < jackString.Length; js++)
+            {
+                strB.Append(jackString[js]);
+
+                if (js % 100 == 0)
+                {
+                    strB.AppendLine();
+                }
+            }
+
+            File.AppendAllText(@"C:\tmp\jack.txt", strB.ToString());
+            strB.Clear();
+
+            for (int ds = 1; ds <= danielString.Length; ds++)
+            {
+                strB.Append(danielString[ds - 1]);
+
+                if (ds > 0 && ds % 100 == 0)
+                {
+                    strB.AppendLine();
+                }
+            }
+
+            File.AppendAllText(@"C:\tmp\daniel.txt", strB.ToString());
+            strB.Clear();
         }
 
         #endregion
