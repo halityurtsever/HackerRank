@@ -28,7 +28,17 @@ namespace CubeSummation.Library
                 var testInfo = Console.ReadLine().Split(' ');
 
                 var arraySize = int.Parse(testInfo[0]);
-                var array = new long[arraySize, arraySize, arraySize];
+                var array = new long[arraySize][][];
+
+                for (int x = 0; x < arraySize; x++)
+                {
+                    array[x] = new long[arraySize][];
+
+                    for (int y = 0; y < arraySize; y++)
+                    {
+                        array[x][y] = new long[arraySize];
+                    }
+                }
 
                 var queryCount = int.Parse(testInfo[1]);
                 for (int j = 0; j < queryCount; j++)
@@ -39,7 +49,7 @@ namespace CubeSummation.Library
             }
         }
 
-        private void RunQuery(long[,,] array, string query)
+        private void RunQuery(long[][][] array, string query)
         {
             var queryParams = query.Split(' ');
 
@@ -50,7 +60,7 @@ namespace CubeSummation.Library
                 var z = int.Parse(queryParams[3]) - 1;
                 var value = long.Parse(queryParams[4]);
 
-                array[x, y, z] = value;
+                array[x][y][z] = value;
             }
             else if (queryParams[0] == "QUERY")
             {
@@ -66,7 +76,7 @@ namespace CubeSummation.Library
             }
         }
 
-        private void CalculateSum(long[,,] array, int x1, int y1, int z1, int x2, int y2, int z2)
+        private void CalculateSum(long[][][] array, int x1, int y1, int z1, int x2, int y2, int z2)
         {
             long total = 0;
 
@@ -79,7 +89,7 @@ namespace CubeSummation.Library
                     // Collect z
                     for (int z = z1; z <= z2; z++)
                     {
-                        total += array[x, y, z];
+                        total += array[x][y][z];
                     }
                 }
             }
