@@ -30,15 +30,7 @@ namespace CubeSummation.Library
                 var arraySize = int.Parse(testInfo[0]);
                 var array = new long[arraySize][][];
 
-                for (int x = 0; x < arraySize; x++)
-                {
-                    array[x] = new long[arraySize][];
-
-                    for (int y = 0; y < arraySize; y++)
-                    {
-                        array[x][y] = new long[arraySize];
-                    }
-                }
+                InitializeArray(array, arraySize);
 
                 var queryCount = int.Parse(testInfo[1]);
                 for (int j = 0; j < queryCount; j++)
@@ -60,7 +52,7 @@ namespace CubeSummation.Library
                 var z = int.Parse(queryParams[3]) - 1;
                 var value = long.Parse(queryParams[4]);
 
-                array[x][y][z] = value;
+                UpdateArray(array, x, y, z, value);
             }
             else if (queryParams[0] == "QUERY")
             {
@@ -76,6 +68,17 @@ namespace CubeSummation.Library
             }
         }
 
+        private void UpdateArray(long[][][] array, int x, int y, int z, long value)
+        {
+            var newValue = array[x][y][z] - (array[x][y][z] - array[x][y][z + 1]) + value;
+            var diff = newValue - array[x][y][z];
+
+            for (int i = z; i >= 0; i--)
+            {
+                array[x][y][i] += diff;
+            }
+        }
+
         private void CalculateSum(long[][][] array, int x1, int y1, int z1, int x2, int y2, int z2)
         {
             long total = 0;
@@ -87,14 +90,24 @@ namespace CubeSummation.Library
                 for (int y = y1; y <= y2; y++)
                 {
                     // Collect z
-                    for (int z = z1; z <= z2; z++)
-                    {
-                        total += array[x][y][z];
-                    }
+                    total += array[x][y][z1] - array[x][y][z2 + 1];
                 }
             }
 
             Console.WriteLine(total);
+        }
+
+        private void InitializeArray(long[][][] array, int arraySize)
+        {
+            for (int x = 0; x < arraySize; x++)
+            {
+                array[x] = new long[arraySize][];
+
+                for (int y = 0; y < arraySize; y++)
+                {
+                    array[x][y] = new long[arraySize + 1];
+                }
+            }
         }
 
         #endregion
