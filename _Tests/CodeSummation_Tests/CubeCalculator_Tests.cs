@@ -18,7 +18,7 @@ namespace CodeSummation_Tests
             TestRunner<CubeCalculator>("input_01.txt", "output_01.txt");
         }
 
-        [Test]
+        [Test, Explicit]
         public void TestCase_02()
         {
             TestRunner<CubeCalculator>("input_02.txt", "output_02.txt");
