@@ -1,6 +1,7 @@
 ﻿using CodeHelpers;
 
 using System;
+using System.Collections.Generic;
 
 namespace TheCoinChangeProblem.Library
 {
@@ -9,10 +10,10 @@ namespace TheCoinChangeProblem.Library
         //################################################################################
         #region Fields
 
-        private int m_StartIndex;
-        private int m_CurrentIndex;
-        private int m_TargetChangeValue;
-        private int[] m_CoinArray;
+        private int targetValue;
+        private int[] coinArray;
+        private IDictionary<int, IList<string>> patternLibrary;
+        private HashSet<int> resultSet;
 
         #endregion
 
@@ -21,8 +22,13 @@ namespace TheCoinChangeProblem.Library
 
         void IProblemSolver.Solve(IConsole console)
         {
+            patternLibrary = new Dictionary<int, IList<string>>();
+            resultSet = new HashSet<int>();
+
             Console = console;
             SolveProblem();
+
+            Console.WriteLine(resultSet.Count);
         }
 
         #endregion
@@ -33,63 +39,108 @@ namespace TheCoinChangeProblem.Library
         private void SolveProblem()
         {
             var initialValues = Console.ReadLine().Split(' ');
-            m_TargetChangeValue = Convert.ToInt32(initialValues[0]);
-            m_CoinArray = Array.ConvertAll(Console.ReadLine().Split(' '), Int32.Parse);
+            targetValue = int.Parse(initialValues[0]);
+            coinArray = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
 
-            SortArray(m_CoinArray, 0, m_CoinArray.Length - 1);
-
-            m_StartIndex = m_CoinArray.Length - 1;
-            m_CurrentIndex = m_CoinArray.Length;
-            CalculateDistinctChanges(0);
+            SortArray(coinArray, 0, coinArray.Length - 1, coinArray.Length);
+            CreatePatternLibrary();
+            CalculateDistinctChanges();
         }
 
-        private void CalculateDistinctChanges(int total)
+        private void CalculateDistinctChanges()
         {
-            while (m_StartIndex >= 0)
+
+        }
+
+        // 12 - 10 - 7 - 3 - 1
+
+        //12
+        //10,1,1
+        //7,3,1,1
+        //7,1,1,1,1,1
+        //3,3,3,3
+        //3,3,3,1,1,1
+        //3,3,1,1,1,1,1,1
+        //3,1,1,1,1,1,1,1,1,1
+        //1,1,1,1,1,1,1,1,1,1,1,1
+
+        //10
+        //7,3
+        //7,1,1,1
+        //3,3,3,1
+        //3,3,1,1,1,1
+        //3,1,1,1,1,1,1,1
+        //1,1,1,1,1,1,1,1,1,1
+
+        //7
+        //3,3,1
+        //3,1,1,1,1
+        //1,1,1,1,1,1,1
+
+        //3
+        //1,1,1
+
+        //1
+
+        private void CreatePatternLibrary()
+        {
+            foreach (var number in coinArray)
             {
-                int currentTotal = m_CoinArray[m_CurrentIndex] + total;
-                if (currentTotal > m_TargetChangeValue)
+                var patternList = GetPatternList(number);
+                patternLibrary.Add(number, patternList);
+            }
+        }
+
+        private IList<string> GetPatternList(int number)
+        {
+            var patternList = new List<string>();
+            var coinEnumerator = coinArray.GetEnumerator();
+
+            while (coinEnumerator.MoveNext())
+            {
+                
+            }
+
+            return patternList;
+        }
+
+        /// <summary>
+        /// Descending quick sort algorithm
+        /// </summary>
+        /// <param name="data">Array will be sorted</param>
+        /// <param name="left">Start index</param>
+        /// <param name="right">End index</param>
+        /// <param name="count">Array length</param>
+        private void SortArray(int[] data, int left, int right, int count)
+        {
+            int i, j, temp;
+            double pivot;
+
+            i = left;
+            j = right;
+            pivot = data[(left + right) / 2];
+
+            do
+            {
+                while ((data[i] > pivot) && (i < right)) i++;
+                count++;
+
+                while ((pivot > data[j]) && (j > left)) j--;
+                count++;
+
+                if (i <= j)
                 {
-                    m_CurrentIndex--;
-                    return;
+                    temp = data[i];
+                    data[i] = data[j];
+                    data[j] = temp;
+                    i++;
+                    j--;
+                    count++;
                 }
+            } while (i <= j);
 
-                CalculateDistinctChanges(currentTotal);
-            }
-        }
-
-        private void SortArray(int[] array, int low, int hi)
-        {
-            //Quick Sort
-            if (low < hi)
-            {
-                int p = Partition(array, low, hi);
-                SortArray(array, low, p - 1);
-                SortArray(array, p + 1, hi);
-            }
-        }
-
-        private int Partition(int[] array, int low, int hi)
-        {
-            int pivot = array[hi];
-            int i = low - 1;
-            int temp;
-
-            for (int j = low; j <= hi - 1; j++)
-            {
-                if (array[j] <= pivot)
-                {
-                    i = i + 1;
-                    temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
-                }
-            }
-            temp = array[i + 1];
-            array[i + 1] = array[hi];
-            array[hi] = temp;
-
-            return i + 1;
+            if (left < j) SortArray(data, left, j, count);
+            if (i < right) SortArray(data, i, right, count);
         }
 
         #endregion
